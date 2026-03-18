@@ -16,225 +16,282 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Nunito',sans-serif;background:var(--white);color:var(--text);font-size:15px}
-
-/* ── SCROLLBAR ── */
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:var(--cream)}
 ::-webkit-scrollbar-thumb{background:var(--fern);border-radius:10px}
 
 /* ── NAV ── */
-nav{position:sticky;top:0;z-index:100;background:var(--forest);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:62px;box-shadow:0 2px 20px rgba(0,0,0,0.3)}
-.brand{font-family:'Fraunces',serif;font-size:1.45rem;color:var(--white);letter-spacing:0.01em}
+nav{position:sticky;top:0;z-index:100;background:var(--forest);display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;height:62px;box-shadow:0 2px 20px rgba(0,0,0,0.3)}
+.brand{font-family:'Fraunces',serif;font-size:1.4rem;color:var(--white);letter-spacing:0.01em;white-space:nowrap}
 .brand b{color:var(--gold)}
 .nav-links{display:flex;gap:0;list-style:none}
-.nav-links li a{display:block;padding:0 1rem;height:62px;line-height:62px;color:rgba(255,255,255,0.78);font-size:0.82rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;white-space:nowrap}
+.nav-links li a{display:block;padding:0 0.75rem;height:62px;line-height:62px;color:rgba(255,255,255,0.78);font-size:0.78rem;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;white-space:nowrap}
 .nav-links li a:hover{color:var(--gold);background:rgba(255,255,255,0.05)}
 .nav-links li a.active{color:var(--gold);border-bottom:2px solid var(--gold)}
-.nav-wa{background:var(--amber);color:var(--white);padding:0.45rem 1rem;border-radius:20px;font-size:0.78rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:6px;white-space:nowrap;transition:background 0.2s}
+.nav-wa{background:var(--amber);color:var(--white);padding:0.4rem 0.85rem;border-radius:20px;font-size:0.76rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:5px;white-space:nowrap;transition:background 0.2s;flex-shrink:0}
 .nav-wa:hover{background:var(--gold);color:var(--forest)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
-.hamburger span{width:22px;height:2px;background:var(--white);border-radius:2px;transition:all 0.3s}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;flex-shrink:0}
+.hamburger span{width:22px;height:2px;background:var(--white);border-radius:2px}
 .mob-menu{display:none;position:fixed;top:62px;left:0;right:0;background:var(--forest);z-index:99;flex-direction:column;border-top:1px solid rgba(255,255,255,0.1);max-height:calc(100vh - 62px);overflow-y:auto}
 .mob-menu.open{display:flex}
-.mob-menu a{padding:1rem 2rem;color:rgba(255,255,255,0.8);font-size:0.9rem;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.07);transition:color 0.2s}
+.mob-menu a{padding:0.9rem 2rem;color:rgba(255,255,255,0.8);font-size:0.9rem;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.07);transition:color 0.2s}
 .mob-menu a:hover{color:var(--gold)}
 
 /* ── HERO ── */
-.hero{background:var(--forest);position:relative;overflow:hidden;padding:5rem 2rem 4rem;text-align:center;min-height:440px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.hero{background:var(--forest);position:relative;overflow:hidden;padding:5rem 2rem 4rem;text-align:center;min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(110,148,100,0.18) 0%,transparent 55%),radial-gradient(ellipse at 80% 20%,rgba(192,122,40,0.12) 0%,transparent 45%)}
 .hero-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.06) 1px,transparent 1px);background-size:28px 28px}
-.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(192,122,40,0.2);border:1px solid rgba(192,122,40,0.45);color:var(--gold);font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:0.35rem 1rem;border-radius:20px;margin-bottom:1.4rem;position:relative}
-.hero-title{font-family:'Fraunces',serif;font-size:clamp(2.4rem,6vw,4rem);color:var(--white);line-height:1.1;margin-bottom:1rem;position:relative;font-weight:400}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(192,122,40,0.2);border:1px solid rgba(192,122,40,0.45);color:var(--gold);font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:0.35rem 1rem;border-radius:20px;margin-bottom:1.2rem;position:relative}
+.hero-title{font-family:'Fraunces',serif;font-size:clamp(2.2rem,6vw,3.8rem);color:var(--white);line-height:1.1;margin-bottom:1rem;position:relative;font-weight:400}
 .hero-title em{color:var(--gold);font-style:italic}
-.hero-sub{font-size:1rem;color:rgba(255,255,255,0.65);font-weight:300;line-height:1.7;max-width:520px;margin:0 auto 2rem;position:relative}
+.hero-sub{font-size:0.95rem;color:rgba(255,255,255,0.65);font-weight:300;line-height:1.7;max-width:500px;margin:0 auto 2rem;position:relative}
 .hero-btns{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;position:relative}
-.btn-hero{padding:0.85rem 2rem;border-radius:3px;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:all 0.22s;display:inline-flex;align-items:center;gap:7px}
+.btn-hero{padding:0.8rem 1.8rem;border-radius:3px;font-size:0.82rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:all 0.22s;display:inline-flex;align-items:center;gap:7px}
 .btn-forest{background:var(--amber);color:var(--white)}
 .btn-forest:hover{background:var(--gold);color:var(--forest);transform:translateY(-2px)}
 .btn-ghost{border:1px solid rgba(255,255,255,0.35);color:var(--white)}
-.btn-ghost:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.6)}
-.hero-chips{display:flex;gap:2rem;justify-content:center;margin-top:3rem;position:relative;flex-wrap:wrap}
+.btn-ghost:hover{background:rgba(255,255,255,0.1)}
+.hero-chips{display:flex;gap:2rem;justify-content:center;margin-top:2.5rem;position:relative;flex-wrap:wrap}
 .chip{text-align:center}
-.chip-num{font-family:'Fraunces',serif;font-size:2rem;color:var(--gold);line-height:1}
-.chip-label{font-size:0.7rem;color:rgba(255,255,255,0.45);letter-spacing:0.1em;text-transform:uppercase;margin-top:3px}
+.chip-num{font-family:'Fraunces',serif;font-size:1.9rem;color:var(--gold);line-height:1}
+.chip-label{font-size:0.68rem;color:rgba(255,255,255,0.45);letter-spacing:0.1em;text-transform:uppercase;margin-top:3px}
 
 /* ── SECTION COMMONS ── */
-.section{padding:4.5rem 2rem}
+/* FIX: Reduced padding from 4.5rem to 3rem to tighten sections */
+.section{padding:3rem 2rem}
 .section-alt{background:var(--cream)}
 .section-dark{background:var(--moss)}
-.sec-label{font-size:0.7rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber);margin-bottom:0.5rem}
-.sec-title{font-family:'Fraunces',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--forest);line-height:1.15;font-weight:400;margin-bottom:0.4rem}
+.sec-label{font-size:0.7rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber);margin-bottom:0.4rem}
+.sec-title{font-family:'Fraunces',serif;font-size:clamp(1.7rem,3vw,2.4rem);color:var(--forest);line-height:1.15;font-weight:400;margin-bottom:0.3rem}
 .sec-title em{color:var(--sage);font-style:italic}
 .sec-title-white{color:var(--white)}
-.sec-sub{font-size:0.9rem;color:var(--sub);font-weight:300;line-height:1.7;margin-bottom:2.5rem;max-width:520px}
-.sec-sub-white{color:rgba(255,255,255,0.6)}
+/* FIX: Reduced margin-bottom on sec-sub from 2.5rem to 1.5rem */
+.sec-sub{font-size:0.88rem;color:var(--sub);font-weight:300;line-height:1.7;margin-bottom:1.5rem;max-width:520px}
 .inner{max-width:1060px;margin:0 auto}
 
 /* ── UPCOMING EVENTS ── */
 .events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
-.event-card{background:var(--white);border-radius:6px;overflow:hidden;border:1px solid var(--parch);transition:transform 0.25s,box-shadow 0.25s;position:relative}
-.event-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(27,47,26,0.12)}
-.event-card.full .event-body::after{content:'FULL';position:absolute;top:12px;right:12px;background:#C0392B;color:#fff;font-size:0.65rem;font-weight:700;padding:3px 8px;border-radius:2px;letter-spacing:0.08em}
-.event-header{height:10px;background:linear-gradient(90deg,var(--sage),var(--fern))}
+.event-card{background:var(--white);border-radius:6px;overflow:hidden;border:1px solid var(--parch);transition:transform 0.25s,box-shadow 0.25s;position:relative;display:flex;flex-direction:column}
+.event-card:hover{transform:translateY(-4px);box-shadow:0 14px 36px rgba(27,47,26,0.12)}
+.event-header{height:8px;background:linear-gradient(90deg,var(--sage),var(--fern));flex-shrink:0}
 .event-header.hard{background:linear-gradient(90deg,#8B4513,#C07A28)}
 .event-header.easy{background:linear-gradient(90deg,#4E7249,#B5CEAD)}
-.event-body{padding:1.25rem 1.4rem;position:relative}
-.event-diff{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.6rem;display:flex;align-items:center;gap:6px}
-.diff-dot{width:7px;height:7px;border-radius:50%}
-.d-easy{background:#4E7249;color:#2D4829}
-.d-moderate{background:#C07A28;color:#7A4A10}
-.d-hard{background:#8B4513;color:#5A2A0A}
-.event-name{font-family:'Fraunces',serif;font-size:1.25rem;color:var(--forest);font-weight:600;margin-bottom:0.75rem}
-.event-meta{display:flex;flex-direction:column;gap:5px;margin-bottom:1rem}
-.em-row{display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--stone)}
-.em-icon{width:20px;text-align:center;font-size:0.85rem;flex-shrink:0}
-.em-val{font-weight:600;color:var(--forest)}
-.event-footer{display:flex;align-items:center;justify-content:space-between;padding-top:0.85rem;border-top:1px solid var(--parch)}
-.event-price{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--forest);font-weight:600}
-.event-price span{font-family:'Nunito',sans-serif;font-size:0.75rem;color:var(--stone);font-weight:400}
-.book-wa{display:inline-flex;align-items:center;gap:6px;background:#25D366;color:var(--white);padding:0.5rem 1rem;border-radius:3px;font-size:0.78rem;font-weight:700;text-decoration:none;transition:background 0.2s;border:none;cursor:pointer;font-family:'Nunito',sans-serif}
+.event-body{padding:1.1rem 1.3rem;position:relative;flex:1;display:flex;flex-direction:column}
+.event-diff{font-size:0.67rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem;display:flex;align-items:center;gap:6px}
+.diff-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
+.d-easy{color:#2D4829}.d-moderate{color:#7A4A10}.d-hard{color:#5A2A0A}
+.event-name{font-family:'Fraunces',serif;font-size:1.2rem;color:var(--forest);font-weight:600;margin-bottom:0.6rem}
+.event-meta{display:flex;flex-direction:column;gap:4px;margin-bottom:0.85rem}
+.em-row{display:flex;align-items:center;gap:7px;font-size:0.8rem;color:var(--stone)}
+.em-icon{width:18px;text-align:center;font-size:0.82rem;flex-shrink:0}
+.em-val{font-weight:700;color:var(--forest)}
+
+/* ── ADVANCE PAYMENT BOX ── */
+.advance-box{background:linear-gradient(135deg,#FFF9F0,#FFF3E0);border:1px solid #F5D99A;border-radius:5px;padding:0.75rem 1rem;margin-bottom:0.85rem}
+.advance-title{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--amber);margin-bottom:0.4rem}
+.advance-prices{display:flex;align-items:center;gap:0.5rem;flex-wrap:wrap}
+.full-price{font-size:0.78rem;color:var(--stone);text-decoration:line-through}
+.advance-amount{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--amber);font-weight:600;line-height:1}
+.advance-label{font-size:0.72rem;color:var(--stone);font-weight:600}
+.advance-note{font-size:0.7rem;color:var(--stone);margin-top:3px;font-weight:300}
+
+.event-footer{display:flex;align-items:center;justify-content:space-between;padding-top:0.75rem;border-top:1px solid var(--parch);margin-top:auto;gap:0.5rem;flex-wrap:wrap}
+.event-price{font-family:'Fraunces',serif;font-size:1.4rem;color:var(--forest);font-weight:600;line-height:1}
+.event-price span{font-family:'Nunito',sans-serif;font-size:0.72rem;color:var(--stone);font-weight:400}
+.slots-left{font-size:0.7rem;color:var(--amber);font-weight:700;margin-top:3px}
+.book-wa{display:inline-flex;align-items:center;gap:5px;background:#25D366;color:var(--white);padding:0.5rem 0.9rem;border-radius:3px;font-size:0.76rem;font-weight:700;text-decoration:none;transition:background 0.2s;white-space:nowrap}
 .book-wa:hover{background:#1DA851}
-.slots-left{font-size:0.72rem;color:#C07A28;font-weight:600;margin-top:4px}
+.book-wa.advance{background:var(--amber)}
+.book-wa.advance:hover{background:var(--gold);color:var(--forest)}
 
 /* ── ON DEMAND ── */
-.demand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
-.demand-card{background:var(--white);border:1px solid var(--parch);border-radius:6px;padding:1.4rem 1.25rem;text-align:center;transition:all 0.25s;cursor:pointer;position:relative;overflow:hidden}
+.demand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem}
+.demand-card{background:var(--white);border:1px solid var(--parch);border-radius:6px;padding:1.25rem 1.1rem;text-align:center;transition:all 0.25s;cursor:pointer;position:relative;overflow:hidden}
 .demand-card::before{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--amber);transition:width 0.35s}
 .demand-card:hover::before{width:100%}
 .demand-card:hover{box-shadow:0 8px 28px rgba(27,47,26,0.1);transform:translateY(-3px)}
-.dc-icon{font-size:2rem;margin-bottom:0.75rem}
-.dc-name{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--forest);font-weight:600;margin-bottom:4px}
-.dc-region{font-size:0.75rem;color:var(--stone);margin-bottom:0.6rem}
-.dc-info{font-size:0.78rem;color:var(--sub);line-height:1.5;margin-bottom:0.85rem;font-weight:300}
-.req-btn{background:var(--forest);color:var(--white);border:none;padding:0.5rem 1.1rem;border-radius:3px;font-size:0.75rem;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;letter-spacing:0.05em;text-transform:uppercase;transition:background 0.2s;text-decoration:none;display:inline-block}
+.dc-icon{font-size:1.8rem;margin-bottom:0.6rem}
+.dc-name{font-family:'Fraunces',serif;font-size:1rem;color:var(--forest);font-weight:600;margin-bottom:3px}
+.dc-region{font-size:0.72rem;color:var(--stone);margin-bottom:0.5rem}
+.dc-tags{display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin-bottom:0.6rem}
+.dc-tag{font-size:0.62rem;font-weight:700;padding:2px 7px;border-radius:10px;background:var(--cream);color:var(--stone)}
+.dc-info{font-size:0.76rem;color:var(--sub);line-height:1.5;margin-bottom:0.8rem;font-weight:300}
+.req-btn{background:var(--forest);color:var(--white);border:none;padding:0.45rem 1rem;border-radius:3px;font-size:0.73rem;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;letter-spacing:0.05em;text-transform:uppercase;transition:background 0.2s;text-decoration:none;display:inline-block}
 .req-btn:hover{background:var(--amber)}
 
-/* ── TREK PLACES LIST ── */
-.places-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}
-.place-item{background:var(--white);border-radius:6px;border-left:4px solid var(--fern);padding:1rem 1.25rem;display:flex;align-items:flex-start;gap:1rem;transition:box-shadow 0.2s}
-.place-item:hover{box-shadow:0 6px 20px rgba(27,47,26,0.09)}
+/* ── TREK PLACES ── */
+.places-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:0.9rem}
+.place-item{background:var(--white);border-radius:6px;border-left:4px solid var(--fern);padding:0.9rem 1.1rem;display:flex;align-items:flex-start;gap:0.9rem;transition:box-shadow 0.2s}
+.place-item:hover{box-shadow:0 5px 18px rgba(27,47,26,0.09)}
 .place-item.hard-place{border-left-color:var(--amber)}
-.pi-icon{font-size:1.5rem;flex-shrink:0;margin-top:2px}
-.pi-body{}
-.pi-name{font-size:0.95rem;font-weight:700;color:var(--forest);margin-bottom:3px}
-.pi-loc{font-size:0.75rem;color:var(--stone);margin-bottom:4px}
-.pi-tags{display:flex;gap:5px;flex-wrap:wrap}
-.pi-tag{font-size:0.65rem;font-weight:700;padding:2px 7px;border-radius:10px;letter-spacing:0.04em}
+.pi-icon{font-size:1.4rem;flex-shrink:0;margin-top:1px}
+.pi-name{font-size:0.92rem;font-weight:700;color:var(--forest);margin-bottom:2px}
+.pi-loc{font-size:0.72rem;color:var(--stone);margin-bottom:4px}
+.pi-tags{display:flex;gap:4px;flex-wrap:wrap}
+.pi-tag{font-size:0.62rem;font-weight:700;padding:2px 7px;border-radius:10px;letter-spacing:0.03em}
 .t-easy{background:#EAF3E4;color:#2D4829}
 .t-mod{background:#FFF3E0;color:#7A4A10}
 .t-hard{background:#FDEAEA;color:#7A2020}
 .t-pop{background:#FFF9E6;color:#7A5A10}
 
+/* ── INQUIRY ── */
+.inquiry-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+.inquiry-left{}
+.inquiry-left .sec-sub{margin-bottom:1.2rem}
+.inq-perks{display:flex;flex-direction:column;gap:0.7rem;margin-top:1rem}
+.inq-perk{display:flex;align-items:center;gap:10px;font-size:0.85rem;color:var(--sub)}
+.inq-perk-dot{width:7px;height:7px;background:var(--amber);border-radius:50%;flex-shrink:0}
+.inquiry-form{background:var(--white);border:1px solid var(--parch);border-radius:8px;padding:1.75rem}
+.inq-title{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--forest);margin-bottom:1.25rem;font-weight:600}
+.form-group{margin-bottom:1rem}
+.form-label{display:block;font-size:0.72rem;font-weight:700;color:var(--stone);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:5px}
+.form-input,.form-select{width:100%;padding:0.7rem 0.9rem;border:1px solid var(--parch);border-radius:4px;font-family:'Nunito',sans-serif;font-size:0.9rem;color:var(--forest);background:var(--cream);transition:border-color 0.2s;outline:none}
+.form-input:focus,.form-select:focus{border-color:var(--sage);background:var(--white)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem}
+.submit-btn{width:100%;background:var(--forest);color:var(--white);border:none;padding:0.9rem;border-radius:4px;font-family:'Nunito',sans-serif;font-size:0.875rem;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;margin-top:0.25rem;display:flex;align-items:center;justify-content:center;gap:8px}
+.submit-btn:hover{background:var(--amber)}
+.form-success{display:none;text-align:center;padding:2rem 1rem}
+.fs-icon{font-size:2rem;margin-bottom:0.75rem}
+.fs-title{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--forest);margin-bottom:0.4rem}
+.fs-desc{font-size:0.85rem;color:var(--sub);line-height:1.6}
+
 /* ── ABOUT ── */
 .about-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
 .about-text .sec-title{color:var(--white)}
 .about-text .sec-title em{color:var(--gold)}
-.about-desc{color:rgba(255,255,255,0.7);font-size:0.92rem;line-height:1.8;font-weight:300;margin-bottom:1rem}
-.about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin-top:1.5rem}
-.ah-item{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:1rem}
-.ah-icon{font-size:1.25rem;margin-bottom:6px}
-.ah-title{font-size:0.82rem;font-weight:700;color:var(--white);margin-bottom:3px}
-.ah-desc{font-size:0.75rem;color:rgba(255,255,255,0.5);line-height:1.5}
+.about-desc{color:rgba(255,255,255,0.7);font-size:0.9rem;line-height:1.8;font-weight:300;margin-bottom:0.85rem}
+.about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;margin-top:1.2rem}
+.ah-item{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:0.85rem}
+.ah-icon{font-size:1.2rem;margin-bottom:5px}
+.ah-title{font-size:0.8rem;font-weight:700;color:var(--white);margin-bottom:2px}
+.ah-desc{font-size:0.73rem;color:rgba(255,255,255,0.5);line-height:1.5}
 .about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.as-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:1.5rem;text-align:center}
-.as-num{font-family:'Fraunces',serif;font-size:2.5rem;color:var(--gold);line-height:1;font-weight:600}
-.as-label{font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:6px;letter-spacing:0.08em;text-transform:uppercase}
+.as-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:1.4rem;text-align:center}
+.as-num{font-family:'Fraunces',serif;font-size:2.4rem;color:var(--gold);line-height:1;font-weight:600}
+.as-label{font-size:0.7rem;color:rgba(255,255,255,0.45);margin-top:5px;letter-spacing:0.08em;text-transform:uppercase}
 .as-card:nth-child(2){margin-top:1.2rem}
 .as-card:nth-child(4){margin-top:-1.2rem}
 
 /* ── SUPPORT ── */
-.support-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
-.support-card{background:var(--white);border-radius:6px;padding:1.75rem;border:1px solid var(--parch);display:flex;gap:1.2rem;align-items:flex-start;transition:box-shadow 0.2s}
-.support-card:hover{box-shadow:0 8px 28px rgba(27,47,26,0.09)}
-.sc-icon{width:52px;height:52px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
-.sc-phone{background:#EAF3E4}
-.sc-email{background:#FFF9E6}
-.sc-wa{background:#E6F9EE}
-.sc-time{background:#F0F4FF}
-.sc-label{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:5px}
-.sc-value{font-size:1rem;font-weight:700;color:var(--forest);margin-bottom:3px}
+.support-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+.support-card{background:var(--white);border-radius:6px;padding:1.4rem;border:1px solid var(--parch);display:flex;gap:1rem;align-items:flex-start;transition:box-shadow 0.2s}
+.support-card:hover{box-shadow:0 6px 22px rgba(27,47,26,0.09)}
+.sc-icon{width:48px;height:48px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.sc-phone{background:#EAF3E4}.sc-email{background:#FFF9E6}.sc-wa{background:#E6F9EE}.sc-time{background:#F0F4FF}
+.sc-label{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:4px}
+.sc-value{font-size:0.95rem;font-weight:700;color:var(--forest);margin-bottom:2px}
 .sc-value a{color:var(--forest);text-decoration:none;transition:color 0.2s}
 .sc-value a:hover{color:var(--amber)}
-.sc-note{font-size:0.78rem;color:var(--stone);font-weight:300;line-height:1.5}
+.sc-note{font-size:0.76rem;color:var(--stone);font-weight:300;line-height:1.5}
 
 /* ── T&C ── */
-.tnc-tabs{display:flex;gap:0;border-bottom:2px solid var(--parch);margin-bottom:2rem;flex-wrap:wrap}
-.tnc-tab{padding:0.75rem 1.4rem;font-size:0.82rem;font-weight:700;color:var(--stone);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.2s;white-space:nowrap;letter-spacing:0.02em}
+.tnc-tabs{display:flex;gap:0;border-bottom:2px solid var(--parch);margin-bottom:1.75rem;flex-wrap:wrap}
+.tnc-tab{padding:0.65rem 1.2rem;font-size:0.8rem;font-weight:700;color:var(--stone);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.2s;white-space:nowrap}
 .tnc-tab:hover{color:var(--forest)}
 .tnc-tab.active{color:var(--amber);border-bottom-color:var(--amber)}
 .tnc-panel{display:none;animation:fadeIn 0.3s ease}
 .tnc-panel.active{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 .tnc-content{max-width:760px}
-.tnc-content h3{font-family:'Fraunces',serif;font-size:1.2rem;color:var(--forest);margin-bottom:0.6rem;font-weight:600;margin-top:1.5rem}
+.tnc-content h3{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--forest);margin-bottom:0.5rem;font-weight:600;margin-top:1.25rem}
 .tnc-content h3:first-child{margin-top:0}
-.tnc-content p{font-size:0.875rem;color:var(--sub);line-height:1.8;font-weight:300;margin-bottom:0.75rem}
-.tnc-content ul{padding-left:1.2rem;margin-bottom:0.75rem}
-.tnc-content ul li{font-size:0.875rem;color:var(--sub);line-height:1.8;font-weight:300;margin-bottom:4px}
+.tnc-content p{font-size:0.85rem;color:var(--sub);line-height:1.8;font-weight:300;margin-bottom:0.65rem}
+.tnc-content ul{padding-left:1.2rem;margin-bottom:0.65rem}
+.tnc-content ul li{font-size:0.85rem;color:var(--sub);line-height:1.8;font-weight:300;margin-bottom:3px}
 .tnc-content strong{color:var(--forest);font-weight:600}
-.tnc-box{background:var(--parch);border-left:3px solid var(--amber);border-radius:0 4px 4px 0;padding:1rem 1.25rem;margin-bottom:1rem}
+.tnc-box{background:var(--parch);border-left:3px solid var(--amber);border-radius:0 4px 4px 0;padding:0.85rem 1.1rem;margin-bottom:1rem}
 .tnc-box p{margin-bottom:0}
 
 /* ── CONTACT ── */
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
-.contact-details{display:flex;flex-direction:column;gap:1.25rem;margin-top:1.5rem}
-.cd-item{display:flex;gap:1rem;align-items:flex-start}
-.cd-icon{width:44px;height:44px;background:var(--cream);border:1px solid var(--parch);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
-.cd-label{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:3px}
-.cd-value{font-size:0.92rem;font-weight:700;color:var(--forest);line-height:1.5}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:start}
+.contact-details{display:flex;flex-direction:column;gap:1.1rem;margin-top:1.25rem}
+.cd-item{display:flex;gap:0.9rem;align-items:flex-start}
+.cd-icon{width:42px;height:42px;background:var(--cream);border:1px solid var(--parch);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0}
+.cd-label{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:2px}
+.cd-value{font-size:0.9rem;font-weight:700;color:var(--forest);line-height:1.5}
 .cd-value a{color:var(--forest);text-decoration:none}
 .cd-value a:hover{color:var(--amber)}
-.cd-note{font-size:0.78rem;color:var(--stone);font-weight:300;margin-top:2px}
+.cd-note{font-size:0.75rem;color:var(--stone);font-weight:300;margin-top:1px}
 .contact-map-wrap{background:var(--cream);border:1px solid var(--parch);border-radius:6px;overflow:hidden}
-.map-top{padding:1.4rem 1.5rem;background:var(--forest)}
-.map-name{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--white);margin-bottom:3px}
-.map-addr{font-size:0.8rem;color:rgba(255,255,255,0.55);line-height:1.6}
-.map-visual{height:220px;background:linear-gradient(135deg,#d4e9c8 0%,#b8d4a8 40%,#c8ddb8 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+.map-top{padding:1.2rem 1.4rem;background:var(--forest)}
+.map-name{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--white);margin-bottom:3px}
+.map-addr{font-size:0.78rem;color:rgba(255,255,255,0.55);line-height:1.6}
+.map-visual{height:200px;background:linear-gradient(135deg,#d4e9c8 0%,#b8d4a8 40%,#c8ddb8 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:7px;position:relative;overflow:hidden}
 .map-visual::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.03) 1px,transparent 1px);background-size:30px 30px}
-.map-pin{font-size:2.5rem;position:relative}
-.map-text{font-size:0.8rem;color:#2D4829;font-weight:600;position:relative}
-.map-btn{display:block;text-align:center;padding:1rem;background:var(--white);font-size:0.82rem;font-weight:700;color:var(--forest);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;border-top:1px solid var(--parch);transition:background 0.2s}
+.map-pin{font-size:2.2rem;position:relative}
+.map-text{font-size:0.78rem;color:#2D4829;font-weight:700;position:relative}
+.map-btn{display:block;text-align:center;padding:0.85rem;background:var(--white);font-size:0.8rem;font-weight:700;color:var(--forest);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;border-top:1px solid var(--parch);transition:background 0.2s}
 .map-btn:hover{background:var(--cream)}
-.wa-cta-box{background:var(--forest);border-radius:6px;padding:1.5rem;margin-top:1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-.wa-cta-text{flex:1;min-width:160px}
-.wa-cta-title{font-size:0.9rem;font-weight:700;color:var(--white);margin-bottom:3px}
-.wa-cta-desc{font-size:0.78rem;color:rgba(255,255,255,0.55)}
-.wa-cta-btn{background:#25D366;color:var(--white);padding:0.65rem 1.3rem;border-radius:3px;font-size:0.82rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;transition:background 0.2s}
+.wa-cta-box{background:var(--forest);border-radius:6px;padding:1.25rem;margin-top:1.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.wa-cta-text{flex:1;min-width:140px}
+.wa-cta-title{font-size:0.88rem;font-weight:700;color:var(--white);margin-bottom:2px}
+.wa-cta-desc{font-size:0.75rem;color:rgba(255,255,255,0.55)}
+.wa-cta-btn{background:#25D366;color:var(--white);padding:0.6rem 1.2rem;border-radius:3px;font-size:0.8rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;transition:background 0.2s}
 .wa-cta-btn:hover{background:#1DA851}
 
 /* ── WHATSAPP FLOAT ── */
 .wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem}
-.wa-float-btn{width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 6px 24px rgba(37,211,102,0.5);text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;animation:waPulse 2.5s ease infinite}
-.wa-float-btn:hover{transform:scale(1.1);box-shadow:0 10px 32px rgba(37,211,102,0.65)}
-@keyframes waPulse{0%,100%{box-shadow:0 6px 24px rgba(37,211,102,0.5)}50%{box-shadow:0 6px 32px rgba(37,211,102,0.75),0 0 0 8px rgba(37,211,102,0.12)}}
-.wa-float-label{background:var(--forest);color:var(--white);font-size:0.72rem;font-weight:700;padding:5px 10px;border-radius:20px;white-space:nowrap;box-shadow:0 3px 10px rgba(0,0,0,0.2)}
+.wa-float-btn{width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.5rem;box-shadow:0 6px 22px rgba(37,211,102,0.5);text-decoration:none;transition:transform 0.2s;animation:waPulse 2.5s ease infinite}
+.wa-float-btn:hover{transform:scale(1.1)}
+@keyframes waPulse{0%,100%{box-shadow:0 6px 22px rgba(37,211,102,0.5)}50%{box-shadow:0 6px 28px rgba(37,211,102,0.75),0 0 0 7px rgba(37,211,102,0.12)}}
+.wa-float-label{background:var(--forest);color:var(--white);font-size:0.7rem;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+
+/* ── CALLBACK FLOAT ── */
+.cb-float{position:fixed;bottom:1.5rem;left:1.5rem;z-index:200;display:flex;flex-direction:column;align-items:flex-start;gap:0.5rem}
+.cb-float-btn{width:56px;height:56px;background:var(--amber);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;box-shadow:0 6px 22px rgba(192,122,40,0.5);cursor:pointer;border:none;transition:transform 0.2s,box-shadow 0.2s;animation:cbPulse 2.8s ease infinite}
+.cb-float-btn:hover{transform:scale(1.1);box-shadow:0 10px 28px rgba(192,122,40,0.65)}
+@keyframes cbPulse{0%,100%{box-shadow:0 6px 22px rgba(192,122,40,0.5)}50%{box-shadow:0 6px 28px rgba(192,122,40,0.75),0 0 0 7px rgba(192,122,40,0.12)}}
+.cb-float-label{background:var(--amber);color:var(--white);font-size:0.7rem;font-weight:700;padding:4px 10px;border-radius:20px;white-space:nowrap;box-shadow:0 2px 8px rgba(0,0,0,0.2)}
+
+/* ── CALLBACK POPUP ── */
+.cb-popup-overlay{position:fixed;inset:0;background:rgba(27,47,26,0.6);z-index:300;display:none;align-items:flex-end;justify-content:flex-start;padding:1.5rem;backdrop-filter:blur(3px)}
+.cb-popup-overlay.open{display:flex}
+.cb-popup{background:var(--white);border-radius:12px;padding:1.5rem;width:100%;max-width:360px;box-shadow:0 24px 60px rgba(0,0,0,0.25);animation:popUp 0.3s cubic-bezier(0.34,1.56,0.64,1) both;position:relative;max-height:90vh;overflow-y:auto}
+@keyframes popUp{from{opacity:0;transform:translateY(20px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.cb-popup-head{display:flex;align-items:center;gap:10px;margin-bottom:1.25rem}
+.cb-popup-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--amber),var(--gold));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;box-shadow:0 4px 12px rgba(192,122,40,0.35)}
+.cb-popup-title{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--forest);font-weight:600;line-height:1.2}
+.cb-popup-sub{font-size:0.72rem;color:var(--stone);margin-top:1px}
+.cb-close{position:absolute;top:1rem;right:1rem;background:var(--cream);border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:0.85rem;display:flex;align-items:center;justify-content:center;color:var(--stone);transition:background 0.2s}
+.cb-close:hover{background:var(--parch)}
+.cb-form-group{margin-bottom:0.85rem}
+.cb-label{display:block;font-size:0.68rem;font-weight:700;color:var(--stone);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px}
+.cb-input,.cb-select{width:100%;padding:0.65rem 0.85rem;border:1px solid var(--parch);border-radius:5px;font-family:'Nunito',sans-serif;font-size:0.88rem;color:var(--forest);background:var(--cream);transition:border-color 0.2s;outline:none}
+.cb-input:focus,.cb-select:focus{border-color:var(--sage);background:var(--white)}
+.cb-submit{width:100%;background:var(--amber);color:var(--white);border:none;padding:0.85rem;border-radius:5px;font-family:'Nunito',sans-serif;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;margin-top:0.25rem;display:flex;align-items:center;justify-content:center;gap:7px}
+.cb-submit:hover{background:var(--forest)}
+.cb-success{text-align:center;padding:1.5rem 0.5rem;display:none}
+.cb-success-icon{font-size:2.2rem;margin-bottom:0.6rem}
+.cb-success-title{font-family:'Fraunces',serif;font-size:1.2rem;color:var(--forest);margin-bottom:0.4rem}
+.cb-success-desc{font-size:0.82rem;color:var(--sub);line-height:1.6}
 
 /* ── FOOTER ── */
 footer{background:var(--bark);padding:2.5rem 2rem}
-.footer-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2rem}
-.f-brand{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--white);margin-bottom:0.5rem}
+.footer-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:2.5rem;margin-bottom:2rem}
+.f-brand{font-family:'Fraunces',serif;font-size:1.25rem;color:var(--white);margin-bottom:0.4rem}
 .f-brand b{color:var(--gold)}
-.f-tagline{font-size:0.82rem;color:rgba(255,255,255,0.4);font-weight:300;line-height:1.6;max-width:220px;margin-bottom:1rem}
-.f-contact{font-size:0.8rem;color:rgba(255,255,255,0.5);display:flex;flex-direction:column;gap:4px}
+.f-tagline{font-size:0.8rem;color:rgba(255,255,255,0.4);font-weight:300;line-height:1.6;max-width:220px;margin-bottom:0.85rem}
+.f-contact{font-size:0.78rem;color:rgba(255,255,255,0.5);display:flex;flex-direction:column;gap:3px}
 .f-contact a{color:rgba(255,255,255,0.5);text-decoration:none}
-.f-col-title{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.85rem}
-.f-links{list-style:none;display:flex;flex-direction:column;gap:0.4rem}
-.f-links a{color:rgba(255,255,255,0.45);font-size:0.82rem;font-weight:300;text-decoration:none;transition:color 0.2s}
+.f-col-title{font-size:0.67rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.75rem}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:0.35rem}
+.f-links a{color:rgba(255,255,255,0.45);font-size:0.8rem;font-weight:300;text-decoration:none;transition:color 0.2s}
 .f-links a:hover{color:var(--white)}
-.footer-bottom{max-width:1060px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:rgba(255,255,255,0.25);flex-wrap:wrap;gap:0.5rem}
+.footer-bottom{max-width:1060px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.08);padding-top:1.25rem;display:flex;justify-content:space-between;align-items:center;font-size:0.73rem;color:rgba(255,255,255,0.25);flex-wrap:wrap;gap:0.5rem}
 
 /* ── RESPONSIVE ── */
-@media(max-width:800px){
+@media(max-width:860px){
   .nav-links,.nav-wa{display:none}
   .hamburger{display:flex}
-  .section{padding:3rem 1.25rem}
-  .hero{padding:4rem 1.25rem 3rem}
-  .about-inner,.contact-grid{grid-template-columns:1fr}
+  .section{padding:2.5rem 1.25rem}
+  .hero{padding:3.5rem 1.25rem 2.5rem}
+  .about-inner,.contact-grid,.inquiry-wrap{grid-template-columns:1fr}
   .about-stats{grid-template-columns:1fr 1fr}
   .as-card:nth-child(2),.as-card:nth-child(4){margin-top:0}
   .footer-inner{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;text-align:center}
-  .tnc-tab{padding:0.6rem 0.9rem;font-size:0.78rem}
+  .tnc-tab{padding:0.55rem 0.85rem;font-size:0.75rem}
+  .form-row{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -246,6 +303,72 @@ footer{background:var(--bark);padding:2.5rem 2rem}
   <a class="wa-float-btn" href="https://wa.me/918310441503?text=Hi%20Tiny%20Trekkers!%20I%20want%20to%20book%20a%20trek." target="_blank" title="Book on WhatsApp">💬</a>
 </div>
 
+<!-- ── CALLBACK FLOAT BUTTON ── -->
+<div class="cb-float">
+  <div class="cb-float-label">Request Callback</div>
+  <button class="cb-float-btn" onclick="openCallback()" title="Request a Callback">📞</button>
+</div>
+
+<!-- ── CALLBACK POPUP ── -->
+<div class="cb-popup-overlay" id="cb-overlay" onclick="closeCbOnOverlay(event)">
+  <div class="cb-popup">
+    <button class="cb-close" onclick="closeCallback()">✕</button>
+
+    <!-- Form state -->
+    <div id="cb-form-state">
+      <div class="cb-popup-head">
+        <div class="cb-popup-icon">📞</div>
+        <div>
+          <div class="cb-popup-title">Request a Callback</div>
+          <div class="cb-popup-sub">We'll call you back within 2 hours</div>
+        </div>
+      </div>
+
+      <div class="cb-form-group">
+        <label class="cb-label">Your Name *</label>
+        <input type="text" class="cb-input" id="cb-name" placeholder="Full name">
+      </div>
+      <div class="cb-form-group">
+        <label class="cb-label">Phone Number *</label>
+        <input type="tel" class="cb-input" id="cb-phone" placeholder="+91 XXXXX XXXXX">
+      </div>
+      <div class="cb-form-group">
+        <label class="cb-label">Trek You're Interested In *</label>
+        <select class="cb-select" id="cb-trek">
+          <option value="">Select a trek…</option>
+          <option>Vasota Trek (Camping + Boat Ride + Jungle)</option>
+          <option>Lohgad Trek</option>
+          <option>Kalsubai Trek</option>
+          <option>Harishchandra Gad (Night Stay)</option>
+          <option>Sinhgad Trek</option>
+          <option>Torana Fort Trek</option>
+          <option>Tikona Fort Trek</option>
+          <option>Vetal Tekadi Trek</option>
+          <option>Malhargad Trek</option>
+          <option>Other / Not sure yet</option>
+        </select>
+      </div>
+      <div class="cb-form-group">
+        <label class="cb-label">Preferred Date (Optional)</label>
+        <input type="date" class="cb-input" id="cb-date">
+      </div>
+      <div class="cb-form-group">
+        <label class="cb-label">Group Size (Optional)</label>
+        <input type="number" class="cb-input" id="cb-group" placeholder="How many people?" min="1">
+      </div>
+      <button class="cb-submit" onclick="submitCallback()">📞 Request Callback →</button>
+    </div>
+
+    <!-- Success state -->
+    <div class="cb-success" id="cb-success-state">
+      <div class="cb-success-icon">🎉</div>
+      <div class="cb-success-title">Callback Requested!</div>
+      <div class="cb-success-desc">We've received your details and will call you back within 2 hours.<br><br>You can also reach us instantly on WhatsApp at <strong>+91 83104 41503</strong></div>
+      <a href="https://wa.me/918310441503" target="_blank" style="display:inline-flex;align-items:center;gap:6px;margin-top:1rem;background:#25D366;color:#fff;padding:0.6rem 1.2rem;border-radius:5px;font-size:0.82rem;font-weight:700;text-decoration:none">💬 WhatsApp Us</a>
+    </div>
+  </div>
+</div>
+
 <!-- ── NAV ── -->
 <nav id="navbar">
   <div class="brand">Tiny<b>Trekkers</b></div>
@@ -253,6 +376,7 @@ footer{background:var(--bark);padding:2.5rem 2rem}
     <li><a href="#events">Events</a></li>
     <li><a href="#on-demand">On Demand</a></li>
     <li><a href="#places">Trek Places</a></li>
+    <li><a href="#inquiry">Inquiry</a></li>
     <li><a href="#about">About Us</a></li>
     <li><a href="#support">Support</a></li>
     <li><a href="#tnc">T&amp;C</a></li>
@@ -267,6 +391,7 @@ footer{background:var(--bark);padding:2.5rem 2rem}
   <a href="#events" onclick="toggleMenu()">Upcoming Events</a>
   <a href="#on-demand" onclick="toggleMenu()">Schedule on Demand</a>
   <a href="#places" onclick="toggleMenu()">Trek Places</a>
+  <a href="#inquiry" onclick="toggleMenu()">Inquiry</a>
   <a href="#about" onclick="toggleMenu()">About Us</a>
   <a href="#support" onclick="toggleMenu()">Support</a>
   <a href="#tnc" onclick="toggleMenu()">Terms &amp; Conditions</a>
@@ -292,14 +417,20 @@ footer{background:var(--bark);padding:2.5rem 2rem}
   </div>
 </section>
 
-<!-- ── UPCOMING EVENTS ── -->
+<!-- ═══════════════════════════════════════════
+  UPCOMING EVENTS
+  FIX: Section now properly closed with </div></div></section>
+  The missing closing tags were causing the giant space
+════════════════════════════════════════════ -->
 <section class="section section-alt" id="events">
   <div class="inner">
     <div class="sec-label">Upcoming Treks</div>
     <h2 class="sec-title">Scheduled <em>Events</em></h2>
-    <p class="sec-sub">Book your spot before it fills up — we keep groups small for the best experience.</p>
+    <p class="sec-sub">Book your spot before it fills up. Pay a small advance to secure your seat — balance due on trek day.</p>
+
     <div class="events-grid">
 
+      <!-- CARD 1: Vetal Tekadi — with advance payment -->
       <div class="event-card">
         <div class="event-header easy"></div>
         <div class="event-body">
@@ -311,16 +442,31 @@ footer{background:var(--bark);padding:2.5rem 2rem}
             <div class="em-row"><span class="em-icon">🕐</span><span>1 Day · Starts 6:00 AM</span></div>
             <div class="em-row"><span class="em-icon">👥</span><span>Max 20 people</span></div>
           </div>
+          <div class="advance-box">
+            <div class="advance-title">⚡ Advance Booking Available</div>
+            <div class="advance-prices">
+              <div>
+                <div class="advance-amount">₹99 <span style="font-family:'Nunito',sans-serif;font-size:0.72rem;color:var(--stone);font-weight:400">advance</span></div>
+                <div class="full-price">Full price: ₹499/person</div>
+              </div>
+              <div class="advance-label">→ Pay balance ₹400 on trek day</div>
+            </div>
+            <div class="advance-note">Advance secures your slot. Non-refundable within 3 days of trek.</div>
+          </div>
           <div class="event-footer">
             <div>
               <div class="event-price">₹499 <span>/ person</span></div>
               <div class="slots-left">⚡ 18 slots left</div>
             </div>
-            <a class="book-wa" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20book%20Vetal%20Tekadi%20Trek%20on%2028%20Mar." target="_blank">💬 Book Now</a>
+            <div style="display:flex;flex-direction:column;gap:5px">
+              <a class="book-wa advance" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20book%20Vetal%20Tekadi%20Trek%20on%2028%20Mar.%20I%20will%20pay%20%E2%82%B999%20advance." target="_blank">⚡ Pay ₹99 Advance</a>
+              <a class="book-wa" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20book%20Vetal%20Tekadi%20Trek%20on%2028%20Mar%20-%20full%20payment." target="_blank">💬 Full Booking</a>
+            </div>
           </div>
         </div>
       </div>
 
+      <!-- CARD 2: Malhargad — with advance payment -->
       <div class="event-card">
         <div class="event-header"></div>
         <div class="event-body">
@@ -329,92 +475,133 @@ footer{background:var(--bark);padding:2.5rem 2rem}
           <div class="event-meta">
             <div class="em-row"><span class="em-icon">📍</span><span>Malhargad, Maharashtra</span></div>
             <div class="em-row"><span class="em-icon">📅</span><span class="em-val">Sunday, 19 Apr 2026</span></div>
-            <div class="em-row"><span class="em-icon">🕐</span><span>1 Day · Starts 6:00 AM </span></div>
+            <div class="em-row"><span class="em-icon">🕐</span><span>1 Day · Starts 6:00 AM</span></div>
             <div class="em-row"><span class="em-icon">👥</span><span>Max 20 people</span></div>
+          </div>
+          <div class="advance-box">
+            <div class="advance-title">⚡ Advance Booking Available</div>
+            <div class="advance-prices">
+              <div>
+                <div class="advance-amount">₹149 <span style="font-family:'Nunito',sans-serif;font-size:0.72rem;color:var(--stone);font-weight:400">advance</span></div>
+                <div class="full-price">Full price: ₹799/person</div>
+              </div>
+              <div class="advance-label">→ Pay balance ₹650 on trek day</div>
+            </div>
+            <div class="advance-note">Advance secures your slot. Non-refundable within 3 days of trek.</div>
           </div>
           <div class="event-footer">
             <div>
               <div class="event-price">₹799 <span>/ person</span></div>
               <div class="slots-left">⚡ 18 slots left</div>
             </div>
-            <a class="book-wa" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20book%20Malhargad%20Trek%2019%20Apr." target="_blank">💬 Book Now</a>
+            <div style="display:flex;flex-direction:column;gap:5px">
+              <a class="book-wa advance" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20book%20Malhargad%20Trek%2019%20Apr.%20I%20will%20pay%20%E2%82%B9149%20advance." target="_blank">⚡ Pay ₹149 Advance</a>
+              <a class="book-wa" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20book%20Malhargad%20Trek%2019%20Apr%20-%20full%20payment." target="_blank">💬 Full Booking</a>
+            </div>
           </div>
         </div>
       </div>
 
+    </div><!-- END .events-grid -->
+  </div><!-- END .inner -->
+</section><!-- ✅ FIX: events section is now properly closed here -->
+
+
 <!-- ── ON DEMAND ── -->
+<!-- ✅ FIX: This is now a properly separate section, not nested inside events -->
 <section class="section" id="on-demand">
   <div class="inner">
     <div class="sec-label">Schedule on Your Time</div>
     <h2 class="sec-title">Trek <em>On Demand</em></h2>
-    <p class="sec-sub">Have a group and a preferred date? We'll organise a private trek just for you. Choose a destination and WhatsApp us to schedule.</p>
+    <p class="sec-sub">Have a group and a preferred date? We'll organise a private trek for you. Pick a destination and WhatsApp us to schedule.</p>
     <div class="demand-grid">
 
       <div class="demand-card">
-        <div class="dc-icon">🌿</div>
-        <div class="dc-name">Rajmachi Fort</div>
-        <div class="dc-region">📍 Lonavala</div>
-        <div class="dc-info">Perfect for beginners & families. Dense forest trail with twin fort views.</div>
-        <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Rajmachi%20Trek." target="_blank">Request Date</a>
+        <div class="dc-icon">🛶</div>
+        <div class="dc-name">Vasota Trek</div>
+        <div class="dc-region">📍 Satara, Maharashtra</div>
+        <div class="dc-tags">
+          <span class="dc-tag">⛺ Camping</span>
+          <span class="dc-tag">🚤 Boat Ride</span>
+          <span class="dc-tag">🌿 Jungle</span>
+        </div>
+        <div class="dc-info">A thrilling combo — boat ride on Shivsagar Lake, dense jungle trek, and overnight camping near the ancient Vasota fort.</div>
+        <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Vasota%20Trek%20with%20camping%20and%20boat%20ride." target="_blank">Request Date</a>
       </div>
 
       <div class="demand-card">
-        <div class="dc-icon">🏔</div>
-        <div class="dc-name">Harishchandragad</div>
-        <div class="dc-region">📍 Ahmednagar</div>
-        <div class="dc-info">Iconic Konkan Kada cliff & ancient Harishchandreshwar temple.</div>
-        <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Harishchandragad%20Trek." target="_blank">Request Date</a>
+        <div class="dc-icon">🏰</div>
+        <div class="dc-name">Lohgad Trek</div>
+        <div class="dc-region">📍 Lonavala, Maharashtra</div>
+        <div class="dc-tags">
+          <span class="dc-tag">🟢 Easy</span>
+          <span class="dc-tag">🏛 Historic Fort</span>
+        </div>
+        <div class="dc-info">One of the most accessible hill forts near Pune. Rocky plateau, massive ramparts, and stunning views of Visapur fort across the valley.</div>
+        <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Lohgad%20Trek." target="_blank">Request Date</a>
       </div>
 
       <div class="demand-card">
         <div class="dc-icon">🌄</div>
-        <div class="dc-name">Kalsubai Peak</div>
-        <div class="dc-region">📍 Nashik</div>
-        <div class="dc-info">Highest peak in Maharashtra. Thrilling climb for adventure groups.</div>
+        <div class="dc-name">Kalsubai Trek</div>
+        <div class="dc-region">📍 Nashik, Maharashtra</div>
+        <div class="dc-tags">
+          <span class="dc-tag">🔴 Hard</span>
+          <span class="dc-tag">🏔 Highest Peak</span>
+        </div>
+        <div class="dc-info">Summit the highest peak in Maharashtra at 5,400 ft. Iron ladders, challenging rock sections, and breathtaking 360° views from the top.</div>
         <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Kalsubai%20Trek." target="_blank">Request Date</a>
+      </div>
+
+      <div class="demand-card">
+        <div class="dc-icon">🌙</div>
+        <div class="dc-name">Harishchandra Gad</div>
+        <div class="dc-region">📍 Ahmednagar, Maharashtra</div>
+        <div class="dc-tags">
+          <span class="dc-tag">🟡 Moderate</span>
+          <span class="dc-tag">🌙 Night Stay</span>
+        </div>
+        <div class="dc-info">Spend a night on the mountain — campfire under stars, ancient Kedareshwar cave, and the iconic Konkan Kada sunrise. An unforgettable experience.</div>
+        <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Harishchandra%20Gad%20Trek%20with%20night%20stay." target="_blank">Request Date</a>
+      </div>
+
+      <div class="demand-card">
+        <div class="dc-icon">⛩</div>
+        <div class="dc-name">Sinhgad Trek</div>
+        <div class="dc-region">📍 Pune, Maharashtra</div>
+        <div class="dc-tags">
+          <span class="dc-tag">🟢 Easy</span>
+          <span class="dc-tag">🌅 Sunrise Trek</span>
+        </div>
+        <div class="dc-info">Closest fort to Pune city, just 25 km away. Famous for its sunrise views, historic significance, and easy trail suitable for all fitness levels.</div>
+        <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Sinhgad%20Trek." target="_blank">Request Date</a>
+      </div>
+
+      <div class="demand-card">
+        <div class="dc-icon">🌿</div>
+        <div class="dc-name">Torana Fort</div>
+        <div class="dc-region">📍 Velha, Pune</div>
+        <div class="dc-tags">
+          <span class="dc-tag">🟡 Moderate</span>
+          <span class="dc-tag">🏛 Historic</span>
+        </div>
+        <div class="dc-info">The first fort captured by Chhatrapati Shivaji Maharaj. Dramatic climb, stunning views, and rich Maratha history at every step.</div>
+        <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Torana%20Fort%20Trek." target="_blank">Request Date</a>
       </div>
 
       <div class="demand-card">
         <div class="dc-icon">🍃</div>
         <div class="dc-name">Tikona Fort</div>
-        <div class="dc-region">📍 Pune</div>
-        <div class="dc-info">Closest weekend trek from Pune. Pyramid-shaped fort, great for first-timers.</div>
+        <div class="dc-region">📍 Kamshet, Pune</div>
+        <div class="dc-tags">
+          <span class="dc-tag">🟢 Easy</span>
+          <span class="dc-tag">👨‍👩‍👧 Family Friendly</span>
+        </div>
+        <div class="dc-info">Pyramid-shaped fort near Pawna Lake. Short, scenic trail perfect for beginners, families, and anyone doing their first trek from Pune.</div>
         <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Tikona%20Fort%20Trek." target="_blank">Request Date</a>
       </div>
 
-      <div class="demand-card">
-        <div class="dc-icon">🌊</div>
-        <div class="dc-name">Ratangad Fort</div>
-        <div class="dc-region">📍 Bhandardara</div>
-        <div class="dc-info">Stunning Arthur Lake views, lush greenery, ideal for monsoon & winter.</div>
-        <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Ratangad%20Trek." target="_blank">Request Date</a>
-      </div>
-
-      <div class="demand-card">
-        <div class="dc-icon">🦅</div>
-        <div class="dc-name">Alang Madan Kulang</div>
-        <div class="dc-region">📍 Igatpuri</div>
-        <div class="dc-info">Triple summit challenge — the ultimate Sahyadri expedition for experts.</div>
-        <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Alang%20Madan%20Kulang%20Trek." target="_blank">Request Date</a>
-      </div>
-
-      <div class="demand-card">
-        <div class="dc-icon">⛩</div>
-        <div class="dc-name">Sinhagad Fort</div>
-        <div class="dc-region">📍 Pune</div>
-        <div class="dc-info">Historic fort just 25 km from Pune city. Great sunrise trek for all levels.</div>
-        <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Sinhagad%20Trek." target="_blank">Request Date</a>
-      </div>
-
-      <div class="demand-card">
-        <div class="dc-icon">🌙</div>
-        <div class="dc-name">Torna Fort</div>
-        <div class="dc-region">📍 Velha, Pune</div>
-        <div class="dc-info">Highest fort in the Pune district. Moonlight night treks available on request.</div>
-        <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Torna%20Fort%20Trek." target="_blank">Request Date</a>
-      </div>
-
-    </div>
+    </div><!-- END .demand-grid -->
   </div>
 </section>
 
@@ -425,37 +612,40 @@ footer{background:var(--bark);padding:2.5rem 2rem}
     <h2 class="sec-title">Our Trek <em>Destinations</em></h2>
     <p class="sec-sub">We operate across the Western Ghats and Sahyadri ranges — all within a comfortable distance from Pune.</p>
     <div class="places-grid">
-      <div class="place-item"><div class="pi-icon">🌿</div><div class="pi-body"><div class="pi-name">Rajmachi Fort</div><div class="pi-loc">📍 Lonavala · 75 km from Pune</div><div class="pi-tags"><span class="pi-tag t-easy">Easy</span><span class="pi-tag t-pop">Popular</span></div></div></div>
-      <div class="place-item"><div class="pi-icon">🏔</div><div class="pi-body"><div class="pi-name">Harishchandragad</div><div class="pi-loc">📍 Ahmednagar · 170 km from Pune</div><div class="pi-tags"><span class="pi-tag t-mod">Moderate</span><span class="pi-tag t-pop">Popular</span></div></div></div>
-      <div class="place-item hard-place"><div class="pi-icon">🌄</div><div class="pi-body"><div class="pi-name">Kalsubai Peak</div><div class="pi-loc">📍 Nashik · 185 km from Pune</div><div class="pi-tags"><span class="pi-tag t-hard">Hard</span></div></div></div>
+      <div class="place-item"><div class="pi-icon">🛶</div><div class="pi-body"><div class="pi-name">Vasota Trek</div><div class="pi-loc">📍 Satara · 130 km from Pune</div><div class="pi-tags"><span class="pi-tag t-mod">Moderate</span><span class="pi-tag t-pop">Camping + Boat</span></div></div></div>
+      <div class="place-item"><div class="pi-icon">🏰</div><div class="pi-body"><div class="pi-name">Lohgad Trek</div><div class="pi-loc">📍 Lonavala · 65 km from Pune</div><div class="pi-tags"><span class="pi-tag t-easy">Easy</span><span class="pi-tag t-pop">Popular</span></div></div></div>
+      <div class="place-item hard-place"><div class="pi-icon">🌄</div><div class="pi-body"><div class="pi-name">Kalsubai Peak</div><div class="pi-loc">📍 Nashik · 185 km from Pune</div><div class="pi-tags"><span class="pi-tag t-hard">Hard</span><span class="pi-tag t-pop">Highest Peak</span></div></div></div>
+      <div class="place-item"><div class="pi-icon">🌙</div><div class="pi-body"><div class="pi-name">Harishchandra Gad</div><div class="pi-loc">📍 Ahmednagar · 170 km from Pune</div><div class="pi-tags"><span class="pi-tag t-mod">Moderate</span><span class="pi-tag t-pop">Night Stay</span></div></div></div>
+      <div class="place-item"><div class="pi-icon">⛩</div><div class="pi-body"><div class="pi-name">Sinhgad Trek</div><div class="pi-loc">📍 Pune · 25 km from city</div><div class="pi-tags"><span class="pi-tag t-easy">Easy</span><span class="pi-tag t-pop">Nearest</span></div></div></div>
+      <div class="place-item"><div class="pi-icon">🌿</div><div class="pi-body"><div class="pi-name">Torana Fort</div><div class="pi-loc">📍 Velha, Pune · 60 km</div><div class="pi-tags"><span class="pi-tag t-mod">Moderate</span></div></div></div>
       <div class="place-item"><div class="pi-icon">🍃</div><div class="pi-body"><div class="pi-name">Tikona Fort</div><div class="pi-loc">📍 Kamshet, Pune · 60 km</div><div class="pi-tags"><span class="pi-tag t-easy">Easy</span><span class="pi-tag t-pop">Beginner Friendly</span></div></div></div>
-      <div class="place-item"><div class="pi-icon">🌊</div><div class="pi-body"><div class="pi-name">Ratangad Fort</div><div class="pi-loc">📍 Bhandardara · 165 km from Pune</div><div class="pi-tags"><span class="pi-tag t-mod">Moderate</span></div></div></div>
-      <div class="place-item hard-place"><div class="pi-icon">🦅</div><div class="pi-body"><div class="pi-name">Alang Madan Kulang</div><div class="pi-loc">📍 Igatpuri · 155 km from Pune</div><div class="pi-tags"><span class="pi-tag t-hard">Hard</span></div></div></div>
-      <div class="place-item"><div class="pi-icon">⛩</div><div class="pi-body"><div class="pi-name">Sinhagad Fort</div><div class="pi-loc">📍 Pune · 25 km from city</div><div class="pi-tags"><span class="pi-tag t-easy">Easy</span><span class="pi-tag t-pop">Nearest</span></div></div></div>
-      <div class="place-item"><div class="pi-icon">🌙</div><div class="pi-body"><div class="pi-name">Torna Fort</div><div class="pi-loc">📍 Velha, Pune · 60 km</div><div class="pi-tags"><span class="pi-tag t-mod">Moderate</span></div></div></div>
-      <div class="place-item"><div class="pi-icon">🏕</div><div class="pi-body"><div class="pi-name">Visapur Fort</div><div class="pi-loc">📍 Malavli, Lonavala · 80 km</div><div class="pi-tags"><span class="pi-tag t-mod">Moderate</span></div></div></div>
+      <div class="place-item"><div class="pi-icon">🏕</div><div class="pi-body"><div class="pi-name">Rajmachi Fort</div><div class="pi-loc">📍 Lonavala · 75 km from Pune</div><div class="pi-tags"><span class="pi-tag t-easy">Easy</span></div></div></div>
       <div class="place-item"><div class="pi-icon">🌺</div><div class="pi-body"><div class="pi-name">Kalavantin Durg</div><div class="pi-loc">📍 Panvel · 100 km from Pune</div><div class="pi-tags"><span class="pi-tag t-hard">Hard</span><span class="pi-tag t-pop">Scenic</span></div></div></div>
       <div class="place-item"><div class="pi-icon">🌧</div><div class="pi-body"><div class="pi-name">Bhimashankar Trek</div><div class="pi-loc">📍 Khed, Pune · 110 km</div><div class="pi-tags"><span class="pi-tag t-mod">Moderate</span><span class="pi-tag t-pop">Monsoon Fav</span></div></div></div>
-      <div class="place-item hard-place"><div class="pi-icon">🗻</div><div class="pi-body"><div class="pi-name">Lingana Fort</div><div class="pi-loc">📍 Raigad · 180 km from Pune</div><div class="pi-tags"><span class="pi-tag t-hard">Hard</span></div></div></div>
+      <div class="place-item hard-place"><div class="pi-icon">🦅</div><div class="pi-body"><div class="pi-name">Alang Madan Kulang</div><div class="pi-loc">📍 Igatpuri · 155 km from Pune</div><div class="pi-tags"><span class="pi-tag t-hard">Hard</span><span class="pi-tag t-pop">Triple Summit</span></div></div></div>
+      <div class="place-item"><div class="pi-icon">🌊</div><div class="pi-body"><div class="pi-name">Ratangad Fort</div><div class="pi-loc">📍 Bhandardara · 165 km from Pune</div><div class="pi-tags"><span class="pi-tag t-mod">Moderate</span></div></div></div>
     </div>
   </div>
 </section>
 
+<!-- Inquiry anchor for nav scroll -->
+<div id="inquiry" style="position:relative;top:-62px"></div>
+
 <!-- ── ABOUT US ── -->
-<section class="section section-dark" id="about">
+<section class="section section-alt" id="about">
   <div class="inner">
     <div class="about-inner">
-      <div class="about-text">
+      <div class="about-text" style="background:var(--moss);padding:2rem;border-radius:8px">
         <div class="sec-label" style="color:var(--gold)">Our Story</div>
         <h2 class="sec-title sec-title-white">About <em>Tiny Trekkers</em></h2>
         <p class="about-desc">Tiny Trekkers is a Pune-based adventure trekking company founded by a group of passionate hikers who fell in love with the Sahyadri mountains. What started as weekend trips with friends turned into a mission — to make the mountains accessible, safe, and joyful for everyone.</p>
-        <p class="about-desc">We are not just a trekking company. We are your trail companions — guiding first-timers and experienced hikers alike through Maharashtra's most stunning landscapes, with a commitment to safety, sustainability, and small group experiences that let you truly connect with nature.</p>
-        <p class="about-desc">Every trek is led by certified, experienced guides. Every route is safety-scouted. Every meal is prepared fresh on trail. We handle the logistics so you can focus entirely on the experience.</p>
+        <p class="about-desc">We are your trail companions — guiding first-timers and experienced hikers alike through Maharashtra's most stunning landscapes, with a commitment to safety, sustainability, and small-group experiences.</p>
+        <p class="about-desc">Every trek is led by certified guides. Every route is safety-scouted. Every meal is prepared fresh on trail. We handle the logistics so you can focus entirely on the experience.</p>
         <div class="about-highlights">
-          <div class="ah-item"><div class="ah-icon">🧭</div><div class="ah-title">Certified Guides</div><div class="ah-desc">All guides certified in first aid and mountaineering</div></div>
-          <div class="ah-item"><div class="ah-icon">👥</div><div class="ah-title">Small Groups</div><div class="ah-desc">Max 15 trekkers per batch — quality over quantity</div></div>
-          <div class="ah-item"><div class="ah-icon">🌱</div><div class="ah-title">Eco Responsible</div><div class="ah-desc">Leave No Trace — we clean up after every trek</div></div>
-          <div class="ah-item"><div class="ah-icon">💰</div><div class="ah-title">All Inclusive</div><div class="ah-desc">No hidden charges — one price, full experience</div></div>
+          <div class="ah-item"><div class="ah-icon">🧭</div><div class="ah-title">Certified Guides</div><div class="ah-desc">First aid and mountaineering certified</div></div>
+          <div class="ah-item"><div class="ah-icon">👥</div><div class="ah-title">Small Groups</div><div class="ah-desc">Max 15 per batch — quality over quantity</div></div>
+          <div class="ah-item"><div class="ah-icon">🌱</div><div class="ah-title">Eco Responsible</div><div class="ah-desc">Leave No Trace — always</div></div>
+          <div class="ah-item"><div class="ah-icon">💰</div><div class="ah-title">All Inclusive</div><div class="ah-desc">One price, full experience</div></div>
         </div>
       </div>
       <div class="about-stats">
@@ -495,7 +685,7 @@ footer{background:var(--bark);padding:2.5rem 2rem}
         <div class="sc-icon sc-email">✉</div>
         <div>
           <div class="sc-label">Email</div>
-          <div class="sc-value"><a href="mailto:tinytrekkers.pune@gmail.com">tinytrekkers.pune@gmail.com</a></div>
+          <div class="sc-value"><a href="/cdn-cgi/l/email-protection#6a1e0304131e180f01010f1819441a1f040f2a0d070b030644090507"><span class="__cf_email__" data-cfemail="88fce1e6f1fcfaede3e3edfafba6f8fde6edc8efe5e9e1e4a6ebe7e5">[email&#160;protected]</span></a></div>
           <div class="sc-note">For detailed enquiries, group trek proposals, corporate bookings, and feedback.</div>
         </div>
       </div>
@@ -504,14 +694,14 @@ footer{background:var(--bark);padding:2.5rem 2rem}
         <div>
           <div class="sc-label">Support Hours</div>
           <div class="sc-value">Mon – Sun, 8 AM – 8 PM</div>
-          <div class="sc-note">We are available all 7 days. On trek days, your guide is your primary contact on trail.</div>
+          <div class="sc-note">We are available all 7 days. On trek days, your guide is your primary on-trail contact.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ── TERMS & CONDITIONS ── -->
+<!-- ── T&C ── -->
 <section class="section section-alt" id="tnc">
   <div class="inner">
     <div class="sec-label">Legal & Policies</div>
@@ -528,36 +718,34 @@ footer{background:var(--bark);padding:2.5rem 2rem}
       <div class="tnc-content">
         <div class="tnc-box"><p>Last updated: January 2025. Please contact us on WhatsApp or email before initiating any cancellation.</p></div>
         <h3>Cancellation Policy</h3>
-        <p>We understand that plans can change unexpectedly. Our cancellation policy is designed to be fair to both our trekkers and our team, who plan logistics well in advance.</p>
         <ul>
           <li><strong>7 or more days before trek date:</strong> Full refund — 100% of the amount paid.</li>
           <li><strong>3 to 6 days before trek date:</strong> 50% refund of the amount paid.</li>
-          <li><strong>Less than 3 days before trek date:</strong> No refund. However, you may transfer your slot to another person at no extra charge.</li>
-          <li><strong>No-show on the day:</strong> No refund will be issued for no-shows without prior notice.</li>
+          <li><strong>Less than 3 days before trek date:</strong> No refund. You may transfer your slot to another person.</li>
+          <li><strong>No-show on the day:</strong> No refund issued without prior notice.</li>
+          <li><strong>Advance payments:</strong> Advance booking fees are non-refundable within 3 days of the trek date.</li>
         </ul>
         <h3>Refund Policy</h3>
-        <p>All approved refunds will be processed within <strong>5–7 business days</strong> to the original payment method.</p>
         <ul>
-          <li>Refunds are initiated only after a written cancellation request is received via WhatsApp or email.</li>
-          <li>Refunds are not applicable for treks cancelled by the trekker due to personal health, weather fears, or change of plans within 3 days.</li>
-          <li>If Tiny Trekkers cancels a trek due to adverse weather, safety concerns, or unavoidable circumstances, a <strong>full refund or free rescheduling</strong> will be provided.</li>
-          <li>Token amounts paid during enquiry are non-refundable if the booking is cancelled without 7 days' notice.</li>
+          <li>All approved refunds are processed within 5–7 business days to the original payment method.</li>
+          <li>If Tiny Trekkers cancels a trek, a <strong>full refund or free rescheduling</strong> is provided.</li>
+          <li>Token/advance amounts are non-refundable if cancelled within 3 days of the trek date.</li>
         </ul>
-        <h3>Trek Rescheduling</h3>
-        <p>You may reschedule your booking to a future date with no additional charge, provided you notify us at least <strong>3 days in advance</strong>. Rescheduling is subject to slot availability.</p>
+        <h3>Rescheduling</h3>
+        <p>You may reschedule to a future date with no charge if you notify us at least <strong>3 days in advance</strong>. Subject to slot availability.</p>
       </div>
     </div>
 
     <div class="tnc-panel" id="tnc-agreement">
       <div class="tnc-content">
-        <div class="tnc-box"><p>By booking a trek with Tiny Trekkers, you agree to the following terms. Please read carefully.</p></div>
+        <div class="tnc-box"><p>By booking a trek with Tiny Trekkers, you agree to the following terms.</p></div>
         <h3>Acceptance of Terms</h3>
-        <p>By booking a trek with Tiny Trekkers, you confirm that you have read, understood, and agree to be bound by these terms and conditions. This agreement is between you (the trekker) and Tiny Trekkers, Pune.</p>
+        <p>By booking, you confirm that you have read, understood, and agree to be bound by these terms. This agreement is between you (the trekker) and Tiny Trekkers, Pune.</p>
         <h3>Eligibility</h3>
         <ul>
-          <li>All participants must be at least 12 years old. Participants under 18 must be accompanied by a guardian or have written consent from a parent/guardian.</li>
-          <li>Participants must be in reasonably good physical health. Medical conditions must be disclosed at the time of booking.</li>
-          <li>Tiny Trekkers reserves the right to refuse participation to anyone deemed unfit for a trek on the day.</li>
+          <li>Participants must be at least 12 years old. Under-18s need parent/guardian consent or accompaniment.</li>
+          <li>Participants must be in reasonably good physical health. Medical conditions must be disclosed at booking.</li>
+          <li>Tiny Trekkers reserves the right to refuse participation to anyone deemed unfit on the day.</li>
         </ul>
         <h3>Participant Responsibilities</h3>
         <ul>
@@ -565,58 +753,46 @@ footer{background:var(--bark);padding:2.5rem 2rem}
           <li>Carry recommended gear as specified in the packing list shared after booking.</li>
           <li>Do not litter on the trail. Carry all waste back with you.</li>
           <li>Do not consume alcohol or intoxicants during the trek.</li>
-          <li>Inform the guide of any medical conditions or discomfort immediately.</li>
         </ul>
         <h3>Liability Disclaimer</h3>
-        <p>Trekking is an outdoor activity that involves inherent risks including but not limited to rough terrain, weather changes, physical exertion, and wildlife. By participating, you acknowledge these risks and agree that Tiny Trekkers shall not be held liable for any injury, loss, or damage arising from participation in a trek, except where caused by proven negligence of Tiny Trekkers staff.</p>
-        <h3>Photography & Media</h3>
-        <p>Tiny Trekkers may photograph or film treks for promotional use. By booking, you grant permission for your image to be used in our social media and marketing materials. Please inform us if you prefer not to be photographed.</p>
+        <p>Trekking involves inherent risks. By participating, you acknowledge these risks and agree that Tiny Trekkers shall not be held liable for any injury, loss, or damage, except where caused by proven negligence of Tiny Trekkers staff.</p>
       </div>
     </div>
 
     <div class="tnc-panel" id="tnc-privacy">
       <div class="tnc-content">
-        <div class="tnc-box"><p>Your privacy matters to us. We collect only what is necessary and never sell your information to third parties.</p></div>
+        <div class="tnc-box"><p>Your privacy matters to us. We collect only what is necessary and never sell your information.</p></div>
         <h3>Information We Collect</h3>
-        <p>When you book a trek or enquire with us, we may collect the following:</p>
         <ul>
-          <li>Full name and contact information (phone number, email address)</li>
+          <li>Full name and contact information (phone, email)</li>
           <li>Emergency contact details</li>
-          <li>Relevant medical or health information disclosed voluntarily</li>
+          <li>Relevant medical information disclosed voluntarily</li>
           <li>Payment transaction references (we do not store card details)</li>
         </ul>
         <h3>How We Use Your Information</h3>
         <ul>
-          <li>To confirm and manage your trek booking</li>
-          <li>To send trek details, packing lists, and itinerary information</li>
-          <li>To contact you in case of emergencies on trek</li>
-          <li>To send updates about upcoming treks (you may opt out anytime)</li>
+          <li>To confirm and manage your booking</li>
+          <li>To send trek details, packing lists, and itinerary</li>
+          <li>To contact you in emergencies on trek</li>
+          <li>To send updates about upcoming treks (you may opt out)</li>
         </ul>
-        <h3>Data Sharing</h3>
-        <p>We do <strong>not</strong> sell, rent, or share your personal information with any third party for marketing purposes. Data may be shared only with trek guides and emergency contacts as operationally necessary.</p>
-        <h3>Data Retention</h3>
-        <p>Your data is retained for up to 2 years after your last booking for safety and administrative purposes, after which it is securely deleted upon request.</p>
-        <h3>Your Rights</h3>
-        <p>You have the right to request access to, correction of, or deletion of your personal data at any time by contacting us at <strong>tinytrekkers.pune@gmail.com</strong>.</p>
-        <h3>Contact for Privacy Concerns</h3>
-        <p>For any privacy-related queries, please write to us at <strong>tinytrekkers.pune@gmail.com</strong> or WhatsApp us at <strong>+91 83104 41503</strong>.</p>
+        <h3>Data Sharing & Retention</h3>
+        <p>We do <strong>not</strong> sell or share your data for marketing. Data is retained for 2 years, then deleted on request. To request deletion: <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5e2a3730272a2c3b35353b2c2d702e2b303b1e39333f3732703d3133">[email&#160;protected]</a></strong></p>
       </div>
     </div>
 
     <div class="tnc-panel" id="tnc-consent">
       <div class="tnc-content">
-        <div class="tnc-box"><p>Your consent is important. By booking with Tiny Trekkers, you provide the following consents.</p></div>
+        <div class="tnc-box"><p>By booking with Tiny Trekkers, you provide the following consents.</p></div>
         <h3>Health & Fitness Consent</h3>
-        <p>I confirm that I am physically fit and capable of undertaking the trek I have booked. I have disclosed any relevant medical conditions (heart issues, asthma, diabetes, allergies, recent surgeries, etc.) to Tiny Trekkers at the time of booking. I understand that concealing medical conditions is entirely my responsibility and Tiny Trekkers cannot be held liable for complications arising from undisclosed health issues.</p>
-        <h3>Risk Acknowledgement Consent</h3>
-        <p>I acknowledge that trekking in the Sahyadri mountains involves inherent physical risks including rough terrain, unpredictable weather, altitude, and exertion. I voluntarily choose to participate with full awareness of these risks and agree not to hold Tiny Trekkers, its guides, or staff liable for any injury, loss, or accident arising from participation, unless directly caused by proven negligence.</p>
+        <p>I confirm I am physically fit for the trek booked. I have disclosed all relevant medical conditions. Tiny Trekkers cannot be held liable for complications from undisclosed health issues.</p>
+        <h3>Risk Acknowledgement</h3>
+        <p>I acknowledge trekking involves inherent risks and voluntarily choose to participate. I agree not to hold Tiny Trekkers liable for any injury or accident unless caused by proven negligence.</p>
         <h3>Emergency Medical Consent</h3>
-        <p>In the event of a medical emergency on the trek, I consent to Tiny Trekkers' guides and staff taking reasonable emergency action on my behalf, including arranging medical evacuation, contacting emergency services, and notifying my emergency contact, until I am in professional medical care.</p>
-        <h3>Photography & Media Consent</h3>
-        <p>I consent to Tiny Trekkers photographing or recording me during the trek for use on their website, social media, and promotional materials. I understand I may withdraw this consent by informing Tiny Trekkers in writing at any time.</p>
+        <p>In a medical emergency, I consent to Tiny Trekkers arranging emergency action on my behalf, including medical evacuation and contacting emergency services.</p>
         <h3>Communication Consent</h3>
-        <p>I consent to receiving WhatsApp and email communications from Tiny Trekkers related to my booking, upcoming treks, and safety updates. I understand I may unsubscribe from marketing communications at any time by replying "STOP" on WhatsApp or emailing us.</p>
-        <p>By completing a booking — via WhatsApp, phone, or any online channel — you confirm your agreement to all the above consents.</p>
+        <p>I consent to receiving WhatsApp and email communications related to my booking and upcoming treks. I may unsubscribe anytime by replying "STOP".</p>
+        <p>By completing a booking — via WhatsApp, phone, or online — you confirm agreement to all the above consents.</p>
       </div>
     </div>
 
@@ -650,7 +826,7 @@ footer{background:var(--bark);padding:2.5rem 2rem}
             <div class="cd-icon">✉</div>
             <div>
               <div class="cd-label">Email</div>
-              <div class="cd-value"><a href="mailto:tinytrekkers.pune@gmail.com">tinytrekkers.pune@gmail.com</a></div>
+              <div class="cd-value"><a href="/cdn-cgi/l/email-protection#43372a2d3a37312628282631306d33362d2603242e222a2f6d202c2e"><span class="__cf_email__" data-cfemail="2f5b4641565b5d4a44444a5d5c015f5a414a6f48424e4643014c4042">[email&#160;protected]</span></a></div>
               <div class="cd-note">We reply within 2 hours during business hours</div>
             </div>
           </div>
@@ -666,7 +842,7 @@ footer{background:var(--bark);padding:2.5rem 2rem}
         <div class="wa-cta-box">
           <div class="wa-cta-text">
             <div class="wa-cta-title">Book Instantly on WhatsApp</div>
-            <div class="wa-cta-desc">Send us your preferred trek & date and we'll confirm your slot right away</div>
+            <div class="wa-cta-desc">Send us your preferred trek & date — we'll confirm your slot right away</div>
           </div>
           <a class="wa-cta-btn" href="https://wa.me/918310441503?text=Hi%20Tiny%20Trekkers!%20I%20want%20to%20book%20a%20trek." target="_blank">💬 Chat Now</a>
         </div>
@@ -681,7 +857,7 @@ footer{background:var(--bark);padding:2.5rem 2rem}
             <div class="map-pin">📍</div>
             <div class="map-text">Kharadi, Pune 411014</div>
           </div>
-          <a href="https://maps.google.com?q=Gulmohar+Goldcoast,Kharadi,Pune" target="_blank" class="map-btn">Open in Google Maps →</a>
+          <a href="https://maps.google.com?q=Gulmohar+Goldcoast,Rajaram+Patil+Nagar,Kharadi,Pune+411014" target="_blank" class="map-btn">Open in Google Maps →</a>
         </div>
       </div>
     </div>
@@ -696,7 +872,7 @@ footer{background:var(--bark);padding:2.5rem 2rem}
       <div class="f-tagline">Pune's favourite trekking companions — guiding adventurers through the Sahyadri mountains safely and joyfully.</div>
       <div class="f-contact">
         <span>📞 <a href="tel:+918310441503">+91 83104 41503</a></span>
-        <span>✉ <a href="mailto:tinytrekkers.pune@gmail.com">tinytrekkers.pune@gmail.com</a></span>
+        <span>✉ <a href="/cdn-cgi/l/email-protection#7b0f1215020f091e10101e0908550b0e151e3b1c161a121755181416"><span class="__cf_email__" data-cfemail="fb8f9295828f899e90909e8988d58b8e959ebb9c969a9297d5989496">[email&#160;protected]</span></a></span>
         <span>📍 A2 103, Gulmohar Goldcoast, Kharadi, Pune 411014</span>
       </div>
     </div>
@@ -706,6 +882,7 @@ footer{background:var(--bark);padding:2.5rem 2rem}
         <li><a href="#events">Upcoming Events</a></li>
         <li><a href="#on-demand">Schedule on Demand</a></li>
         <li><a href="#places">Trek Places</a></li>
+        <li><a href="#inquiry">Inquiry</a></li>
         <li><a href="#about">About Us</a></li>
         <li><a href="#support">Support</a></li>
         <li><a href="#contact">Contact Us</a></li>
@@ -714,7 +891,7 @@ footer{background:var(--bark);padding:2.5rem 2rem}
     <div>
       <div class="f-col-title">Policies</div>
       <ul class="f-links">
-        <li><a href="#tnc" onclick="showTnc('refund',null)">Refund & Cancellation</a></li>
+        <li><a href="#tnc" onclick="showTnc('refund',null)">Refund &amp; Cancellation</a></li>
         <li><a href="#tnc" onclick="showTnc('agreement',null)">User Agreement</a></li>
         <li><a href="#tnc" onclick="showTnc('privacy',null)">Privacy Policy</a></li>
         <li><a href="#tnc" onclick="showTnc('consent',null)">Consent Policy</a></li>
@@ -728,47 +905,78 @@ footer{background:var(--bark);padding:2.5rem 2rem}
 </footer>
 
 <script>
-// Mobile menu
+// ── MOBILE MENU ──
 function toggleMenu(){
   document.getElementById('mobMenu').classList.toggle('open')
 }
+document.addEventListener('click', e => {
+  const menu = document.getElementById('mobMenu')
+  const ham  = document.querySelector('.hamburger')
+  if(menu.classList.contains('open') && !menu.contains(e.target) && !ham.contains(e.target)){
+    menu.classList.remove('open')
+  }
+})
 
-// T&C tabs
+// ── T&C TABS ──
 function showTnc(id, el){
   document.querySelectorAll('.tnc-panel').forEach(p => p.classList.remove('active'))
   document.querySelectorAll('.tnc-tab').forEach(t => t.classList.remove('active'))
   document.getElementById('tnc-'+id).classList.add('active')
   if(el) el.classList.add('active')
   else {
-    // find and activate the right tab
+    const map  = {refund:0, agreement:1, privacy:2, consent:3}
     const tabs = document.querySelectorAll('.tnc-tab')
-    const map = {refund:0, agreement:1, privacy:2, consent:3}
     if(tabs[map[id]]) tabs[map[id]].classList.add('active')
   }
 }
 
-// Active nav link on scroll
-const sections = ['events','on-demand','places','about','support','tnc','contact']
-const navLinks = document.querySelectorAll('.nav-links a')
-window.addEventListener('scroll', ()=>{
+// ── CALLBACK POPUP ──
+function openCallback(){
+  document.getElementById('cb-form-state').style.display   = 'block'
+  document.getElementById('cb-success-state').style.display = 'none'
+  document.getElementById('cb-overlay').classList.add('open')
+  document.body.style.overflow = 'hidden'
+  const d = document.getElementById('cb-date')
+  if(d) d.min = new Date().toISOString().split('T')[0]
+}
+function closeCallback(){
+  document.getElementById('cb-overlay').classList.remove('open')
+  document.body.style.overflow = ''
+}
+function closeCbOnOverlay(e){
+  if(e.target === document.getElementById('cb-overlay')) closeCallback()
+}
+function submitCallback(){
+  const name  = document.getElementById('cb-name').value.trim()
+  const phone = document.getElementById('cb-phone').value.trim()
+  const trek  = document.getElementById('cb-trek').value
+  const date  = document.getElementById('cb-date').value
+  const group = document.getElementById('cb-group').value
+  if(!name) { alert('Please enter your name.'); return }
+  if(!phone){ alert('Please enter your phone number.'); return }
+  if(!trek) { alert('Please select a trek.'); return }
+  let msg = `📞 *Callback Request — Tiny Trekkers*\n\n`
+  msg += `*Name:* ${name}\n*Phone:* ${phone}\n*Trek:* ${trek}\n`
+  if(date)  msg += `*Preferred Date:* ${date}\n`
+  if(group) msg += `*Group Size:* ${group} people\n`
+  msg += `\nPlease call back. Thank you!`
+  window.open(`https://wa.me/918310441503?text=${encodeURIComponent(msg)}`, '_blank')
+  document.getElementById('cb-form-state').style.display   = 'none'
+  document.getElementById('cb-success-state').style.display = 'block'
+}
+
+// ── ACTIVE NAV ON SCROLL ──
+const navSections = ['events','on-demand','places','about','support','tnc','contact']
+window.addEventListener('scroll', () => {
   let current = ''
-  sections.forEach(id => {
+  navSections.forEach(id => {
     const el = document.getElementById(id)
-    if(el && window.scrollY >= el.offsetTop - 100) current = id
+    if(el && window.scrollY >= el.offsetTop - 80) current = id
   })
-  navLinks.forEach(a => {
+  document.querySelectorAll('.nav-links a').forEach(a => {
     a.classList.remove('active')
     if(a.getAttribute('href') === '#'+current) a.classList.add('active')
   })
-})
-
-// Close mobile menu on outside click
-document.addEventListener('click', e => {
-  const menu = document.getElementById('mobMenu')
-  const hamburger = document.querySelector('.hamburger')
-  if(menu.classList.contains('open') && !menu.contains(e.target) && !hamburger.contains(e.target)){
-    menu.classList.remove('open')
-  }
 })
 </script>
 </body>
