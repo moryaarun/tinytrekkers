@@ -3,944 +3,861 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tiny Trekkers — Sahyadri Mountain Expeditions, Pune</title>
+<title>Tiny Trekkers — Pune</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,400;0,600;1,400&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --forest: #1C2B1A;
-  --moss:   #2E4A2B;
-  --sage:   #5A7A55;
-  --mist:   #A8BC9F;
-  --cream:  #F5F0E8;
-  --parch:  #EDE4D0;
-  --amber:  #C8832A;
-  --gold:   #E8A84A;
-  --stone:  #8B7355;
-  --white:  #FDFAF5;
+:root{
+  --forest:#1B2F1A;--moss:#2D4829;--sage:#4E7249;--fern:#6B9464;
+  --mist:#B5CEAD;--cream:#F6F1E7;--parch:#EDE3CC;--amber:#C07A28;
+  --gold:#DFA53A;--stone:#7A6347;--bark:#4A3728;--white:#FDFAF4;
+  --text:#1B2F1A;--sub:#5A6B52;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Outfit',sans-serif;background:var(--white);color:var(--forest);overflow-x:hidden}
+body{font-family:'Nunito',sans-serif;background:var(--white);color:var(--text);font-size:15px}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--cream)}
+::-webkit-scrollbar-thumb{background:var(--fern);border-radius:10px}
 
 /* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 4rem;display:flex;align-items:center;justify-content:space-between;transition:all 0.4s}
-nav.scrolled{background:rgba(28,43,26,0.96);backdrop-filter:blur(12px);padding:0.8rem 4rem}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--white);letter-spacing:0.02em}
-.nav-logo span{color:var(--gold)}
-.nav-links{display:flex;gap:2rem;list-style:none}
-.nav-links a{color:rgba(255,255,255,0.85);text-decoration:none;font-size:0.875rem;font-weight:400;letter-spacing:0.04em;text-transform:uppercase;transition:color 0.2s}
-.nav-links a:hover{color:var(--gold)}
-.nav-cta{background:var(--amber);color:var(--white);padding:0.6rem 1.4rem;border-radius:2px;font-size:0.8rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:background 0.2s}
-.nav-cta:hover{background:var(--gold);color:var(--forest)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
-.hamburger span{width:24px;height:2px;background:var(--white);border-radius:2px;transition:all 0.3s}
-.mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:var(--forest);z-index:99;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
-.mobile-menu.open{display:flex}
-.mobile-menu a{color:var(--white);text-decoration:none;font-family:'Cormorant Garamond',serif;font-size:2rem}
-.mobile-menu a:hover{color:var(--gold)}
+nav{position:sticky;top:0;z-index:100;background:var(--forest);display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:62px;box-shadow:0 2px 20px rgba(0,0,0,0.3)}
+.brand{font-family:'Fraunces',serif;font-size:1.45rem;color:var(--white);letter-spacing:0.01em}
+.brand b{color:var(--gold)}
+.nav-links{display:flex;gap:0;list-style:none}
+.nav-links li a{display:block;padding:0 1rem;height:62px;line-height:62px;color:rgba(255,255,255,0.78);font-size:0.82rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;text-decoration:none;transition:all 0.2s;white-space:nowrap}
+.nav-links li a:hover{color:var(--gold);background:rgba(255,255,255,0.05)}
+.nav-links li a.active{color:var(--gold);border-bottom:2px solid var(--gold)}
+.nav-wa{background:var(--amber);color:var(--white);padding:0.45rem 1rem;border-radius:20px;font-size:0.78rem;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:6px;white-space:nowrap;transition:background 0.2s}
+.nav-wa:hover{background:var(--gold);color:var(--forest)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{width:22px;height:2px;background:var(--white);border-radius:2px;transition:all 0.3s}
+.mob-menu{display:none;position:fixed;top:62px;left:0;right:0;background:var(--forest);z-index:99;flex-direction:column;border-top:1px solid rgba(255,255,255,0.1);max-height:calc(100vh - 62px);overflow-y:auto}
+.mob-menu.open{display:flex}
+.mob-menu a{padding:1rem 2rem;color:rgba(255,255,255,0.8);font-size:0.9rem;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.07);transition:color 0.2s}
+.mob-menu a:hover{color:var(--gold)}
 
 /* ── HERO ── */
-.hero{position:relative;height:100vh;min-height:640px;display:flex;align-items:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:
-  linear-gradient(160deg, rgba(28,43,26,0.75) 0%, rgba(28,43,26,0.45) 50%, rgba(46,74,43,0.7) 100%),
-  repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,255,255,0.015) 2px, rgba(255,255,255,0.015) 4px);
-  background-color:var(--forest)}
-.hero-pattern{position:absolute;inset:0;background-image:radial-gradient(circle at 20% 50%, rgba(200,131,42,0.12) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(90,122,85,0.2) 0%, transparent 40%)}
-.hero-texture{position:absolute;inset:0;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-.hero-content{position:relative;z-index:2;padding:0 4rem;max-width:820px;animation:heroIn 1.2s ease both}
-@keyframes heroIn{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(200,131,42,0.2);border:1px solid rgba(200,131,42,0.4);color:var(--gold);font-size:0.75rem;font-weight:500;letter-spacing:0.12em;text-transform:uppercase;padding:0.4rem 1rem;border-radius:2px;margin-bottom:1.5rem}
-.hero-badge::before{content:'';width:6px;height:6px;background:var(--gold);border-radius:50%}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,7vw,5.5rem);color:var(--white);line-height:1.05;margin-bottom:1.2rem;font-weight:400}
+.hero{background:var(--forest);position:relative;overflow:hidden;padding:5rem 2rem 4rem;text-align:center;min-height:440px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 60%,rgba(110,148,100,0.18) 0%,transparent 55%),radial-gradient(ellipse at 80% 20%,rgba(192,122,40,0.12) 0%,transparent 45%)}
+.hero-dots{position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.06) 1px,transparent 1px);background-size:28px 28px}
+.hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(192,122,40,0.2);border:1px solid rgba(192,122,40,0.45);color:var(--gold);font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:0.35rem 1rem;border-radius:20px;margin-bottom:1.4rem;position:relative}
+.hero-title{font-family:'Fraunces',serif;font-size:clamp(2.4rem,6vw,4rem);color:var(--white);line-height:1.1;margin-bottom:1rem;position:relative;font-weight:400}
 .hero-title em{color:var(--gold);font-style:italic}
-.hero-subtitle{font-size:1.05rem;color:rgba(255,255,255,0.75);font-weight:300;line-height:1.7;max-width:520px;margin-bottom:2.5rem}
-.hero-actions{display:flex;gap:1rem;flex-wrap:wrap}
-.btn-primary{background:var(--amber);color:var(--white);padding:1rem 2.2rem;border-radius:2px;font-size:0.875rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;text-decoration:none;transition:all 0.25s;display:inline-flex;align-items:center;gap:8px}
-.btn-primary:hover{background:var(--gold);color:var(--forest);transform:translateY(-2px)}
-.btn-outline{border:1px solid rgba(255,255,255,0.45);color:var(--white);padding:1rem 2.2rem;border-radius:2px;font-size:0.875rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:all 0.25s}
-.btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,0.1)}
-.hero-stats{position:absolute;bottom:3rem;right:4rem;display:flex;gap:2.5rem;z-index:2;animation:heroIn 1.4s ease both}
-.stat{text-align:right}
-.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--white);line-height:1;font-weight:600}
-.stat-label{font-size:0.72rem;color:rgba(255,255,255,0.55);letter-spacing:0.1em;text-transform:uppercase;margin-top:3px}
-.hero-scroll{position:absolute;bottom:3rem;left:4rem;display:flex;align-items:center;gap:10px;z-index:2;color:rgba(255,255,255,0.45);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase}
-.scroll-line{width:40px;height:1px;background:rgba(255,255,255,0.3);position:relative;overflow:hidden}
-.scroll-line::after{content:'';position:absolute;left:-100%;top:0;width:100%;height:100%;background:var(--gold);animation:scrollAnim 2s ease infinite}
-@keyframes scrollAnim{0%{left:-100%}100%{left:100%}}
+.hero-sub{font-size:1rem;color:rgba(255,255,255,0.65);font-weight:300;line-height:1.7;max-width:520px;margin:0 auto 2rem;position:relative}
+.hero-btns{display:flex;gap:0.75rem;justify-content:center;flex-wrap:wrap;position:relative}
+.btn-hero{padding:0.85rem 2rem;border-radius:3px;font-size:0.85rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;text-decoration:none;transition:all 0.22s;display:inline-flex;align-items:center;gap:7px}
+.btn-forest{background:var(--amber);color:var(--white)}
+.btn-forest:hover{background:var(--gold);color:var(--forest);transform:translateY(-2px)}
+.btn-ghost{border:1px solid rgba(255,255,255,0.35);color:var(--white)}
+.btn-ghost:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.6)}
+.hero-chips{display:flex;gap:2rem;justify-content:center;margin-top:3rem;position:relative;flex-wrap:wrap}
+.chip{text-align:center}
+.chip-num{font-family:'Fraunces',serif;font-size:2rem;color:var(--gold);line-height:1}
+.chip-label{font-size:0.7rem;color:rgba(255,255,255,0.45);letter-spacing:0.1em;text-transform:uppercase;margin-top:3px}
 
-/* ── SECTION BASE ── */
-section{padding:6rem 4rem}
-.section-label{font-size:0.72rem;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--amber);margin-bottom:0.75rem}
-.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,4vw,3.2rem);color:var(--forest);line-height:1.15;font-weight:400}
-.section-title em{color:var(--sage);font-style:italic}
+/* ── SECTION COMMONS ── */
+.section{padding:4.5rem 2rem}
+.section-alt{background:var(--cream)}
+.section-dark{background:var(--moss)}
+.sec-label{font-size:0.7rem;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:var(--amber);margin-bottom:0.5rem}
+.sec-title{font-family:'Fraunces',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--forest);line-height:1.15;font-weight:400;margin-bottom:0.4rem}
+.sec-title em{color:var(--sage);font-style:italic}
+.sec-title-white{color:var(--white)}
+.sec-sub{font-size:0.9rem;color:var(--sub);font-weight:300;line-height:1.7;margin-bottom:2.5rem;max-width:520px}
+.sec-sub-white{color:rgba(255,255,255,0.6)}
+.inner{max-width:1060px;margin:0 auto}
 
-/* ── TREK CARDS ── */
-.treks-section{background:var(--cream)}
-.treks-header{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:3rem;flex-wrap:wrap;gap:1rem}
-.filter-pills{display:flex;gap:0.5rem;flex-wrap:wrap}
-.pill{padding:0.45rem 1.1rem;border:1px solid var(--mist);border-radius:20px;font-size:0.8rem;cursor:pointer;transition:all 0.2s;background:transparent;color:var(--stone);font-family:'Outfit',sans-serif}
-.pill:hover,.pill.active{background:var(--forest);color:var(--white);border-color:var(--forest)}
-.treks-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem}
-.trek-card{background:var(--white);border-radius:4px;overflow:hidden;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer}
-.trek-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(28,43,26,0.15)}
-.card-visual{height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-.cv-forest{background:linear-gradient(135deg,#2E4A2B 0%,#5A7A55 60%,#A8BC9F 100%)}
-.cv-blue{background:linear-gradient(135deg,#1C3A5E 0%,#2E6B9E 60%,#7BB5D4 100%)}
-.cv-amber{background:linear-gradient(135deg,#4A2E1C 0%,#8B5E2A 60%,#C8A060 100%)}
-.card-emoji{font-size:3.5rem;opacity:0.9}
-.diff-badge{position:absolute;top:12px;left:12px;font-size:0.7rem;font-weight:600;padding:4px 10px;border-radius:2px;letter-spacing:0.06em;text-transform:uppercase}
-.db-easy{background:#EAF3DE;color:#2E4A2B}
-.db-moderate{background:#FFF3E0;color:#7A4A10}
-.db-hard{background:#FDEAEA;color:#7A2020}
-.popular-tag{position:absolute;top:12px;right:12px;background:var(--amber);color:var(--white);font-size:0.65rem;font-weight:600;padding:3px 8px;border-radius:2px;letter-spacing:0.06em;text-transform:uppercase}
-.card-body{padding:1.25rem 1.4rem}
-.card-name{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--forest);margin-bottom:4px;font-weight:600}
-.card-loc{font-size:0.78rem;color:var(--stone);margin-bottom:0.75rem;display:flex;align-items:center;gap:5px}
-.card-meta{display:flex;gap:1rem;font-size:0.78rem;color:var(--stone);margin-bottom:1rem;flex-wrap:wrap}
-.meta-item{display:flex;align-items:center;gap:4px}
-.card-footer{display:flex;align-items:center;justify-content:space-between;padding-top:0.75rem;border-top:1px solid var(--parch)}
-.card-price{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--forest);font-weight:600}
-.card-price span{font-family:'Outfit',sans-serif;font-size:0.75rem;color:var(--stone);font-weight:400}
-.book-btn{background:var(--forest);color:var(--white);border:none;padding:0.55rem 1.1rem;border-radius:2px;font-size:0.78rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;font-family:'Outfit',sans-serif}
-.book-btn:hover{background:var(--amber)}
+/* ── UPCOMING EVENTS ── */
+.events-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.25rem}
+.event-card{background:var(--white);border-radius:6px;overflow:hidden;border:1px solid var(--parch);transition:transform 0.25s,box-shadow 0.25s;position:relative}
+.event-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(27,47,26,0.12)}
+.event-card.full .event-body::after{content:'FULL';position:absolute;top:12px;right:12px;background:#C0392B;color:#fff;font-size:0.65rem;font-weight:700;padding:3px 8px;border-radius:2px;letter-spacing:0.08em}
+.event-header{height:10px;background:linear-gradient(90deg,var(--sage),var(--fern))}
+.event-header.hard{background:linear-gradient(90deg,#8B4513,#C07A28)}
+.event-header.easy{background:linear-gradient(90deg,#4E7249,#B5CEAD)}
+.event-body{padding:1.25rem 1.4rem;position:relative}
+.event-diff{font-size:0.68rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.6rem;display:flex;align-items:center;gap:6px}
+.diff-dot{width:7px;height:7px;border-radius:50%}
+.d-easy{background:#4E7249;color:#2D4829}
+.d-moderate{background:#C07A28;color:#7A4A10}
+.d-hard{background:#8B4513;color:#5A2A0A}
+.event-name{font-family:'Fraunces',serif;font-size:1.25rem;color:var(--forest);font-weight:600;margin-bottom:0.75rem}
+.event-meta{display:flex;flex-direction:column;gap:5px;margin-bottom:1rem}
+.em-row{display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--stone)}
+.em-icon{width:20px;text-align:center;font-size:0.85rem;flex-shrink:0}
+.em-val{font-weight:600;color:var(--forest)}
+.event-footer{display:flex;align-items:center;justify-content:space-between;padding-top:0.85rem;border-top:1px solid var(--parch)}
+.event-price{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--forest);font-weight:600}
+.event-price span{font-family:'Nunito',sans-serif;font-size:0.75rem;color:var(--stone);font-weight:400}
+.book-wa{display:inline-flex;align-items:center;gap:6px;background:#25D366;color:var(--white);padding:0.5rem 1rem;border-radius:3px;font-size:0.78rem;font-weight:700;text-decoration:none;transition:background 0.2s;border:none;cursor:pointer;font-family:'Nunito',sans-serif}
+.book-wa:hover{background:#1DA851}
+.slots-left{font-size:0.72rem;color:#C07A28;font-weight:600;margin-top:4px}
+
+/* ── ON DEMAND ── */
+.demand-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.demand-card{background:var(--white);border:1px solid var(--parch);border-radius:6px;padding:1.4rem 1.25rem;text-align:center;transition:all 0.25s;cursor:pointer;position:relative;overflow:hidden}
+.demand-card::before{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--amber);transition:width 0.35s}
+.demand-card:hover::before{width:100%}
+.demand-card:hover{box-shadow:0 8px 28px rgba(27,47,26,0.1);transform:translateY(-3px)}
+.dc-icon{font-size:2rem;margin-bottom:0.75rem}
+.dc-name{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--forest);font-weight:600;margin-bottom:4px}
+.dc-region{font-size:0.75rem;color:var(--stone);margin-bottom:0.6rem}
+.dc-info{font-size:0.78rem;color:var(--sub);line-height:1.5;margin-bottom:0.85rem;font-weight:300}
+.req-btn{background:var(--forest);color:var(--white);border:none;padding:0.5rem 1.1rem;border-radius:3px;font-size:0.75rem;font-weight:700;cursor:pointer;font-family:'Nunito',sans-serif;letter-spacing:0.05em;text-transform:uppercase;transition:background 0.2s;text-decoration:none;display:inline-block}
+.req-btn:hover{background:var(--amber)}
+
+/* ── TREK PLACES LIST ── */
+.places-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}
+.place-item{background:var(--white);border-radius:6px;border-left:4px solid var(--fern);padding:1rem 1.25rem;display:flex;align-items:flex-start;gap:1rem;transition:box-shadow 0.2s}
+.place-item:hover{box-shadow:0 6px 20px rgba(27,47,26,0.09)}
+.place-item.hard-place{border-left-color:var(--amber)}
+.pi-icon{font-size:1.5rem;flex-shrink:0;margin-top:2px}
+.pi-body{}
+.pi-name{font-size:0.95rem;font-weight:700;color:var(--forest);margin-bottom:3px}
+.pi-loc{font-size:0.75rem;color:var(--stone);margin-bottom:4px}
+.pi-tags{display:flex;gap:5px;flex-wrap:wrap}
+.pi-tag{font-size:0.65rem;font-weight:700;padding:2px 7px;border-radius:10px;letter-spacing:0.04em}
+.t-easy{background:#EAF3E4;color:#2D4829}
+.t-mod{background:#FFF3E0;color:#7A4A10}
+.t-hard{background:#FDEAEA;color:#7A2020}
+.t-pop{background:#FFF9E6;color:#7A5A10}
 
 /* ── ABOUT ── */
-.about-section{background:var(--forest);position:relative;overflow:hidden}
-.about-bg-pattern{position:absolute;inset:0;opacity:0.05;background-image:repeating-linear-gradient(0deg,transparent,transparent 40px,rgba(255,255,255,0.5) 40px,rgba(255,255,255,0.5) 41px),repeating-linear-gradient(90deg,transparent,transparent 40px,rgba(255,255,255,0.5) 40px,rgba(255,255,255,0.5) 41px)}
-.about-inner{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center}
-.about-left .section-title{color:var(--white)}
-.about-left .section-title em{color:var(--gold)}
-.about-desc{color:rgba(255,255,255,0.7);line-height:1.8;margin-top:1.5rem;font-size:0.95rem;font-weight:300}
-.about-desc + .about-desc{margin-top:1rem}
-.about-values{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:2.5rem}
-.value-item{padding:1.2rem;border:1px solid rgba(255,255,255,0.1);border-radius:3px;transition:border-color 0.3s}
-.value-item:hover{border-color:rgba(200,131,42,0.4)}
-.value-icon{font-size:1.4rem;margin-bottom:0.5rem}
-.value-title{font-size:0.85rem;font-weight:600;color:var(--white);margin-bottom:4px}
-.value-desc{font-size:0.78rem;color:rgba(255,255,255,0.5);line-height:1.5}
-.about-right{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.about-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:3px;padding:1.5rem;text-align:center;transition:all 0.3s}
-.about-card:hover{background:rgba(200,131,42,0.1);border-color:rgba(200,131,42,0.3)}
-.ac-num{font-family:'Cormorant Garamond',serif;font-size:2.8rem;color:var(--gold);line-height:1;font-weight:600}
-.ac-label{font-size:0.75rem;color:rgba(255,255,255,0.5);margin-top:6px;letter-spacing:0.06em;text-transform:uppercase}
-.about-card:nth-child(2){margin-top:1.5rem}
-.about-card:nth-child(4){margin-top:-1.5rem}
+.about-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.about-text .sec-title{color:var(--white)}
+.about-text .sec-title em{color:var(--gold)}
+.about-desc{color:rgba(255,255,255,0.7);font-size:0.92rem;line-height:1.8;font-weight:300;margin-bottom:1rem}
+.about-highlights{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem;margin-top:1.5rem}
+.ah-item{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:4px;padding:1rem}
+.ah-icon{font-size:1.25rem;margin-bottom:6px}
+.ah-title{font-size:0.82rem;font-weight:700;color:var(--white);margin-bottom:3px}
+.ah-desc{font-size:0.75rem;color:rgba(255,255,255,0.5);line-height:1.5}
+.about-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.as-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:1.5rem;text-align:center}
+.as-num{font-family:'Fraunces',serif;font-size:2.5rem;color:var(--gold);line-height:1;font-weight:600}
+.as-label{font-size:0.72rem;color:rgba(255,255,255,0.45);margin-top:6px;letter-spacing:0.08em;text-transform:uppercase}
+.as-card:nth-child(2){margin-top:1.2rem}
+.as-card:nth-child(4){margin-top:-1.2rem}
 
-/* ── WHY US ── */
-.why-section{background:var(--parch)}
-.why-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:3rem}
-.why-card{padding:2rem;background:var(--white);border-radius:3px;border-bottom:3px solid transparent;transition:all 0.3s;position:relative;overflow:hidden}
-.why-card::before{content:'';position:absolute;bottom:0;left:0;width:0;height:3px;background:var(--amber);transition:width 0.4s}
-.why-card:hover::before{width:100%}
-.why-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(28,43,26,0.1)}
-.why-icon{width:48px;height:48px;background:var(--cream);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.2rem}
-.why-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:var(--forest);margin-bottom:0.6rem;font-weight:600}
-.why-desc{font-size:0.85rem;color:var(--stone);line-height:1.7;font-weight:300}
+/* ── SUPPORT ── */
+.support-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.25rem}
+.support-card{background:var(--white);border-radius:6px;padding:1.75rem;border:1px solid var(--parch);display:flex;gap:1.2rem;align-items:flex-start;transition:box-shadow 0.2s}
+.support-card:hover{box-shadow:0 8px 28px rgba(27,47,26,0.09)}
+.sc-icon{width:52px;height:52px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0}
+.sc-phone{background:#EAF3E4}
+.sc-email{background:#FFF9E6}
+.sc-wa{background:#E6F9EE}
+.sc-time{background:#F0F4FF}
+.sc-label{font-size:0.72rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:5px}
+.sc-value{font-size:1rem;font-weight:700;color:var(--forest);margin-bottom:3px}
+.sc-value a{color:var(--forest);text-decoration:none;transition:color 0.2s}
+.sc-value a:hover{color:var(--amber)}
+.sc-note{font-size:0.78rem;color:var(--stone);font-weight:300;line-height:1.5}
 
-/* ── TESTIMONIALS ── */
-.testimonials-section{background:var(--cream)}
-.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:3rem}
-.testimonial-card{background:var(--white);padding:1.8rem;border-radius:3px;position:relative;transition:box-shadow 0.3s}
-.testimonial-card:hover{box-shadow:0 8px 30px rgba(28,43,26,0.08)}
-.quote-mark{font-family:'Cormorant Garamond',serif;font-size:4rem;color:var(--mist);line-height:0.5;margin-bottom:1rem;font-weight:400}
-.testimonial-text{font-size:0.9rem;color:var(--stone);line-height:1.7;font-weight:300;margin-bottom:1.2rem}
-.testimonial-author{display:flex;align-items:center;gap:10px;padding-top:1rem;border-top:1px solid var(--parch)}
-.author-avatar{width:38px;height:38px;border-radius:50%;background:var(--moss);display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:600;color:var(--white);flex-shrink:0}
-.author-name{font-size:0.85rem;font-weight:600;color:var(--forest)}
-.author-meta{font-size:0.75rem;color:var(--stone)}
-.stars{color:var(--amber);font-size:0.75rem;margin-bottom:0.5rem}
-
-/* ── BOOKING SECTION ── */
-.booking-section{background:var(--forest);position:relative;overflow:hidden}
-.booking-bg{position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(200,131,42,0.1) 0%,transparent 60%)}
-.booking-inner{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
-.booking-left .section-title{color:var(--white)}
-.booking-left .section-title em{color:var(--gold)}
-.booking-desc{color:rgba(255,255,255,0.65);font-size:0.9rem;line-height:1.7;font-weight:300;margin-top:1.2rem;margin-bottom:2rem}
-.booking-perks{display:flex;flex-direction:column;gap:0.75rem}
-.perk{display:flex;align-items:center;gap:10px;font-size:0.85rem;color:rgba(255,255,255,0.75)}
-.perk-dot{width:6px;height:6px;background:var(--gold);border-radius:50%;flex-shrink:0}
-.booking-form{background:var(--white);border-radius:4px;padding:2rem}
-.form-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--forest);margin-bottom:1.5rem;font-weight:600}
-.form-group{margin-bottom:1rem}
-.form-label{display:block;font-size:0.78rem;font-weight:600;color:var(--stone);letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px}
-.form-input,.form-select,.form-textarea{width:100%;padding:0.75rem 1rem;border:1px solid var(--parch);border-radius:2px;font-family:'Outfit',sans-serif;font-size:0.9rem;color:var(--forest);background:var(--cream);transition:border-color 0.2s;outline:none}
-.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--sage)}
-.form-textarea{resize:vertical;min-height:90px}
-.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.submit-btn{width:100%;background:var(--forest);color:var(--white);border:none;padding:1rem;border-radius:2px;font-family:'Outfit',sans-serif;font-size:0.875rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:background 0.2s;margin-top:0.5rem}
-.submit-btn:hover{background:var(--amber)}
+/* ── T&C ── */
+.tnc-tabs{display:flex;gap:0;border-bottom:2px solid var(--parch);margin-bottom:2rem;flex-wrap:wrap}
+.tnc-tab{padding:0.75rem 1.4rem;font-size:0.82rem;font-weight:700;color:var(--stone);cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-2px;transition:all 0.2s;white-space:nowrap;letter-spacing:0.02em}
+.tnc-tab:hover{color:var(--forest)}
+.tnc-tab.active{color:var(--amber);border-bottom-color:var(--amber)}
+.tnc-panel{display:none;animation:fadeIn 0.3s ease}
+.tnc-panel.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.tnc-content{max-width:760px}
+.tnc-content h3{font-family:'Fraunces',serif;font-size:1.2rem;color:var(--forest);margin-bottom:0.6rem;font-weight:600;margin-top:1.5rem}
+.tnc-content h3:first-child{margin-top:0}
+.tnc-content p{font-size:0.875rem;color:var(--sub);line-height:1.8;font-weight:300;margin-bottom:0.75rem}
+.tnc-content ul{padding-left:1.2rem;margin-bottom:0.75rem}
+.tnc-content ul li{font-size:0.875rem;color:var(--sub);line-height:1.8;font-weight:300;margin-bottom:4px}
+.tnc-content strong{color:var(--forest);font-weight:600}
+.tnc-box{background:var(--parch);border-left:3px solid var(--amber);border-radius:0 4px 4px 0;padding:1rem 1.25rem;margin-bottom:1rem}
+.tnc-box p{margin-bottom:0}
 
 /* ── CONTACT ── */
-.contact-section{background:var(--white)}
-.contact-inner{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start}
-.contact-info{display:flex;flex-direction:column;gap:1.5rem;margin-top:2rem}
-.contact-item{display:flex;gap:1.2rem;align-items:flex-start}
-.contact-icon{width:46px;height:46px;background:var(--cream);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;border:1px solid var(--parch)}
-.contact-label{font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:4px}
-.contact-value{font-size:0.95rem;color:var(--forest);font-weight:500}
-.contact-value a{color:var(--forest);text-decoration:none;transition:color 0.2s}
-.contact-value a:hover{color:var(--amber)}
-.contact-note{font-size:0.8rem;color:var(--stone);margin-top:2px;font-weight:300}
-.map-placeholder{background:var(--cream);border-radius:4px;height:320px;display:flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid var(--parch);gap:1rem;font-size:0.9rem;color:var(--stone)}
-.map-icon{font-size:2.5rem}
-.social-row{display:flex;gap:0.75rem;margin-top:2rem}
-.social-btn{width:42px;height:42px;background:var(--cream);border:1px solid var(--parch);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1rem;cursor:pointer;text-decoration:none;transition:all 0.2s}
-.social-btn:hover{background:var(--forest);border-color:var(--forest)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.contact-details{display:flex;flex-direction:column;gap:1.25rem;margin-top:1.5rem}
+.cd-item{display:flex;gap:1rem;align-items:flex-start}
+.cd-icon{width:44px;height:44px;background:var(--cream);border:1px solid var(--parch);border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.cd-label{font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--stone);margin-bottom:3px}
+.cd-value{font-size:0.92rem;font-weight:700;color:var(--forest);line-height:1.5}
+.cd-value a{color:var(--forest);text-decoration:none}
+.cd-value a:hover{color:var(--amber)}
+.cd-note{font-size:0.78rem;color:var(--stone);font-weight:300;margin-top:2px}
+.contact-map-wrap{background:var(--cream);border:1px solid var(--parch);border-radius:6px;overflow:hidden}
+.map-top{padding:1.4rem 1.5rem;background:var(--forest)}
+.map-name{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--white);margin-bottom:3px}
+.map-addr{font-size:0.8rem;color:rgba(255,255,255,0.55);line-height:1.6}
+.map-visual{height:220px;background:linear-gradient(135deg,#d4e9c8 0%,#b8d4a8 40%,#c8ddb8 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;position:relative;overflow:hidden}
+.map-visual::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(0,0,0,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,0.03) 1px,transparent 1px);background-size:30px 30px}
+.map-pin{font-size:2.5rem;position:relative}
+.map-text{font-size:0.8rem;color:#2D4829;font-weight:600;position:relative}
+.map-btn{display:block;text-align:center;padding:1rem;background:var(--white);font-size:0.82rem;font-weight:700;color:var(--forest);text-decoration:none;letter-spacing:0.05em;text-transform:uppercase;border-top:1px solid var(--parch);transition:background 0.2s}
+.map-btn:hover{background:var(--cream)}
+.wa-cta-box{background:var(--forest);border-radius:6px;padding:1.5rem;margin-top:1.5rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.wa-cta-text{flex:1;min-width:160px}
+.wa-cta-title{font-size:0.9rem;font-weight:700;color:var(--white);margin-bottom:3px}
+.wa-cta-desc{font-size:0.78rem;color:rgba(255,255,255,0.55)}
+.wa-cta-btn{background:#25D366;color:var(--white);padding:0.65rem 1.3rem;border-radius:3px;font-size:0.82rem;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:7px;white-space:nowrap;transition:background 0.2s}
+.wa-cta-btn:hover{background:#1DA851}
+
+/* ── WHATSAPP FLOAT ── */
+.wa-float{position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;display:flex;flex-direction:column;align-items:flex-end;gap:0.5rem}
+.wa-float-btn{width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;box-shadow:0 6px 24px rgba(37,211,102,0.5);text-decoration:none;transition:transform 0.2s,box-shadow 0.2s;animation:waPulse 2.5s ease infinite}
+.wa-float-btn:hover{transform:scale(1.1);box-shadow:0 10px 32px rgba(37,211,102,0.65)}
+@keyframes waPulse{0%,100%{box-shadow:0 6px 24px rgba(37,211,102,0.5)}50%{box-shadow:0 6px 32px rgba(37,211,102,0.75),0 0 0 8px rgba(37,211,102,0.12)}}
+.wa-float-label{background:var(--forest);color:var(--white);font-size:0.72rem;font-weight:700;padding:5px 10px;border-radius:20px;white-space:nowrap;box-shadow:0 3px 10px rgba(0,0,0,0.2)}
 
 /* ── FOOTER ── */
-footer{background:var(--forest);padding:3rem 4rem}
-.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;margin-bottom:3rem}
-.footer-brand{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--white);margin-bottom:0.75rem}
-.footer-brand span{color:var(--gold)}
-.footer-tagline{font-size:0.85rem;color:rgba(255,255,255,0.45);font-weight:300;line-height:1.6;max-width:240px}
-.footer-col-title{font-size:0.72rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
-.footer-links{list-style:none;display:flex;flex-direction:column;gap:0.5rem}
-.footer-links a{color:rgba(255,255,255,0.5);text-decoration:none;font-size:0.85rem;font-weight:300;transition:color 0.2s}
-.footer-links a:hover{color:var(--white)}
-.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:2rem;border-top:1px solid rgba(255,255,255,0.1);font-size:0.8rem;color:rgba(255,255,255,0.3);flex-wrap:wrap;gap:1rem}
-.footer-contact-item{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,0.5);font-size:0.82rem;margin-bottom:0.4rem}
-
-/* ── BOOKING MODAL ── */
-.modal-overlay{position:fixed;inset:0;background:rgba(28,43,26,0.8);z-index:200;display:none;align-items:center;justify-content:center;backdrop-filter:blur(4px)}
-.modal-overlay.open{display:flex}
-.modal-box{background:var(--white);border-radius:4px;padding:2.5rem;width:90%;max-width:480px;position:relative;max-height:90vh;overflow-y:auto}
-.modal-close{position:absolute;top:1rem;right:1rem;background:var(--cream);border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center}
-.modal-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--forest);margin-bottom:0.25rem}
-.modal-sub{font-size:0.82rem;color:var(--stone);margin-bottom:1.5rem}
-.steps-bar{display:flex;gap:0;margin-bottom:1.5rem}
-.step-tab{flex:1;text-align:center;padding:8px;font-size:0.75rem;color:var(--stone);border-bottom:2px solid var(--parch);cursor:pointer}
-.step-tab.active{color:var(--forest);font-weight:600;border-bottom-color:var(--amber)}
-.step-tab.done{color:var(--sage);border-bottom-color:var(--sage)}
-.step-panel{display:none}
-.step-panel.active{display:block}
-.group-picker{display:flex;align-items:center;gap:1rem;border:1px solid var(--parch);border-radius:2px;padding:0.75rem 1rem}
-.g-btn{width:32px;height:32px;border:1px solid var(--parch);border-radius:50%;background:none;font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s}
-.g-btn:hover{background:var(--forest);color:var(--white);border-color:var(--forest)}
-.g-count{font-size:1.2rem;font-weight:600;flex:1;text-align:center}
-.price-summary{background:var(--cream);border-radius:2px;padding:1rem 1.2rem;margin:1rem 0}
-.ps-row{display:flex;justify-content:space-between;font-size:0.85rem;padding:4px 0;color:var(--stone)}
-.ps-row.total{font-weight:600;color:var(--forest);font-size:1rem;padding-top:8px;border-top:1px solid var(--parch);margin-top:4px}
-.pay-opts{display:flex;gap:0.5rem;margin:0.75rem 0 1rem;flex-wrap:wrap}
-.pay-opt{padding:8px 14px;border:1px solid var(--parch);border-radius:2px;font-size:0.82rem;cursor:pointer;background:var(--cream);transition:all 0.15s;font-family:'Outfit',sans-serif}
-.pay-opt.selected,.pay-opt:hover{background:var(--forest);color:var(--white);border-color:var(--forest)}
-.modal-btn-row{display:flex;gap:0.75rem;margin-top:1rem;justify-content:flex-end}
-.m-btn-back{padding:0.7rem 1.2rem;border:1px solid var(--parch);border-radius:2px;background:none;font-family:'Outfit',sans-serif;font-size:0.82rem;cursor:pointer;color:var(--stone)}
-.m-btn-next{padding:0.7rem 1.5rem;border:none;border-radius:2px;background:var(--forest);color:var(--white);font-family:'Outfit',sans-serif;font-size:0.82rem;font-weight:600;cursor:pointer;transition:background 0.2s}
-.m-btn-next:hover{background:var(--amber)}
-.success-screen{text-align:center;padding:2rem 1rem;display:none}
-.success-icon{width:64px;height:64px;background:#EAF3DE;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin:0 auto 1rem}
-.booking-id{background:var(--cream);padding:0.5rem 1.2rem;border-radius:2px;font-size:0.82rem;font-weight:600;display:inline-block;margin-top:0.75rem;letter-spacing:0.05em}
-
-/* ── SCROLL ANIMATIONS ── */
-.fade-up{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease}
-.fade-up.visible{opacity:1;transform:translateY(0)}
-.fade-up-delay-1{transition-delay:0.1s}
-.fade-up-delay-2{transition-delay:0.2s}
-.fade-up-delay-3{transition-delay:0.3s}
+footer{background:var(--bark);padding:2.5rem 2rem}
+.footer-inner{max-width:1060px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem;margin-bottom:2rem}
+.f-brand{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--white);margin-bottom:0.5rem}
+.f-brand b{color:var(--gold)}
+.f-tagline{font-size:0.82rem;color:rgba(255,255,255,0.4);font-weight:300;line-height:1.6;max-width:220px;margin-bottom:1rem}
+.f-contact{font-size:0.8rem;color:rgba(255,255,255,0.5);display:flex;flex-direction:column;gap:4px}
+.f-contact a{color:rgba(255,255,255,0.5);text-decoration:none}
+.f-col-title{font-size:0.68rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);margin-bottom:0.85rem}
+.f-links{list-style:none;display:flex;flex-direction:column;gap:0.4rem}
+.f-links a{color:rgba(255,255,255,0.45);font-size:0.82rem;font-weight:300;text-decoration:none;transition:color 0.2s}
+.f-links a:hover{color:var(--white)}
+.footer-bottom{max-width:1060px;margin:0 auto;border-top:1px solid rgba(255,255,255,0.08);padding-top:1.5rem;display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;color:rgba(255,255,255,0.25);flex-wrap:wrap;gap:0.5rem}
 
 /* ── RESPONSIVE ── */
-@media(max-width:900px){
-  nav{padding:1rem 1.5rem}
-  nav.scrolled{padding:0.75rem 1.5rem}
-  .nav-links,.nav-cta{display:none}
+@media(max-width:800px){
+  .nav-links,.nav-wa{display:none}
   .hamburger{display:flex}
-  section{padding:4rem 1.5rem}
-  .hero-content{padding:0 1.5rem}
-  .hero-stats{right:1.5rem;bottom:2rem;gap:1.5rem}
-  .hero-scroll{display:none}
-  .about-inner,.booking-inner,.contact-inner,.footer-inner{grid-template-columns:1fr}
-  .about-right{grid-template-columns:repeat(4,1fr)}
-  .about-card:nth-child(2),.about-card:nth-child(4){margin-top:0}
-  .why-grid,.testimonials-grid{grid-template-columns:1fr}
-  .treks-grid{grid-template-columns:1fr}
-  footer{padding:3rem 1.5rem}
+  .section{padding:3rem 1.25rem}
+  .hero{padding:4rem 1.25rem 3rem}
+  .about-inner,.contact-grid{grid-template-columns:1fr}
+  .about-stats{grid-template-columns:1fr 1fr}
+  .as-card:nth-child(2),.as-card:nth-child(4){margin-top:0}
+  .footer-inner{grid-template-columns:1fr}
   .footer-bottom{flex-direction:column;text-align:center}
+  .tnc-tab{padding:0.6rem 0.9rem;font-size:0.78rem}
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="navbar">
-  <div class="nav-logo">Tiny<span>Trekkers</span></div>
-  <ul class="nav-links">
-    <li><a href="#treks">Treks</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#why-us">Why Us</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="#book" class="nav-cta">Book a Trek</a>
-  <div class="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
-</nav>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#treks" onclick="toggleMenu()">Treks</a>
-  <a href="#about" onclick="toggleMenu()">About</a>
-  <a href="#why-us" onclick="toggleMenu()">Why Us</a>
-  <a href="#contact" onclick="toggleMenu()">Contact</a>
-  <a href="#book" onclick="toggleMenu()" style="color:var(--gold)">Book a Trek</a>
+<!-- ── WHATSAPP FLOAT ── -->
+<div class="wa-float">
+  <div class="wa-float-label">Book on WhatsApp</div>
+  <a class="wa-float-btn" href="https://wa.me/918310441503?text=Hi%20Tiny%20Trekkers!%20I%20want%20to%20book%20a%20trek." target="_blank" title="Book on WhatsApp">💬</a>
 </div>
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-bg"></div>
-  <div class="hero-pattern"></div>
-  <div class="hero-texture"></div>
-  <div class="hero-content">
-    <div class="hero-badge">Based in Pune · Sahyadri Expeditions</div>
-    <h1 class="hero-title">
-      Every Summit<br>Tells a <em>Story</em>
-    </h1>
-    <p class="hero-subtitle">
-      Guided treks through Maharashtra's wildest ranges — from misty Sahyadri valleys to the highest peaks. Small groups, expert guides, memories for a lifetime.
-    </p>
-    <div class="hero-actions">
-      <a href="#treks" class="btn-primary">Explore Treks →</a>
-      <a href="#about" class="btn-outline">Our Story</a>
-    </div>
+<!-- ── NAV ── -->
+<nav id="navbar">
+  <div class="brand">Tiny<b>Trekkers</b></div>
+  <ul class="nav-links">
+    <li><a href="#events">Events</a></li>
+    <li><a href="#on-demand">On Demand</a></li>
+    <li><a href="#places">Trek Places</a></li>
+    <li><a href="#about">About Us</a></li>
+    <li><a href="#support">Support</a></li>
+    <li><a href="#tnc">T&amp;C</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-wa" href="https://wa.me/918310441503?text=Hi%20Tiny%20Trekkers!%20I%20want%20to%20book%20a%20trek." target="_blank">💬 WhatsApp Us</a>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- ── MOBILE MENU ── -->
+<div class="mob-menu" id="mobMenu">
+  <a href="#events" onclick="toggleMenu()">Upcoming Events</a>
+  <a href="#on-demand" onclick="toggleMenu()">Schedule on Demand</a>
+  <a href="#places" onclick="toggleMenu()">Trek Places</a>
+  <a href="#about" onclick="toggleMenu()">About Us</a>
+  <a href="#support" onclick="toggleMenu()">Support</a>
+  <a href="#tnc" onclick="toggleMenu()">Terms &amp; Conditions</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="https://wa.me/918310441503" target="_blank" style="color:#25D366">💬 Book on WhatsApp</a>
+</div>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-badge">📍 Pune · Sahyadri Mountain Treks</div>
+  <h1 class="hero-title">Every Trail Has a<br><em>Story to Tell</em></h1>
+  <p class="hero-sub">Expert-guided treks across the Sahyadri ranges. Safe, affordable, and unforgettable — for beginners to seasoned trekkers.</p>
+  <div class="hero-btns">
+    <a href="#events" class="btn-hero btn-forest">View Upcoming Events →</a>
+    <a href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20book%20a%20trek." target="_blank" class="btn-hero btn-ghost">💬 Book on WhatsApp</a>
   </div>
-  <div class="hero-stats">
-    <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Happy Trekkers</div></div>
-    <div class="stat"><div class="stat-num">18</div><div class="stat-label">Trek Routes</div></div>
-    <div class="stat"><div class="stat-num">5★</div><div class="stat-label">Avg Rating</div></div>
-  </div>
-  <div class="hero-scroll"><div class="scroll-line"></div>Scroll to explore</div>
-</section>
-
-<!-- TREKS -->
-<section class="treks-section" id="treks">
-  <div class="treks-header">
-    <div>
-      <div class="section-label fade-up">Our Expeditions</div>
-      <h2 class="section-title fade-up fade-up-delay-1">Trek the <em>Sahyadris</em></h2>
-    </div>
-    <div class="filter-pills fade-up fade-up-delay-2">
-      <button class="pill active" onclick="filterTreks('all',this)">All</button>
-      <button class="pill" onclick="filterTreks('easy',this)">Easy</button>
-      <button class="pill" onclick="filterTreks('moderate',this)">Moderate</button>
-      <button class="pill" onclick="filterTreks('hard',this)">Hard</button>
-      <button class="pill" onclick="filterTreks('weekend',this)">Weekend</button>
-    </div>
-  </div>
-  <div class="treks-grid" id="treks-grid">
-
-    <div class="trek-card fade-up" data-diff="easy" data-dur="weekend">
-      <div class="card-visual cv-forest">
-        <div class="card-emoji">🌿</div>
-        <span class="diff-badge db-easy">Easy</span>
-        <span class="popular-tag">Popular</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Rajmachi Fort Trek</div>
-        <div class="card-loc">📍 Lonavala, Maharashtra</div>
-        <div class="card-meta">
-          <span class="meta-item">🕐 1 Day</span>
-          <span class="meta-item">⛰ 2,710 ft</span>
-          <span class="meta-item">📏 8 km</span>
-        </div>
-        <div class="card-footer">
-          <div class="card-price">₹1,299 <span>/ person</span></div>
-          <button class="book-btn" onclick="openBooking('Rajmachi Fort Trek','1299','Easy','1 Day')">Book Now</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="trek-card fade-up fade-up-delay-1" data-diff="moderate" data-dur="weekend">
-      <div class="card-visual cv-blue">
-        <div class="card-emoji">🏔</div>
-        <span class="diff-badge db-moderate">Moderate</span>
-        <span class="popular-tag">Popular</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Harishchandragad Trek</div>
-        <div class="card-loc">📍 Ahmednagar, Maharashtra</div>
-        <div class="card-meta">
-          <span class="meta-item">🕐 2 Days</span>
-          <span class="meta-item">⛰ 4,671 ft</span>
-          <span class="meta-item">📏 14 km</span>
-        </div>
-        <div class="card-footer">
-          <div class="card-price">₹2,499 <span>/ person</span></div>
-          <button class="book-btn" onclick="openBooking('Harishchandragad Trek','2499','Moderate','2 Days')">Book Now</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="trek-card fade-up fade-up-delay-2" data-diff="hard" data-dur="multi">
-      <div class="card-visual cv-amber">
-        <div class="card-emoji">🌄</div>
-        <span class="diff-badge db-hard">Hard</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Kalsubai Peak Trek</div>
-        <div class="card-loc">📍 Nashik, Maharashtra</div>
-        <div class="card-meta">
-          <span class="meta-item">🕐 3 Days</span>
-          <span class="meta-item">⛰ 5,400 ft</span>
-          <span class="meta-item">📏 18 km</span>
-        </div>
-        <div class="card-footer">
-          <div class="card-price">₹3,799 <span>/ person</span></div>
-          <button class="book-btn" onclick="openBooking('Kalsubai Peak Trek','3799','Hard','3 Days')">Book Now</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="trek-card fade-up" data-diff="easy" data-dur="weekend">
-      <div class="card-visual cv-forest">
-        <div class="card-emoji">🍃</div>
-        <span class="diff-badge db-easy">Easy</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Tikona Fort Trek</div>
-        <div class="card-loc">📍 Pune, Maharashtra</div>
-        <div class="card-meta">
-          <span class="meta-item">🕐 1 Day</span>
-          <span class="meta-item">⛰ 3,500 ft</span>
-          <span class="meta-item">📏 6 km</span>
-        </div>
-        <div class="card-footer">
-          <div class="card-price">₹999 <span>/ person</span></div>
-          <button class="book-btn" onclick="openBooking('Tikona Fort Trek','999','Easy','1 Day')">Book Now</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="trek-card fade-up fade-up-delay-1" data-diff="moderate" data-dur="multi">
-      <div class="card-visual cv-blue">
-        <div class="card-emoji">🌊</div>
-        <span class="diff-badge db-moderate">Moderate</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Ratangad Fort Trek</div>
-        <div class="card-loc">📍 Bhandardara, Maharashtra</div>
-        <div class="card-meta">
-          <span class="meta-item">🕐 2 Days</span>
-          <span class="meta-item">⛰ 4,255 ft</span>
-          <span class="meta-item">📏 12 km</span>
-        </div>
-        <div class="card-footer">
-          <div class="card-price">₹2,199 <span>/ person</span></div>
-          <button class="book-btn" onclick="openBooking('Ratangad Fort Trek','2199','Moderate','2 Days')">Book Now</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="trek-card fade-up fade-up-delay-2" data-diff="hard" data-dur="multi">
-      <div class="card-visual cv-amber">
-        <div class="card-emoji">🦅</div>
-        <span class="diff-badge db-hard">Hard</span>
-      </div>
-      <div class="card-body">
-        <div class="card-name">Alang Madan Kulang</div>
-        <div class="card-loc">📍 Igatpuri, Maharashtra</div>
-        <div class="card-meta">
-          <span class="meta-item">🕐 3 Days</span>
-          <span class="meta-item">⛰ 5,100 ft</span>
-          <span class="meta-item">📏 20 km</span>
-        </div>
-        <div class="card-footer">
-          <div class="card-price">₹4,299 <span>/ person</span></div>
-          <button class="book-btn" onclick="openBooking('Alang Madan Kulang','4299','Hard','3 Days')">Book Now</button>
-        </div>
-      </div>
-    </div>
-
+  <div class="hero-chips">
+    <div class="chip"><div class="chip-num">500+</div><div class="chip-label">Trekkers</div></div>
+    <div class="chip"><div class="chip-num">18+</div><div class="chip-label">Trek Routes</div></div>
+    <div class="chip"><div class="chip-num">4.9★</div><div class="chip-label">Rating</div></div>
+    <div class="chip"><div class="chip-num">0</div><div class="chip-label">Safety Issues</div></div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="about-section" id="about">
-  <div class="about-bg-pattern"></div>
-  <div class="about-inner">
-    <div class="about-left">
-      <div class="section-label" style="color:var(--gold)" >Who We Are</div>
-      <h2 class="section-title fade-up">Born in Pune,<br><em>Raised in the Hills</em></h2>
-      <p class="about-desc fade-up fade-up-delay-1">Tiny Trekkers started as a group of passionate hikers from Pune who believed that the Sahyadri mountains deserved to be experienced — not just seen. We became a business so more people could safely discover what we love.</p>
-      <p class="about-desc fade-up fade-up-delay-2">Every trek we design is led by certified guides, supported by medical-trained trek leaders, and built with your safety and wonder as the two non-negotiables.</p>
-      <div class="about-values fade-up fade-up-delay-3">
-        <div class="value-item">
-          <div class="value-icon">🧭</div>
-          <div class="value-title">Expert Guided</div>
-          <div class="value-desc">Certified guides with 5+ years on each route</div>
-        </div>
-        <div class="value-item">
-          <div class="value-icon">⛑</div>
-          <div class="value-title">Safety First</div>
-          <div class="value-desc">First aid trained crew on every single trek</div>
-        </div>
-        <div class="value-item">
-          <div class="value-icon">👥</div>
-          <div class="value-title">Small Groups</div>
-          <div class="value-desc">Max 15 trekkers per batch for quality experience</div>
-        </div>
-        <div class="value-item">
-          <div class="value-icon">🌱</div>
-          <div class="value-title">Leave No Trace</div>
-          <div class="value-desc">Eco-responsible trekking, always</div>
+<!-- ── UPCOMING EVENTS ── -->
+<section class="section section-alt" id="events">
+  <div class="inner">
+    <div class="sec-label">Upcoming Treks</div>
+    <h2 class="sec-title">Scheduled <em>Events</em></h2>
+    <p class="sec-sub">Book your spot before it fills up — we keep groups small for the best experience.</p>
+    <div class="events-grid">
+
+      <div class="event-card">
+        <div class="event-header easy"></div>
+        <div class="event-body">
+          <div class="event-diff d-easy"><div class="diff-dot" style="background:#4E7249"></div>Easy</div>
+          <div class="event-name">Rajmachi Fort Trek</div>
+          <div class="event-meta">
+            <div class="em-row"><span class="em-icon">📍</span><span>Lonavala, Maharashtra</span></div>
+            <div class="em-row"><span class="em-icon">📅</span><span class="em-val">Sunday, 26 Jan 2025</span></div>
+            <div class="em-row"><span class="em-icon">🕐</span><span>1 Day · Starts 6:00 AM</span></div>
+            <div class="em-row"><span class="em-icon">👥</span><span>Max 15 people</span></div>
+          </div>
+          <div class="event-footer">
+            <div>
+              <div class="event-price">₹1,299 <span>/ person</span></div>
+              <div class="slots-left">⚡ 6 slots left</div>
+            </div>
+            <a class="book-wa" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20book%20Rajmachi%20Fort%20Trek%20on%2026%20Jan." target="_blank">💬 Book Now</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="about-right fade-up fade-up-delay-2">
-      <div class="about-card">
-        <div class="ac-num">500+</div>
-        <div class="ac-label">Trekkers Guided</div>
+
+      <div class="event-card">
+        <div class="event-header"></div>
+        <div class="event-body">
+          <div class="event-diff d-moderate"><div class="diff-dot" style="background:#C07A28"></div>Moderate</div>
+          <div class="event-name">Harishchandragad Trek</div>
+          <div class="event-meta">
+            <div class="em-row"><span class="em-icon">📍</span><span>Ahmednagar, Maharashtra</span></div>
+            <div class="em-row"><span class="em-icon">📅</span><span class="em-val">Sat–Sun, 1–2 Feb 2025</span></div>
+            <div class="em-row"><span class="em-icon">🕐</span><span>2 Days · Overnight Camp</span></div>
+            <div class="em-row"><span class="em-icon">👥</span><span>Max 12 people</span></div>
+          </div>
+          <div class="event-footer">
+            <div>
+              <div class="event-price">₹2,499 <span>/ person</span></div>
+              <div class="slots-left">⚡ 4 slots left</div>
+            </div>
+            <a class="book-wa" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20book%20Harishchandragad%20Trek%201-2%20Feb." target="_blank">💬 Book Now</a>
+          </div>
+        </div>
       </div>
-      <div class="about-card">
-        <div class="ac-num">18</div>
-        <div class="ac-label">Trek Routes</div>
+
+      <div class="event-card">
+        <div class="event-header easy"></div>
+        <div class="event-body">
+          <div class="event-diff d-easy"><div class="diff-dot" style="background:#4E7249"></div>Easy</div>
+          <div class="event-name">Tikona Fort Trek</div>
+          <div class="event-meta">
+            <div class="em-row"><span class="em-icon">📍</span><span>Pune, Maharashtra</span></div>
+            <div class="em-row"><span class="em-icon">📅</span><span class="em-val">Sunday, 9 Feb 2025</span></div>
+            <div class="em-row"><span class="em-icon">🕐</span><span>1 Day · Starts 6:30 AM</span></div>
+            <div class="em-row"><span class="em-icon">👥</span><span>Max 15 people</span></div>
+          </div>
+          <div class="event-footer">
+            <div>
+              <div class="event-price">₹999 <span>/ person</span></div>
+              <div class="slots-left">⚡ 9 slots left</div>
+            </div>
+            <a class="book-wa" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20book%20Tikona%20Fort%20Trek%209%20Feb." target="_blank">💬 Book Now</a>
+          </div>
+        </div>
       </div>
-      <div class="about-card">
-        <div class="ac-num">4.9</div>
-        <div class="ac-label">Average Rating</div>
+
+      <div class="event-card">
+        <div class="event-header hard"></div>
+        <div class="event-body">
+          <div class="event-diff d-hard"><div class="diff-dot" style="background:#8B4513"></div>Hard</div>
+          <div class="event-name">Kalsubai Peak Trek</div>
+          <div class="event-meta">
+            <div class="em-row"><span class="em-icon">📍</span><span>Nashik, Maharashtra</span></div>
+            <div class="em-row"><span class="em-icon">📅</span><span class="em-val">Fri–Sun, 14–16 Feb 2025</span></div>
+            <div class="em-row"><span class="em-icon">🕐</span><span>3 Days · 2 Nights Camp</span></div>
+            <div class="em-row"><span class="em-icon">👥</span><span>Max 10 people</span></div>
+          </div>
+          <div class="event-footer">
+            <div>
+              <div class="event-price">₹3,799 <span>/ person</span></div>
+              <div class="slots-left">⚡ 3 slots left</div>
+            </div>
+            <a class="book-wa" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20book%20Kalsubai%20Peak%20Trek%2014-16%20Feb." target="_blank">💬 Book Now</a>
+          </div>
+        </div>
       </div>
-      <div class="about-card">
-        <div class="ac-num">0</div>
-        <div class="ac-label">Safety Incidents</div>
+
+      <div class="event-card">
+        <div class="event-header"></div>
+        <div class="event-body">
+          <div class="event-diff d-moderate"><div class="diff-dot" style="background:#C07A28"></div>Moderate</div>
+          <div class="event-name">Ratangad Fort Trek</div>
+          <div class="event-meta">
+            <div class="em-row"><span class="em-icon">📍</span><span>Bhandardara, Maharashtra</span></div>
+            <div class="em-row"><span class="em-icon">📅</span><span class="em-val">Sat–Sun, 22–23 Feb 2025</span></div>
+            <div class="em-row"><span class="em-icon">🕐</span><span>2 Days · Overnight Camp</span></div>
+            <div class="em-row"><span class="em-icon">👥</span><span>Max 12 people</span></div>
+          </div>
+          <div class="event-footer">
+            <div>
+              <div class="event-price">₹2,199 <span>/ person</span></div>
+              <div class="slots-left">⚡ 8 slots left</div>
+            </div>
+            <a class="book-wa" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20book%20Ratangad%20Fort%20Trek%2022-23%20Feb." target="_blank">💬 Book Now</a>
+          </div>
+        </div>
       </div>
+
+      <div class="event-card">
+        <div class="event-header hard"></div>
+        <div class="event-body">
+          <div class="event-diff d-hard"><div class="diff-dot" style="background:#8B4513"></div>Hard</div>
+          <div class="event-name">Alang Madan Kulang</div>
+          <div class="event-meta">
+            <div class="em-row"><span class="em-icon">📍</span><span>Igatpuri, Maharashtra</span></div>
+            <div class="em-row"><span class="em-icon">📅</span><span class="em-val">Fri–Sun, 7–9 Mar 2025</span></div>
+            <div class="em-row"><span class="em-icon">🕐</span><span>3 Days · Triple Summit</span></div>
+            <div class="em-row"><span class="em-icon">👥</span><span>Max 8 people</span></div>
+          </div>
+          <div class="event-footer">
+            <div>
+              <div class="event-price">₹4,299 <span>/ person</span></div>
+              <div class="slots-left">⚡ 5 slots left</div>
+            </div>
+            <a class="book-wa" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20book%20Alang%20Madan%20Kulang%207-9%20Mar." target="_blank">💬 Book Now</a>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- WHY US -->
-<section class="why-section" id="why-us">
-  <div style="text-align:center;max-width:560px;margin:0 auto 0">
-    <div class="section-label">Why Choose Us</div>
-    <h2 class="section-title fade-up">The Tiny Trekkers <em>Difference</em></h2>
-  </div>
-  <div class="why-grid">
-    <div class="why-card fade-up">
-      <div class="why-icon">🏕</div>
-      <div class="why-title">All-Inclusive Packages</div>
-      <div class="why-desc">One price covers guide, food, camping gear, permits, and safety equipment. No hidden charges — ever.</div>
-    </div>
-    <div class="why-card fade-up fade-up-delay-1">
-      <div class="why-icon">📍</div>
-      <div class="why-title">Pune Pickup Available</div>
-      <div class="why-desc">Convenient pickup from central Pune locations. No need to arrange your own transport to the trailhead.</div>
-    </div>
-    <div class="why-card fade-up fade-up-delay-2">
-      <div class="why-icon">🌦</div>
-      <div class="why-title">Monsoon & Winter Treks</div>
-      <div class="why-desc">We run treks year-round across all seasons. Our guides know which routes are safe and stunning in every weather.</div>
-    </div>
-    <div class="why-card fade-up">
-      <div class="why-icon">🍱</div>
-      <div class="why-title">Homestyle Trail Meals</div>
-      <div class="why-desc">Wholesome, freshly-prepared meals at camp. Vegetarian options always available. No instant noodles here.</div>
-    </div>
-    <div class="why-card fade-up fade-up-delay-1">
-      <div class="why-icon">📱</div>
-      <div class="why-title">Instant Booking & Confirmation</div>
-      <div class="why-desc">Book in minutes online. Receive instant email confirmation with complete packing list and itinerary.</div>
-    </div>
-    <div class="why-card fade-up fade-up-delay-2">
-      <div class="why-icon">🔄</div>
-      <div class="why-title">Flexible Cancellation</div>
-      <div class="why-desc">Plans change. Full refund if cancelled 7+ days before trek date. Life is unpredictable — we get it.</div>
+<!-- ── ON DEMAND ── -->
+<section class="section" id="on-demand">
+  <div class="inner">
+    <div class="sec-label">Schedule on Your Time</div>
+    <h2 class="sec-title">Trek <em>On Demand</em></h2>
+    <p class="sec-sub">Have a group and a preferred date? We'll organise a private trek just for you. Choose a destination and WhatsApp us to schedule.</p>
+    <div class="demand-grid">
+
+      <div class="demand-card">
+        <div class="dc-icon">🌿</div>
+        <div class="dc-name">Rajmachi Fort</div>
+        <div class="dc-region">📍 Lonavala</div>
+        <div class="dc-info">Perfect for beginners & families. Dense forest trail with twin fort views.</div>
+        <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Rajmachi%20Trek." target="_blank">Request Date</a>
+      </div>
+
+      <div class="demand-card">
+        <div class="dc-icon">🏔</div>
+        <div class="dc-name">Harishchandragad</div>
+        <div class="dc-region">📍 Ahmednagar</div>
+        <div class="dc-info">Iconic Konkan Kada cliff & ancient Harishchandreshwar temple.</div>
+        <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Harishchandragad%20Trek." target="_blank">Request Date</a>
+      </div>
+
+      <div class="demand-card">
+        <div class="dc-icon">🌄</div>
+        <div class="dc-name">Kalsubai Peak</div>
+        <div class="dc-region">📍 Nashik</div>
+        <div class="dc-info">Highest peak in Maharashtra. Thrilling climb for adventure groups.</div>
+        <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Kalsubai%20Trek." target="_blank">Request Date</a>
+      </div>
+
+      <div class="demand-card">
+        <div class="dc-icon">🍃</div>
+        <div class="dc-name">Tikona Fort</div>
+        <div class="dc-region">📍 Pune</div>
+        <div class="dc-info">Closest weekend trek from Pune. Pyramid-shaped fort, great for first-timers.</div>
+        <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Tikona%20Fort%20Trek." target="_blank">Request Date</a>
+      </div>
+
+      <div class="demand-card">
+        <div class="dc-icon">🌊</div>
+        <div class="dc-name">Ratangad Fort</div>
+        <div class="dc-region">📍 Bhandardara</div>
+        <div class="dc-info">Stunning Arthur Lake views, lush greenery, ideal for monsoon & winter.</div>
+        <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Ratangad%20Trek." target="_blank">Request Date</a>
+      </div>
+
+      <div class="demand-card">
+        <div class="dc-icon">🦅</div>
+        <div class="dc-name">Alang Madan Kulang</div>
+        <div class="dc-region">📍 Igatpuri</div>
+        <div class="dc-info">Triple summit challenge — the ultimate Sahyadri expedition for experts.</div>
+        <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Alang%20Madan%20Kulang%20Trek." target="_blank">Request Date</a>
+      </div>
+
+      <div class="demand-card">
+        <div class="dc-icon">⛩</div>
+        <div class="dc-name">Sinhagad Fort</div>
+        <div class="dc-region">📍 Pune</div>
+        <div class="dc-info">Historic fort just 25 km from Pune city. Great sunrise trek for all levels.</div>
+        <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Sinhagad%20Trek." target="_blank">Request Date</a>
+      </div>
+
+      <div class="demand-card">
+        <div class="dc-icon">🌙</div>
+        <div class="dc-name">Torna Fort</div>
+        <div class="dc-region">📍 Velha, Pune</div>
+        <div class="dc-info">Highest fort in the Pune district. Moonlight night treks available on request.</div>
+        <a class="req-btn" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20schedule%20a%20private%20Torna%20Fort%20Trek." target="_blank">Request Date</a>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- TESTIMONIALS -->
-<section class="testimonials-section">
-  <div style="text-align:center;max-width:560px;margin:0 auto 0">
-    <div class="section-label">Reviews</div>
-    <h2 class="section-title fade-up">What Our <em>Trekkers</em> Say</h2>
+<!-- ── TREK PLACES ── -->
+<section class="section section-alt" id="places">
+  <div class="inner">
+    <div class="sec-label">Where We Trek</div>
+    <h2 class="sec-title">Our Trek <em>Destinations</em></h2>
+    <p class="sec-sub">We operate across the Western Ghats and Sahyadri ranges — all within a comfortable distance from Pune.</p>
+    <div class="places-grid">
+      <div class="place-item"><div class="pi-icon">🌿</div><div class="pi-body"><div class="pi-name">Rajmachi Fort</div><div class="pi-loc">📍 Lonavala · 75 km from Pune</div><div class="pi-tags"><span class="pi-tag t-easy">Easy</span><span class="pi-tag t-pop">Popular</span></div></div></div>
+      <div class="place-item"><div class="pi-icon">🏔</div><div class="pi-body"><div class="pi-name">Harishchandragad</div><div class="pi-loc">📍 Ahmednagar · 170 km from Pune</div><div class="pi-tags"><span class="pi-tag t-mod">Moderate</span><span class="pi-tag t-pop">Popular</span></div></div></div>
+      <div class="place-item hard-place"><div class="pi-icon">🌄</div><div class="pi-body"><div class="pi-name">Kalsubai Peak</div><div class="pi-loc">📍 Nashik · 185 km from Pune</div><div class="pi-tags"><span class="pi-tag t-hard">Hard</span></div></div></div>
+      <div class="place-item"><div class="pi-icon">🍃</div><div class="pi-body"><div class="pi-name">Tikona Fort</div><div class="pi-loc">📍 Kamshet, Pune · 60 km</div><div class="pi-tags"><span class="pi-tag t-easy">Easy</span><span class="pi-tag t-pop">Beginner Friendly</span></div></div></div>
+      <div class="place-item"><div class="pi-icon">🌊</div><div class="pi-body"><div class="pi-name">Ratangad Fort</div><div class="pi-loc">📍 Bhandardara · 165 km from Pune</div><div class="pi-tags"><span class="pi-tag t-mod">Moderate</span></div></div></div>
+      <div class="place-item hard-place"><div class="pi-icon">🦅</div><div class="pi-body"><div class="pi-name">Alang Madan Kulang</div><div class="pi-loc">📍 Igatpuri · 155 km from Pune</div><div class="pi-tags"><span class="pi-tag t-hard">Hard</span></div></div></div>
+      <div class="place-item"><div class="pi-icon">⛩</div><div class="pi-body"><div class="pi-name">Sinhagad Fort</div><div class="pi-loc">📍 Pune · 25 km from city</div><div class="pi-tags"><span class="pi-tag t-easy">Easy</span><span class="pi-tag t-pop">Nearest</span></div></div></div>
+      <div class="place-item"><div class="pi-icon">🌙</div><div class="pi-body"><div class="pi-name">Torna Fort</div><div class="pi-loc">📍 Velha, Pune · 60 km</div><div class="pi-tags"><span class="pi-tag t-mod">Moderate</span></div></div></div>
+      <div class="place-item"><div class="pi-icon">🏕</div><div class="pi-body"><div class="pi-name">Visapur Fort</div><div class="pi-loc">📍 Malavli, Lonavala · 80 km</div><div class="pi-tags"><span class="pi-tag t-mod">Moderate</span></div></div></div>
+      <div class="place-item"><div class="pi-icon">🌺</div><div class="pi-body"><div class="pi-name">Kalavantin Durg</div><div class="pi-loc">📍 Panvel · 100 km from Pune</div><div class="pi-tags"><span class="pi-tag t-hard">Hard</span><span class="pi-tag t-pop">Scenic</span></div></div></div>
+      <div class="place-item"><div class="pi-icon">🌧</div><div class="pi-body"><div class="pi-name">Bhimashankar Trek</div><div class="pi-loc">📍 Khed, Pune · 110 km</div><div class="pi-tags"><span class="pi-tag t-mod">Moderate</span><span class="pi-tag t-pop">Monsoon Fav</span></div></div></div>
+      <div class="place-item hard-place"><div class="pi-icon">🗻</div><div class="pi-body"><div class="pi-name">Lingana Fort</div><div class="pi-loc">📍 Raigad · 180 km from Pune</div><div class="pi-tags"><span class="pi-tag t-hard">Hard</span></div></div></div>
+    </div>
   </div>
-  <div class="testimonials-grid">
-    <div class="testimonial-card fade-up">
-      <div class="stars">★★★★★</div>
-      <div class="quote-mark">"</div>
-      <div class="testimonial-text">Harishchandragad at sunrise was something I'll never forget. The guide was brilliant — knowledgeable, patient, and genuinely passionate. Tiny Trekkers made it feel effortless.</div>
-      <div class="testimonial-author">
-        <div class="author-avatar">PS</div>
+</section>
+
+<!-- ── ABOUT US ── -->
+<section class="section section-dark" id="about">
+  <div class="inner">
+    <div class="about-inner">
+      <div class="about-text">
+        <div class="sec-label" style="color:var(--gold)">Our Story</div>
+        <h2 class="sec-title sec-title-white">About <em>Tiny Trekkers</em></h2>
+        <p class="about-desc">Tiny Trekkers is a Pune-based adventure trekking company founded by a group of passionate hikers who fell in love with the Sahyadri mountains. What started as weekend trips with friends turned into a mission — to make the mountains accessible, safe, and joyful for everyone.</p>
+        <p class="about-desc">We are not just a trekking company. We are your trail companions — guiding first-timers and experienced hikers alike through Maharashtra's most stunning landscapes, with a commitment to safety, sustainability, and small group experiences that let you truly connect with nature.</p>
+        <p class="about-desc">Every trek is led by certified, experienced guides. Every route is safety-scouted. Every meal is prepared fresh on trail. We handle the logistics so you can focus entirely on the experience.</p>
+        <div class="about-highlights">
+          <div class="ah-item"><div class="ah-icon">🧭</div><div class="ah-title">Certified Guides</div><div class="ah-desc">All guides certified in first aid and mountaineering</div></div>
+          <div class="ah-item"><div class="ah-icon">👥</div><div class="ah-title">Small Groups</div><div class="ah-desc">Max 15 trekkers per batch — quality over quantity</div></div>
+          <div class="ah-item"><div class="ah-icon">🌱</div><div class="ah-title">Eco Responsible</div><div class="ah-desc">Leave No Trace — we clean up after every trek</div></div>
+          <div class="ah-item"><div class="ah-icon">💰</div><div class="ah-title">All Inclusive</div><div class="ah-desc">No hidden charges — one price, full experience</div></div>
+        </div>
+      </div>
+      <div class="about-stats">
+        <div class="as-card"><div class="as-num">500+</div><div class="as-label">Happy Trekkers</div></div>
+        <div class="as-card"><div class="as-num">18+</div><div class="as-label">Trek Routes</div></div>
+        <div class="as-card"><div class="as-num">4.9</div><div class="as-label">Average Rating</div></div>
+        <div class="as-card"><div class="as-num">100%</div><div class="as-label">Safety Record</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SUPPORT ── -->
+<section class="section" id="support">
+  <div class="inner">
+    <div class="sec-label">We're Here to Help</div>
+    <h2 class="sec-title">Support <em>Info</em></h2>
+    <p class="sec-sub">Reach us any time — we respond within 2 hours on WhatsApp and within the same day on email.</p>
+    <div class="support-grid">
+      <div class="support-card">
+        <div class="sc-icon sc-phone">📞</div>
         <div>
-          <div class="author-name">Priya Sharma</div>
-          <div class="author-meta">Harishchandragad · Feb 2025</div>
+          <div class="sc-label">Phone</div>
+          <div class="sc-value"><a href="tel:+918310441503">+91 83104 41503</a></div>
+          <div class="sc-note">Call us for trek details, group bookings, and any questions about routes or pricing.</div>
         </div>
       </div>
-    </div>
-    <div class="testimonial-card fade-up fade-up-delay-1">
-      <div class="stars">★★★★★</div>
-      <div class="quote-mark">"</div>
-      <div class="testimonial-text">My first ever overnight trek and it was perfect. The camp food was surprisingly delicious and I felt completely safe the whole time. Already planning my next one!</div>
-      <div class="testimonial-author">
-        <div class="author-avatar" style="background:#3A5C7E">RD</div>
+      <div class="support-card">
+        <div class="sc-icon sc-wa">💬</div>
         <div>
-          <div class="author-name">Rahul Deshmukh</div>
-          <div class="author-meta">Rajmachi Fort · Jan 2025</div>
+          <div class="sc-label">WhatsApp (Fastest)</div>
+          <div class="sc-value"><a href="https://wa.me/918310441503" target="_blank">+91 83104 41503</a></div>
+          <div class="sc-note">Message us on WhatsApp for instant booking, slot confirmation, and real-time support.</div>
         </div>
       </div>
-    </div>
-    <div class="testimonial-card fade-up fade-up-delay-2">
-      <div class="stars">★★★★★</div>
-      <div class="quote-mark">"</div>
-      <div class="testimonial-text">Brought my college group for the Kalsubai summit. The team handled everything — gear, food, safety. Zero stress. The summit view made every step of the hard climb worth it.</div>
-      <div class="testimonial-author">
-        <div class="author-avatar" style="background:#7A4A1C">NK</div>
+      <div class="support-card">
+        <div class="sc-icon sc-email">✉</div>
         <div>
-          <div class="author-name">Neha Kulkarni</div>
-          <div class="author-meta">Kalsubai Peak · Dec 2024</div>
+          <div class="sc-label">Email</div>
+          <div class="sc-value"><a href="mailto:tinytrekkers.pune@gmail.com">tinytrekkers.pune@gmail.com</a></div>
+          <div class="sc-note">For detailed enquiries, group trek proposals, corporate bookings, and feedback.</div>
+        </div>
+      </div>
+      <div class="support-card">
+        <div class="sc-icon sc-time">🕐</div>
+        <div>
+          <div class="sc-label">Support Hours</div>
+          <div class="sc-value">Mon – Sun, 8 AM – 8 PM</div>
+          <div class="sc-note">We are available all 7 days. On trek days, your guide is your primary contact on trail.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BOOK -->
-<section class="booking-section" id="book">
-  <div class="booking-bg"></div>
-  <div class="booking-inner">
-    <div class="booking-left">
-      <div class="section-label" style="color:var(--gold)">Ready to Trek?</div>
-      <h2 class="section-title fade-up" style="color:var(--white)">Book Your <em>Adventure</em></h2>
-      <p class="booking-desc">Send us a message and we'll confirm your spot within 2 hours. Or book directly online with instant confirmation.</p>
-      <div class="booking-perks">
-        <div class="perk"><div class="perk-dot"></div>Instant booking confirmation email</div>
-        <div class="perk"><div class="perk-dot"></div>Secure payment via UPI, Card, Net Banking</div>
-        <div class="perk"><div class="perk-dot"></div>Free packing list and trek briefing sent</div>
-        <div class="perk"><div class="perk-dot"></div>WhatsApp support leading up to trek day</div>
+<!-- ── TERMS & CONDITIONS ── -->
+<section class="section section-alt" id="tnc">
+  <div class="inner">
+    <div class="sec-label">Legal & Policies</div>
+    <h2 class="sec-title">Terms &amp; <em>Conditions</em></h2>
+    <p class="sec-sub">Please read our policies carefully before booking a trek with us.</p>
+    <div class="tnc-tabs">
+      <div class="tnc-tab active" onclick="showTnc('refund',this)">Refund &amp; Cancellation</div>
+      <div class="tnc-tab" onclick="showTnc('agreement',this)">User Agreement</div>
+      <div class="tnc-tab" onclick="showTnc('privacy',this)">Privacy Policy</div>
+      <div class="tnc-tab" onclick="showTnc('consent',this)">Consent</div>
+    </div>
+
+    <div class="tnc-panel active" id="tnc-refund">
+      <div class="tnc-content">
+        <div class="tnc-box"><p>Last updated: January 2025. Please contact us on WhatsApp or email before initiating any cancellation.</p></div>
+        <h3>Cancellation Policy</h3>
+        <p>We understand that plans can change unexpectedly. Our cancellation policy is designed to be fair to both our trekkers and our team, who plan logistics well in advance.</p>
+        <ul>
+          <li><strong>7 or more days before trek date:</strong> Full refund — 100% of the amount paid.</li>
+          <li><strong>3 to 6 days before trek date:</strong> 50% refund of the amount paid.</li>
+          <li><strong>Less than 3 days before trek date:</strong> No refund. However, you may transfer your slot to another person at no extra charge.</li>
+          <li><strong>No-show on the day:</strong> No refund will be issued for no-shows without prior notice.</li>
+        </ul>
+        <h3>Refund Policy</h3>
+        <p>All approved refunds will be processed within <strong>5–7 business days</strong> to the original payment method.</p>
+        <ul>
+          <li>Refunds are initiated only after a written cancellation request is received via WhatsApp or email.</li>
+          <li>Refunds are not applicable for treks cancelled by the trekker due to personal health, weather fears, or change of plans within 3 days.</li>
+          <li>If Tiny Trekkers cancels a trek due to adverse weather, safety concerns, or unavoidable circumstances, a <strong>full refund or free rescheduling</strong> will be provided.</li>
+          <li>Token amounts paid during enquiry are non-refundable if the booking is cancelled without 7 days' notice.</li>
+        </ul>
+        <h3>Trek Rescheduling</h3>
+        <p>You may reschedule your booking to a future date with no additional charge, provided you notify us at least <strong>3 days in advance</strong>. Rescheduling is subject to slot availability.</p>
       </div>
     </div>
-    <div class="booking-form fade-up fade-up-delay-1">
-      <div class="form-title">Send an Enquiry</div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Your Name</label>
-          <input type="text" class="form-input" placeholder="Full name">
+
+    <div class="tnc-panel" id="tnc-agreement">
+      <div class="tnc-content">
+        <div class="tnc-box"><p>By booking a trek with Tiny Trekkers, you agree to the following terms. Please read carefully.</p></div>
+        <h3>Acceptance of Terms</h3>
+        <p>By booking a trek with Tiny Trekkers, you confirm that you have read, understood, and agree to be bound by these terms and conditions. This agreement is between you (the trekker) and Tiny Trekkers, Pune.</p>
+        <h3>Eligibility</h3>
+        <ul>
+          <li>All participants must be at least 12 years old. Participants under 18 must be accompanied by a guardian or have written consent from a parent/guardian.</li>
+          <li>Participants must be in reasonably good physical health. Medical conditions must be disclosed at the time of booking.</li>
+          <li>Tiny Trekkers reserves the right to refuse participation to anyone deemed unfit for a trek on the day.</li>
+        </ul>
+        <h3>Participant Responsibilities</h3>
+        <ul>
+          <li>Follow all instructions given by the trek leader and guide at all times.</li>
+          <li>Carry recommended gear as specified in the packing list shared after booking.</li>
+          <li>Do not litter on the trail. Carry all waste back with you.</li>
+          <li>Do not consume alcohol or intoxicants during the trek.</li>
+          <li>Inform the guide of any medical conditions or discomfort immediately.</li>
+        </ul>
+        <h3>Liability Disclaimer</h3>
+        <p>Trekking is an outdoor activity that involves inherent risks including but not limited to rough terrain, weather changes, physical exertion, and wildlife. By participating, you acknowledge these risks and agree that Tiny Trekkers shall not be held liable for any injury, loss, or damage arising from participation in a trek, except where caused by proven negligence of Tiny Trekkers staff.</p>
+        <h3>Photography & Media</h3>
+        <p>Tiny Trekkers may photograph or film treks for promotional use. By booking, you grant permission for your image to be used in our social media and marketing materials. Please inform us if you prefer not to be photographed.</p>
+      </div>
+    </div>
+
+    <div class="tnc-panel" id="tnc-privacy">
+      <div class="tnc-content">
+        <div class="tnc-box"><p>Your privacy matters to us. We collect only what is necessary and never sell your information to third parties.</p></div>
+        <h3>Information We Collect</h3>
+        <p>When you book a trek or enquire with us, we may collect the following:</p>
+        <ul>
+          <li>Full name and contact information (phone number, email address)</li>
+          <li>Emergency contact details</li>
+          <li>Relevant medical or health information disclosed voluntarily</li>
+          <li>Payment transaction references (we do not store card details)</li>
+        </ul>
+        <h3>How We Use Your Information</h3>
+        <ul>
+          <li>To confirm and manage your trek booking</li>
+          <li>To send trek details, packing lists, and itinerary information</li>
+          <li>To contact you in case of emergencies on trek</li>
+          <li>To send updates about upcoming treks (you may opt out anytime)</li>
+        </ul>
+        <h3>Data Sharing</h3>
+        <p>We do <strong>not</strong> sell, rent, or share your personal information with any third party for marketing purposes. Data may be shared only with trek guides and emergency contacts as operationally necessary.</p>
+        <h3>Data Retention</h3>
+        <p>Your data is retained for up to 2 years after your last booking for safety and administrative purposes, after which it is securely deleted upon request.</p>
+        <h3>Your Rights</h3>
+        <p>You have the right to request access to, correction of, or deletion of your personal data at any time by contacting us at <strong>tinytrekkers.pune@gmail.com</strong>.</p>
+        <h3>Contact for Privacy Concerns</h3>
+        <p>For any privacy-related queries, please write to us at <strong>tinytrekkers.pune@gmail.com</strong> or WhatsApp us at <strong>+91 83104 41503</strong>.</p>
+      </div>
+    </div>
+
+    <div class="tnc-panel" id="tnc-consent">
+      <div class="tnc-content">
+        <div class="tnc-box"><p>Your consent is important. By booking with Tiny Trekkers, you provide the following consents.</p></div>
+        <h3>Health & Fitness Consent</h3>
+        <p>I confirm that I am physically fit and capable of undertaking the trek I have booked. I have disclosed any relevant medical conditions (heart issues, asthma, diabetes, allergies, recent surgeries, etc.) to Tiny Trekkers at the time of booking. I understand that concealing medical conditions is entirely my responsibility and Tiny Trekkers cannot be held liable for complications arising from undisclosed health issues.</p>
+        <h3>Risk Acknowledgement Consent</h3>
+        <p>I acknowledge that trekking in the Sahyadri mountains involves inherent physical risks including rough terrain, unpredictable weather, altitude, and exertion. I voluntarily choose to participate with full awareness of these risks and agree not to hold Tiny Trekkers, its guides, or staff liable for any injury, loss, or accident arising from participation, unless directly caused by proven negligence.</p>
+        <h3>Emergency Medical Consent</h3>
+        <p>In the event of a medical emergency on the trek, I consent to Tiny Trekkers' guides and staff taking reasonable emergency action on my behalf, including arranging medical evacuation, contacting emergency services, and notifying my emergency contact, until I am in professional medical care.</p>
+        <h3>Photography & Media Consent</h3>
+        <p>I consent to Tiny Trekkers photographing or recording me during the trek for use on their website, social media, and promotional materials. I understand I may withdraw this consent by informing Tiny Trekkers in writing at any time.</p>
+        <h3>Communication Consent</h3>
+        <p>I consent to receiving WhatsApp and email communications from Tiny Trekkers related to my booking, upcoming treks, and safety updates. I understand I may unsubscribe from marketing communications at any time by replying "STOP" on WhatsApp or emailing us.</p>
+        <p>By completing a booking — via WhatsApp, phone, or any online channel — you confirm your agreement to all the above consents.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section class="section" id="contact">
+  <div class="inner">
+    <div class="contact-grid">
+      <div>
+        <div class="sec-label">Find Us</div>
+        <h2 class="sec-title">Contact <em>Info</em></h2>
+        <div class="contact-details">
+          <div class="cd-item">
+            <div class="cd-icon">📍</div>
+            <div>
+              <div class="cd-label">Company Address</div>
+              <div class="cd-value">A2 103, Gulmohar Goldcoast,<br>Rajaram Patil Nagar, Kharadi,<br>Pune – 411014, Maharashtra</div>
+            </div>
+          </div>
+          <div class="cd-item">
+            <div class="cd-icon">📞</div>
+            <div>
+              <div class="cd-label">Phone</div>
+              <div class="cd-value"><a href="tel:+918310441503">+91 83104 41503</a></div>
+              <div class="cd-note">Available 8 AM – 8 PM, 7 days a week</div>
+            </div>
+          </div>
+          <div class="cd-item">
+            <div class="cd-icon">✉</div>
+            <div>
+              <div class="cd-label">Email</div>
+              <div class="cd-value"><a href="mailto:tinytrekkers.pune@gmail.com">tinytrekkers.pune@gmail.com</a></div>
+              <div class="cd-note">We reply within 2 hours during business hours</div>
+            </div>
+          </div>
+          <div class="cd-item">
+            <div class="cd-icon">💬</div>
+            <div>
+              <div class="cd-label">WhatsApp (Fastest)</div>
+              <div class="cd-value"><a href="https://wa.me/918310441503" target="_blank">+91 83104 41503</a></div>
+              <div class="cd-note">Message us for instant booking and slot confirmation</div>
+            </div>
+          </div>
         </div>
-        <div class="form-group">
-          <label class="form-label">Phone</label>
-          <input type="tel" class="form-input" placeholder="+91 XXXXX XXXXX">
+        <div class="wa-cta-box">
+          <div class="wa-cta-text">
+            <div class="wa-cta-title">Book Instantly on WhatsApp</div>
+            <div class="wa-cta-desc">Send us your preferred trek & date and we'll confirm your slot right away</div>
+          </div>
+          <a class="wa-cta-btn" href="https://wa.me/918310441503?text=Hi%20Tiny%20Trekkers!%20I%20want%20to%20book%20a%20trek." target="_blank">💬 Chat Now</a>
         </div>
       </div>
-      <div class="form-group">
-        <label class="form-label">Email Address</label>
-        <input type="email" class="form-input" placeholder="you@email.com">
-      </div>
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Trek Interested In</label>
-          <select class="form-select">
-            <option>Select a trek…</option>
-            <option>Rajmachi Fort Trek</option>
-            <option>Harishchandragad Trek</option>
-            <option>Kalsubai Peak Trek</option>
-            <option>Tikona Fort Trek</option>
-            <option>Ratangad Fort Trek</option>
-            <option>Alang Madan Kulang</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Group Size</label>
-          <input type="number" class="form-input" placeholder="No. of people" min="1">
+      <div>
+        <div class="contact-map-wrap">
+          <div class="map-top">
+            <div class="map-name">Tiny Trekkers — Pune</div>
+            <div class="map-addr">A2 103, Gulmohar Goldcoast, Rajaram Patil Nagar,<br>Kharadi, Pune – 411014</div>
+          </div>
+          <div class="map-visual">
+            <div class="map-pin">📍</div>
+            <div class="map-text">Kharadi, Pune 411014</div>
+          </div>
+          <a href="https://maps.google.com?q=Gulmohar+Goldcoast,Kharadi,Pune" target="_blank" class="map-btn">Open in Google Maps →</a>
         </div>
       </div>
-      <div class="form-group">
-        <label class="form-label">Message (Optional)</label>
-        <textarea class="form-textarea" placeholder="Preferred dates, any questions…"></textarea>
-      </div>
-      <button class="submit-btn" onclick="alert('Enquiry sent! We will contact you within 2 hours.')">Send Enquiry →</button>
     </div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="contact-inner">
-    <div>
-      <div class="section-label">Get in Touch</div>
-      <h2 class="section-title fade-up">We'd Love to<br><em>Hear from You</em></h2>
-      <div class="contact-info">
-        <div class="contact-item fade-up">
-          <div class="contact-icon">📞</div>
-          <div>
-            <div class="contact-label">Phone / WhatsApp</div>
-            <div class="contact-value"><a href="tel:+918310441503">+91 83104 41503</a></div>
-            <div class="contact-note">Available 8 AM – 8 PM, 7 days a week</div>
-          </div>
-        </div>
-        <div class="contact-item fade-up fade-up-delay-1">
-          <div class="contact-icon">✉</div>
-          <div>
-            <div class="contact-label">Email</div>
-            <div class="contact-value"><a href="mailto:tinytrekkers.pune@gmail.com">tinytrekkers.pune@gmail.com</a></div>
-            <div class="contact-note">We reply within 2 hours during business hours</div>
-          </div>
-        </div>
-        <div class="contact-item fade-up fade-up-delay-2">
-          <div class="contact-icon">📍</div>
-          <div>
-            <div class="contact-label">Base Location</div>
-            <div class="contact-value">Pune, Maharashtra</div>
-            <div class="contact-note">Treks across the Sahyadri mountain range</div>
-          </div>
-        </div>
-        <div class="contact-item fade-up fade-up-delay-3">
-          <div class="contact-icon">🕐</div>
-          <div>
-            <div class="contact-label">Office Hours</div>
-            <div class="contact-value">Monday – Sunday</div>
-            <div class="contact-note">8:00 AM to 8:00 PM IST</div>
-          </div>
-        </div>
-      </div>
-      <div class="social-row">
-        <a class="social-btn" href="https://wa.me/918310441503" target="_blank" title="WhatsApp">💬</a>
-        <a class="social-btn" href="mailto:tinytrekkers.pune@gmail.com" title="Email">✉</a>
-        <a class="social-btn" href="#" title="Instagram">📸</a>
-        <a class="social-btn" href="#" title="Facebook">👍</a>
-      </div>
-    </div>
-    <div class="fade-up fade-up-delay-2">
-      <div class="map-placeholder">
-        <div class="map-icon">🗺</div>
-        <div style="font-weight:500;color:var(--forest)">Pune, Maharashtra</div>
-        <div style="font-size:0.82rem;color:var(--stone);text-align:center;max-width:220px">Treks across Lonavala, Ahmednagar, Nashik & Bhandardara regions</div>
-        <a href="https://maps.google.com?q=Pune,Maharashtra" target="_blank" style="background:var(--forest);color:var(--white);padding:0.6rem 1.4rem;border-radius:2px;font-size:0.8rem;font-weight:600;text-decoration:none;letter-spacing:0.06em;text-transform:uppercase">View on Maps →</a>
-      </div>
-      <div style="margin-top:1.5rem;background:var(--cream);border-radius:3px;padding:1.2rem 1.4rem;border:1px solid var(--parch)">
-        <div style="font-size:0.8rem;font-weight:600;color:var(--forest);margin-bottom:0.6rem;letter-spacing:0.04em">QUICK CONTACT</div>
-        <a href="https://wa.me/918310441503" target="_blank" style="display:flex;align-items:center;gap:10px;background:#25D366;color:var(--white);padding:0.75rem 1.1rem;border-radius:2px;text-decoration:none;font-size:0.875rem;font-weight:600;transition:opacity 0.2s">
-          💬 Chat on WhatsApp — +91 83104 41503
-        </a>
-        <div style="margin-top:0.75rem;display:flex;align-items:center;gap:10px;background:var(--forest);color:var(--white);padding:0.75rem 1.1rem;border-radius:2px;font-size:0.875rem;font-weight:600">
-          📧 tinytrekkers.pune@gmail.com
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
+<!-- ── FOOTER ── -->
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-brand">Tiny<span>Trekkers</span></div>
-      <div class="footer-tagline">Guiding adventurers through the Sahyadri mountains since day one. Small groups, big memories.</div>
-      <div style="margin-top:1.2rem">
-        <div class="footer-contact-item">📞 <a href="tel:+918310441503" style="color:rgba(255,255,255,0.5);text-decoration:none">+91 83104 41503</a></div>
-        <div class="footer-contact-item">✉ <a href="mailto:tinytrekkers.pune@gmail.com" style="color:rgba(255,255,255,0.5);text-decoration:none">tinytrekkers.pune@gmail.com</a></div>
-        <div class="footer-contact-item">📍 Pune, Maharashtra, India</div>
+      <div class="f-brand">Tiny<b>Trekkers</b></div>
+      <div class="f-tagline">Pune's favourite trekking companions — guiding adventurers through the Sahyadri mountains safely and joyfully.</div>
+      <div class="f-contact">
+        <span>📞 <a href="tel:+918310441503">+91 83104 41503</a></span>
+        <span>✉ <a href="mailto:tinytrekkers.pune@gmail.com">tinytrekkers.pune@gmail.com</a></span>
+        <span>📍 A2 103, Gulmohar Goldcoast, Kharadi, Pune 411014</span>
       </div>
     </div>
     <div>
-      <div class="footer-col-title">Our Treks</div>
-      <ul class="footer-links">
-        <li><a href="#treks">Rajmachi Fort</a></li>
-        <li><a href="#treks">Harishchandragad</a></li>
-        <li><a href="#treks">Kalsubai Peak</a></li>
-        <li><a href="#treks">Tikona Fort</a></li>
-        <li><a href="#treks">Ratangad Fort</a></li>
-        <li><a href="#treks">Alang Madan Kulang</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-col-title">Quick Links</div>
-      <ul class="footer-links">
+      <div class="f-col-title">Quick Links</div>
+      <ul class="f-links">
+        <li><a href="#events">Upcoming Events</a></li>
+        <li><a href="#on-demand">Schedule on Demand</a></li>
+        <li><a href="#places">Trek Places</a></li>
         <li><a href="#about">About Us</a></li>
-        <li><a href="#why-us">Why Choose Us</a></li>
-        <li><a href="#book">Book a Trek</a></li>
+        <li><a href="#support">Support</a></li>
         <li><a href="#contact">Contact Us</a></li>
-        <li><a href="#">Trek Blog</a></li>
-        <li><a href="#">Gear Guide</a></li>
       </ul>
     </div>
     <div>
-      <div class="footer-col-title">Policies</div>
-      <ul class="footer-links">
-        <li><a href="#">Cancellation Policy</a></li>
-        <li><a href="#">Safety Guidelines</a></li>
-        <li><a href="#">Privacy Policy</a></li>
-        <li><a href="#">Terms & Conditions</a></li>
-        <li><a href="#">Refund Policy</a></li>
+      <div class="f-col-title">Policies</div>
+      <ul class="f-links">
+        <li><a href="#tnc" onclick="showTnc('refund',null)">Refund & Cancellation</a></li>
+        <li><a href="#tnc" onclick="showTnc('agreement',null)">User Agreement</a></li>
+        <li><a href="#tnc" onclick="showTnc('privacy',null)">Privacy Policy</a></li>
+        <li><a href="#tnc" onclick="showTnc('consent',null)">Consent Policy</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Tiny Trekkers, Pune. All rights reserved.</span>
-    <span>Built with ❤ for the mountains</span>
+    <span>© 2025 Tiny Trekkers, Pune. All rights reserved.</span>
+    <span>Made with ❤ for the mountains · Kharadi, Pune 411014</span>
   </div>
 </footer>
 
-<!-- BOOKING MODAL -->
-<div class="modal-overlay" id="modal">
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <div id="booking-form-wrap">
-      <div class="modal-title" id="modal-trek-name">Trek Name</div>
-      <div class="modal-sub" id="modal-trek-meta"></div>
-      <div class="steps-bar">
-        <div class="step-tab active" id="stab1">1 · Details</div>
-        <div class="step-tab" id="stab2">2 · Group</div>
-        <div class="step-tab" id="stab3">3 · Payment</div>
-      </div>
-
-      <!-- Step 1 -->
-      <div class="step-panel active" id="sp1">
-        <div class="form-group"><label class="form-label">Trek Date</label><input type="date" class="form-input" id="b-date"></div>
-        <div class="form-row">
-          <div class="form-group"><label class="form-label">Full Name</label><input type="text" class="form-input" placeholder="Your name"></div>
-          <div class="form-group"><label class="form-label">Phone</label><input type="tel" class="form-input" placeholder="+91 XXXXX XXXXX"></div>
-        </div>
-        <div class="form-group"><label class="form-label">Email</label><input type="email" class="form-input" placeholder="you@email.com"></div>
-        <div class="modal-btn-row"><button class="m-btn-next" onclick="goStep(2)">Continue →</button></div>
-      </div>
-
-      <!-- Step 2 -->
-      <div class="step-panel" id="sp2">
-        <div class="form-group">
-          <label class="form-label">Number of Trekkers</label>
-          <div class="group-picker">
-            <button class="g-btn" onclick="changeCount(-1)">−</button>
-            <span class="g-count" id="g-count">2</span>
-            <span style="flex:1;font-size:0.82rem;color:var(--stone)">people</span>
-            <button class="g-btn" onclick="changeCount(1)">+</button>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="form-label">Special Requirements</label>
-          <select class="form-select">
-            <option>No special requirements</option>
-            <option>Vegetarian meals only</option>
-            <option>First-time trekker</option>
-            <option>Medical condition to note</option>
-          </select>
-        </div>
-        <div class="price-summary">
-          <div class="ps-row"><span>Trek fee</span><span id="ps-base">₹1,299 × 2</span></div>
-          <div class="ps-row"><span>Guide charges</span><span>Included</span></div>
-          <div class="ps-row total"><span>Total</span><span id="ps-total">₹2,598</span></div>
-        </div>
-        <div class="modal-btn-row">
-          <button class="m-btn-back" onclick="goStep(1)">← Back</button>
-          <button class="m-btn-next" onclick="goStep(3)">Continue →</button>
-        </div>
-      </div>
-
-      <!-- Step 3 -->
-      <div class="step-panel" id="sp3">
-        <div class="price-summary">
-          <div class="ps-row"><span id="ps-trek-label">Trek</span><span id="ps-final">₹2,598</span></div>
-          <div class="ps-row"><span>Date</span><span id="ps-date">—</span></div>
-          <div class="ps-row"><span>Group</span><span id="ps-grp">2 people</span></div>
-        </div>
-        <label class="form-label">Payment Method</label>
-        <div class="pay-opts">
-          <div class="pay-opt selected" onclick="selPay(this)">UPI</div>
-          <div class="pay-opt" onclick="selPay(this)">Card</div>
-          <div class="pay-opt" onclick="selPay(this)">Net Banking</div>
-        </div>
-        <div class="form-group"><label class="form-label">UPI ID</label><input type="text" class="form-input" placeholder="yourname@upi"></div>
-        <div style="font-size:0.75rem;color:var(--stone);margin-bottom:0.5rem;line-height:1.5">By booking you agree to our cancellation & refund policy. A confirmation email will be sent after payment.</div>
-        <div class="modal-btn-row">
-          <button class="m-btn-back" onclick="goStep(2)">← Back</button>
-          <button class="m-btn-next" onclick="confirmPay()">Pay & Confirm</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="success-screen" id="success-screen">
-      <div class="success-icon">✓</div>
-      <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--forest);margin-bottom:0.25rem">Booking Confirmed!</div>
-      <div style="font-size:0.85rem;color:var(--stone);line-height:1.6">A confirmation email has been sent with your trek details and packing list.</div>
-      <div class="booking-id" id="conf-id">Booking #TRK-00000</div>
-      <div style="margin-top:1.5rem;font-size:0.82rem;color:var(--stone)">Questions? Call or WhatsApp us at<br><strong style="color:var(--forest)">+91 83104 41503</strong></div>
-      <div style="margin-top:1.2rem"><button class="m-btn-back" onclick="closeModal()">Back to Website</button></div>
-    </div>
-  </div>
-</div>
-
 <script>
-// NAV scroll
-window.addEventListener('scroll',()=>{
-  document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60)
-})
-
 // Mobile menu
 function toggleMenu(){
-  document.getElementById('mobileMenu').classList.toggle('open')
+  document.getElementById('mobMenu').classList.toggle('open')
 }
 
-// Scroll animations
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})
-},{threshold:0.15})
-document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el))
-
-// Trek filter
-function filterTreks(f,btn){
-  document.querySelectorAll('.pill').forEach(b=>b.classList.remove('active'))
-  btn.classList.add('active')
-  document.querySelectorAll('.trek-card').forEach(c=>{
-    if(f==='all')c.style.display='block'
-    else if(f==='weekend'||f==='multi')c.style.display=c.dataset.dur===f?'block':'none'
-    else c.style.display=c.dataset.diff===f?'block':'none'
-  })
-}
-
-// Booking modal
-let currentPrice=1299,currentTrek='',groupCount=2,currentStep=1
-function openBooking(name,price,diff,dur){
-  currentTrek=name;currentPrice=parseInt(price);groupCount=2
-  document.getElementById('modal-trek-name').textContent=name
-  document.getElementById('modal-trek-meta').textContent=diff+' · '+dur+' · ₹'+parseInt(price).toLocaleString('en-IN')+'/person'
-  document.getElementById('booking-form-wrap').style.display='block'
-  document.getElementById('success-screen').style.display='none'
-  goStep(1)
-  updateSummary()
-  document.getElementById('modal').classList.add('open')
-  document.body.style.overflow='hidden'
-}
-function closeModal(){
-  document.getElementById('modal').classList.remove('open')
-  document.body.style.overflow=''
-}
-function goStep(n){
-  currentStep=n
-  ;[1,2,3].forEach(i=>{
-    document.getElementById('sp'+i).classList.toggle('active',i===n)
-    const tab=document.getElementById('stab'+i)
-    tab.classList.remove('active','done')
-    if(i===n)tab.classList.add('active')
-    else if(i<n)tab.classList.add('done')
-  })
-  if(n===3){
-    const d=document.getElementById('b-date').value
-    document.getElementById('ps-trek-label').textContent=currentTrek
-    document.getElementById('ps-final').textContent='₹'+(currentPrice*groupCount).toLocaleString('en-IN')
-    document.getElementById('ps-date').textContent=d||'Not selected'
-    document.getElementById('ps-grp').textContent=groupCount+' people'
+// T&C tabs
+function showTnc(id, el){
+  document.querySelectorAll('.tnc-panel').forEach(p => p.classList.remove('active'))
+  document.querySelectorAll('.tnc-tab').forEach(t => t.classList.remove('active'))
+  document.getElementById('tnc-'+id).classList.add('active')
+  if(el) el.classList.add('active')
+  else {
+    // find and activate the right tab
+    const tabs = document.querySelectorAll('.tnc-tab')
+    const map = {refund:0, agreement:1, privacy:2, consent:3}
+    if(tabs[map[id]]) tabs[map[id]].classList.add('active')
   }
 }
-function changeCount(d){
-  groupCount=Math.max(1,Math.min(20,groupCount+d))
-  document.getElementById('g-count').textContent=groupCount
-  updateSummary()
-}
-function updateSummary(){
-  document.getElementById('ps-base').textContent='₹'+currentPrice.toLocaleString('en-IN')+' × '+groupCount
-  document.getElementById('ps-total').textContent='₹'+(currentPrice*groupCount).toLocaleString('en-IN')
-}
-function selPay(el){document.querySelectorAll('.pay-opt').forEach(p=>p.classList.remove('selected'));el.classList.add('selected')}
-function confirmPay(){
-  document.getElementById('booking-form-wrap').style.display='none'
-  document.getElementById('success-screen').style.display='block'
-  document.getElementById('conf-id').textContent='Booking #TRK-'+Math.floor(10000+Math.random()*90000)
-}
-// Close modal on overlay click
-document.getElementById('modal').addEventListener('click',function(e){
-  if(e.target===this)closeModal()
+
+// Active nav link on scroll
+const sections = ['events','on-demand','places','about','support','tnc','contact']
+const navLinks = document.querySelectorAll('.nav-links a')
+window.addEventListener('scroll', ()=>{
+  let current = ''
+  sections.forEach(id => {
+    const el = document.getElementById(id)
+    if(el && window.scrollY >= el.offsetTop - 100) current = id
+  })
+  navLinks.forEach(a => {
+    a.classList.remove('active')
+    if(a.getAttribute('href') === '#'+current) a.classList.add('active')
+  })
 })
-// Set min date
-const today=new Date().toISOString().split('T')[0]
-const dateInput=document.getElementById('b-date')
-if(dateInput)dateInput.min=today
+
+// Close mobile menu on outside click
+document.addEventListener('click', e => {
+  const menu = document.getElementById('mobMenu')
+  const hamburger = document.querySelector('.hamburger')
+  if(menu.classList.contains('open') && !menu.contains(e.target) && !hamburger.contains(e.target)){
+    menu.classList.remove('open')
+  }
+})
 </script>
 </body>
 </html>
