@@ -292,7 +292,86 @@ footer{background:var(--bark);padding:2.5rem 2rem}
   .footer-bottom{flex-direction:column;text-align:center}
   .tnc-tab{padding:0.55rem 0.85rem;font-size:0.75rem}
   .form-row{grid-template-columns:1fr}
+  .bk-modal{max-height:95vh}
 }
+
+/* ── BOOKING MODAL ── */
+.bk-overlay{position:fixed;inset:0;background:rgba(10,20,10,0.75);z-index:400;display:none;align-items:center;justify-content:center;padding:1rem;backdrop-filter:blur(4px)}
+.bk-overlay.open{display:flex}
+.bk-modal{background:#fff;border-radius:14px;width:100%;max-width:480px;max-height:92vh;overflow-y:auto;box-shadow:0 30px 80px rgba(0,0,0,0.3);position:relative;animation:bkSlideUp 0.35s cubic-bezier(0.34,1.4,0.64,1) both}
+@keyframes bkSlideUp{from{opacity:0;transform:translateY(40px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+.bk-close{position:absolute;top:1rem;right:1rem;background:#F0F0EE;border:none;width:30px;height:30px;border-radius:50%;cursor:pointer;font-size:0.9rem;display:flex;align-items:center;justify-content:center;color:#666;z-index:1;transition:background 0.2s}
+.bk-close:hover{background:#E0E0DC}
+/* Progress bar */
+.bk-progress{display:flex;gap:0;border-bottom:1px solid #EEE;padding:0}
+.bk-step-tab{flex:1;padding:0.85rem 0;text-align:center;font-size:0.72rem;font-weight:700;color:#AAA;letter-spacing:0.06em;text-transform:uppercase;border-bottom:3px solid transparent;transition:all 0.2s}
+.bk-step-tab.active{color:#C07A28;border-bottom-color:#C07A28}
+.bk-step-tab.done{color:#4E7249;border-bottom-color:#4E7249}
+/* Pages */
+.bk-page{display:none;padding:1.5rem}
+.bk-page.active{display:block}
+/* Trek info card - Page 1 */
+.bk-trek-card{background:linear-gradient(135deg,#1B2F1A,#2D4829);border-radius:10px;padding:1.1rem 1.25rem;margin-bottom:1.2rem}
+.bk-trek-name{font-family:'Fraunces',serif;font-size:1.3rem;color:#fff;font-weight:600;margin-bottom:0.5rem}
+.bk-trek-rows{display:flex;flex-direction:column;gap:4px}
+.bk-trek-row{display:flex;align-items:center;gap:7px;font-size:0.8rem;color:rgba(255,255,255,0.75)}
+.bk-amount-badge{background:#DFA53A;color:#1B2F1A;display:inline-flex;align-items:center;gap:6px;padding:0.5rem 1rem;border-radius:6px;font-weight:700;font-size:0.9rem;margin-top:0.85rem}
+/* Contact info strip */
+.bk-contact-strip{background:#F6F1E7;border-radius:8px;padding:0.85rem 1rem;margin-bottom:1.2rem;display:flex;gap:1.5rem;flex-wrap:wrap}
+.bk-ci{display:flex;align-items:center;gap:6px;font-size:0.78rem;color:#4A3728}
+.bk-ci strong{color:#1B2F1A}
+/* T&C tab on page 1 */
+.bk-tnc-box{background:#FFFDF8;border:1px solid #EDE3CC;border-radius:8px;padding:0.85rem 1rem;margin-bottom:1rem;max-height:120px;overflow-y:auto;font-size:0.75rem;color:#5A6B52;line-height:1.6}
+.bk-tnc-box p{margin-bottom:0.4rem}
+.bk-check-row{display:flex;align-items:flex-start;gap:8px;padding:0.75rem 1rem;background:#EAF3E4;border-radius:8px;margin-bottom:1rem;cursor:pointer}
+.bk-check-row input[type=checkbox]{margin-top:2px;width:15px;height:15px;accent-color:#4E7249;flex-shrink:0;cursor:pointer}
+.bk-check-label{font-size:0.78rem;color:#2D4829;line-height:1.5;cursor:pointer}
+/* Form fields - Page 2 */
+.bk-amount-display{background:linear-gradient(135deg,#FFF9F0,#FFF3E0);border:1px solid #F5D99A;border-radius:8px;padding:0.85rem 1rem;margin-bottom:1rem;display:flex;justify-content:space-between;align-items:center}
+.bk-amount-label{font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#7A6347}
+.bk-amount-value{font-family:'Fraunces',serif;font-size:1.6rem;color:#C07A28;font-weight:600}
+.bk-field{margin-bottom:0.9rem}
+.bk-label{display:block;font-size:0.7rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#7A6347;margin-bottom:4px}
+.bk-input,.bk-select,.bk-textarea{width:100%;padding:0.7rem 0.85rem;border:1px solid #EDE3CC;border-radius:6px;font-family:'Nunito',sans-serif;font-size:0.88rem;color:#1B2F1A;background:#FDFAF4;transition:border-color 0.2s;outline:none}
+.bk-input:focus,.bk-select:focus,.bk-textarea:focus{border-color:#4E7249;background:#fff}
+.bk-phone-row{display:flex;gap:0;border:1px solid #EDE3CC;border-radius:6px;overflow:hidden;background:#FDFAF4;transition:border-color 0.2s}
+.bk-phone-row:focus-within{border-color:#4E7249}
+.bk-phone-prefix{padding:0.7rem 0.75rem;background:#EDE3CC;font-size:0.85rem;font-weight:700;color:#4A3728;white-space:nowrap;display:flex;align-items:center;gap:4px;border-right:1px solid #DDD}
+.bk-phone-input{flex:1;padding:0.7rem 0.85rem;border:none;font-family:'Nunito',sans-serif;font-size:0.88rem;color:#1B2F1A;background:transparent;outline:none}
+.bk-disclaimer-box{background:#FFF9F0;border:1px solid #F5D99A;border-radius:8px;padding:0.85rem 1rem;max-height:100px;overflow-y:auto;font-size:0.73rem;color:#7A6347;line-height:1.6;margin-bottom:0.75rem}
+.bk-disclaimer-check{display:flex;align-items:flex-start;gap:8px;padding:0.75rem 1rem;background:#FFF3E0;border-radius:8px;margin-bottom:1rem;cursor:pointer;border:1px solid #F5D99A}
+.bk-disclaimer-check input{margin-top:2px;width:15px;height:15px;accent-color:#C07A28;flex-shrink:0;cursor:pointer}
+.bk-disclaimer-label{font-size:0.76rem;color:#4A3728;line-height:1.5;cursor:pointer}
+/* Page 3 - Payment */
+.bk-payment-header{text-align:center;padding:0.5rem 0 1rem}
+.bk-payment-icon{font-size:2.5rem;margin-bottom:0.5rem}
+.bk-payment-title{font-family:'Fraunces',serif;font-size:1.2rem;color:#1B2F1A;margin-bottom:0.25rem}
+.bk-payment-sub{font-size:0.8rem;color:#7A6347}
+.bk-order-summary{background:#F6F1E7;border-radius:8px;padding:1rem;margin-bottom:1.25rem}
+.bk-os-row{display:flex;justify-content:space-between;font-size:0.82rem;padding:4px 0;color:#5A6B52}
+.bk-os-total{font-weight:700;color:#1B2F1A;font-size:1rem;padding-top:8px;border-top:1px solid #EDE3CC;margin-top:6px}
+.bk-payment-methods{display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.25rem}
+.bk-pay-btn{display:flex;align-items:center;gap:12px;padding:0.9rem 1.1rem;border:1.5px solid #EDE3CC;border-radius:8px;background:#fff;cursor:pointer;font-family:'Nunito',sans-serif;font-size:0.88rem;font-weight:600;color:#1B2F1A;transition:all 0.2s;width:100%;text-align:left}
+.bk-pay-btn:hover{border-color:#C07A28;background:#FFFDF8}
+.bk-pay-btn.selected{border-color:#C07A28;background:#FFF9F0}
+.bk-pay-icon{font-size:1.3rem;width:28px;text-align:center;flex-shrink:0}
+.bk-pay-label{flex:1}
+.bk-pay-label small{display:block;font-size:0.7rem;color:#7A6347;font-weight:400}
+.bk-razorpay-btn{width:100%;padding:1rem;background:#072654;color:#fff;border:none;border-radius:8px;font-family:'Nunito',sans-serif;font-size:0.92rem;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background 0.2s;letter-spacing:0.03em}
+.bk-razorpay-btn:hover{background:#0A3A7A}
+.bk-secure-note{text-align:center;font-size:0.7rem;color:#AAA;margin-top:0.75rem;display:flex;align-items:center;justify-content:center;gap:5px}
+/* Nav buttons */
+.bk-nav{display:flex;justify-content:space-between;align-items:center;gap:0.75rem;margin-top:0.5rem}
+.bk-btn-back{padding:0.7rem 1.2rem;border:1px solid #EDE3CC;border-radius:6px;background:none;font-family:'Nunito',sans-serif;font-size:0.82rem;cursor:pointer;color:#7A6347;transition:background 0.2s}
+.bk-btn-back:hover{background:#F6F1E7}
+.bk-btn-next{flex:1;padding:0.85rem;border:none;border-radius:6px;background:#C07A28;color:#fff;font-family:'Nunito',sans-serif;font-size:0.88rem;font-weight:700;cursor:pointer;transition:background 0.2s;letter-spacing:0.03em}
+.bk-btn-next:hover{background:#DFA53A;color:#1B2F1A}
+/* Success */
+.bk-success{display:none;text-align:center;padding:2.5rem 1.5rem}
+.bk-success-icon{font-size:3rem;margin-bottom:1rem}
+.bk-success-title{font-family:'Fraunces',serif;font-size:1.5rem;color:#1B2F1A;margin-bottom:0.5rem}
+.bk-success-desc{font-size:0.85rem;color:#5A6B52;line-height:1.7}
+.bk-success-ref{background:#EAF3E4;border-radius:6px;padding:0.5rem 1rem;font-size:0.82rem;font-weight:700;color:#2D4829;display:inline-block;margin:0.85rem 0}
 </style>
 </head>
 <body>
@@ -443,15 +522,12 @@ footer{background:var(--bark);padding:2.5rem 2rem}
             <div class="em-row"><span class="em-icon">👥</span><span>Max 20 people</span></div>
           </div>
           <div class="advance-box">
-            <div class="advance-title">⚡ Advance Booking Available</div>
+            <div class="advance-title">🪑 Book Your Seat — Pay Just ₹99</div>
             <div class="advance-prices">
-              <div>
-                <div class="advance-amount">₹99 <span style="font-family:'Nunito',sans-serif;font-size:0.72rem;color:var(--stone);font-weight:400">advance</span></div>
-                <div class="full-price">Full price: ₹499/person</div>
-              </div>
-              <div class="advance-label">→ Pay balance ₹400 on trek day</div>
+              <div class="advance-amount">₹99 <span style="font-family:'Nunito',sans-serif;font-size:0.72rem;color:var(--stone);font-weight:400">to confirm seat</span></div>
+              <div class="advance-label">· Balance ₹400 on trek day</div>
             </div>
-            <div class="advance-note">Advance secures your slot. Non-refundable within 3 days of trek.</div>
+            <div class="advance-note">Secures your slot instantly. Non-refundable within 3 days of trek.</div>
           </div>
           <div class="event-footer">
             <div>
@@ -459,7 +535,7 @@ footer{background:var(--bark);padding:2.5rem 2rem}
               <div class="slots-left">⚡ 18 slots left</div>
             </div>
             <div style="display:flex;flex-direction:column;gap:5px">
-              <a class="book-wa advance" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20book%20Vetal%20Tekadi%20Trek%20on%2028%20Mar.%20I%20will%20pay%20%E2%82%B999%20advance." target="_blank">⚡ Pay ₹99 Advance</a>
+              <button class="book-wa advance" onclick="openBookingModal('Vetal Tekadi Trek','Sunday, 28 Mar 2026','Pune, Maharashtra',99,499)">⚡ Book Seat · ₹99</button>
               <a class="book-wa" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20book%20Vetal%20Tekadi%20Trek%20on%2028%20Mar%20-%20full%20payment." target="_blank">💬 Full Booking</a>
             </div>
           </div>
@@ -487,15 +563,12 @@ footer{background:var(--bark);padding:2.5rem 2rem}
             </div>
           </div>
           <div class="advance-box">
-            <div class="advance-title">⚡ Advance Booking Available</div>
+            <div class="advance-title">🪑 Book Your Seat — Pay Just ₹149</div>
             <div class="advance-prices">
-              <div>
-                <div class="advance-amount">₹149 <span style="font-family:'Nunito',sans-serif;font-size:0.72rem;color:var(--stone);font-weight:400">advance</span></div>
-                <div class="full-price">Full price: ₹799/person</div>
-              </div>
-              <div class="advance-label">→ Pay balance ₹650 on trek day</div>
+              <div class="advance-amount">₹149 <span style="font-family:'Nunito',sans-serif;font-size:0.72rem;color:var(--stone);font-weight:400">to confirm seat</span></div>
+              <div class="advance-label">· Balance ₹650 on trek day</div>
             </div>
-            <div class="advance-note">Advance secures your slot. Non-refundable within 3 days of trek.</div>
+            <div class="advance-note">Secures your slot instantly. Non-refundable within 3 days of trek.</div>
           </div>
           <div class="event-footer">
             <div>
@@ -503,7 +576,7 @@ footer{background:var(--bark);padding:2.5rem 2rem}
               <div class="slots-left">⚡ 18 slots left</div>
             </div>
             <div style="display:flex;flex-direction:column;gap:5px">
-              <a class="book-wa advance" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20book%20Malhargad%20Trek%2019%20Apr.%20I%20will%20pay%20%E2%82%B9149%20advance." target="_blank">⚡ Pay ₹149 Advance</a>
+              <button class="book-wa advance" onclick="openBookingModal('Malhargad Trek','Sunday, 19 Apr 2026','Malhargad, Maharashtra',149,799)">⚡ Book Seat · ₹149</button>
               <a class="book-wa" href="https://wa.me/918310441503?text=Hi!%20I%20want%20to%20book%20Malhargad%20Trek%2019%20Apr%20-%20full%20payment." target="_blank">💬 Full Booking</a>
             </div>
           </div>
@@ -690,7 +763,7 @@ footer{background:var(--bark);padding:2.5rem 2rem}
         <div class="sc-icon sc-email">✉</div>
         <div>
           <div class="sc-label">Email</div>
-          <div class="sc-value"><a href="mailto:tinytrekkers.pune@gmail.com">tinytrekkers.pune@gmail.com</a></div>
+          <div class="sc-value"><a href="/cdn-cgi/l/email-protection#aedac7c0d7dadccbc5c5cbdcdd80dedbc0cbeec9c3cfc7c280cdc1c3"><span class="__cf_email__" data-cfemail="05716c6b7c7177606e6e6077762b75706b60456268646c692b666a68">[email&#160;protected]</span></a></div>
           <div class="sc-note">For detailed enquiries, group trek proposals, corporate bookings, and feedback.</div>
         </div>
       </div>
@@ -782,7 +855,7 @@ footer{background:var(--bark);padding:2.5rem 2rem}
           <li>To send updates about upcoming treks (you may opt out)</li>
         </ul>
         <h3>Data Sharing & Retention</h3>
-        <p>We do <strong>not</strong> sell or share your data for marketing. Data is retained for 2 years, then deleted on request. To request deletion: <strong><a href="mailto:tinytrekkers.pune@gmail.com">tinytrekkers.pune@gmail.com</a></strong></p>
+        <p>We do <strong>not</strong> sell or share your data for marketing. Data is retained for 2 years, then deleted on request. To request deletion: <strong><a href="/cdn-cgi/l/email-protection#baced3d4c3cec8dfd1d1dfc8c994cacfd4dffaddd7dbd3d694d9d5d7"><span class="__cf_email__" data-cfemail="097d6067707d7b6c62626c7b7a27797c676c496e64686065276a6664">[email&#160;protected]</span></a></strong></p>
       </div>
     </div>
 
@@ -831,7 +904,7 @@ footer{background:var(--bark);padding:2.5rem 2rem}
             <div class="cd-icon">✉</div>
             <div>
               <div class="cd-label">Email</div>
-              <div class="cd-value"><a href="mailto:tinytrekkers.pune@gmail.com">tinytrekkers.pune@gmail.com</a></div>
+              <div class="cd-value"><a href="/cdn-cgi/l/email-protection#c7b3aea9beb3b5a2acaca2b5b4e9b7b2a9a287a0aaa6aeabe9a4a8aa"><span class="__cf_email__" data-cfemail="64100d0a1d1016010f0f0116174a14110a01240309050d084a070b09">[email&#160;protected]</span></a></div>
               <div class="cd-note">We reply within 2 hours during business hours</div>
             </div>
           </div>
@@ -877,7 +950,7 @@ footer{background:var(--bark);padding:2.5rem 2rem}
       <div class="f-tagline">Pune's favourite trekking companions — guiding adventurers through the Sahyadri mountains safely and joyfully.</div>
       <div class="f-contact">
         <span>📞 <a href="tel:+918310441503">+91 83104 41503</a></span>
-        <span>✉ <a href="mailto:tinytrekkers.pune@gmail.com">tinytrekkers.pune@gmail.com</a></span>
+        <span>✉ <a href="/cdn-cgi/l/email-protection#2b5f4245525f594e40404e5958055b5e454e6b4c464a424705484446"><span class="__cf_email__" data-cfemail="07736e697e7375626c6c627574297772696247606a666e6b2964686a">[email&#160;protected]</span></a></span>
         <span>📍 A2 304, Gulmohar Goldcoast, Kharadi, Pune 411014</span>
       </div>
     </div>
@@ -908,6 +981,174 @@ footer{background:var(--bark);padding:2.5rem 2rem}
     <span>Made with ❤ for the mountains · Kharadi, Pune 411014</span>
   </div>
 </footer>
+
+<!-- ── BOOKING MODAL ── -->
+<div class="bk-overlay" id="bk-overlay" onclick="bkOverlayClick(event)">
+  <div class="bk-modal" id="bk-modal">
+    <button class="bk-close" onclick="closeBookingModal()">✕</button>
+
+    <!-- Progress tabs -->
+    <div class="bk-progress">
+      <div class="bk-step-tab active" id="bk-tab-1">1 · Trek Info</div>
+      <div class="bk-step-tab" id="bk-tab-2">2 · Your Details</div>
+      <div class="bk-step-tab" id="bk-tab-3">3 · Payment</div>
+    </div>
+
+    <!-- PAGE 1 — Trek info + T&C -->
+    <div class="bk-page active" id="bk-page-1">
+      <div class="bk-trek-card">
+        <div class="bk-trek-name" id="bk-trek-name">Trek Name</div>
+        <div class="bk-trek-rows">
+          <div class="bk-trek-row">📅 <span id="bk-trek-date">Date</span></div>
+          <div class="bk-trek-row">📍 <span id="bk-trek-loc">Location</span></div>
+          <div class="bk-trek-row">🏢 Organised by Tiny Trekkers, Pune</div>
+        </div>
+        <div class="bk-amount-badge">🪑 Seat Booking Amount: <span id="bk-amount-badge">₹99</span></div>
+      </div>
+
+      <div class="bk-contact-strip">
+        <div class="bk-ci">📞 <strong>+91 83104 41503</strong></div>
+        <div class="bk-ci">✉ <strong>tinytrekkers.pune@gmail.com</strong></div>
+        <div class="bk-ci">📍 <strong>Kharadi, Pune 411014</strong></div>
+      </div>
+
+      <div class="bk-tnc-box">
+        <p><strong>Terms & Conditions</strong></p>
+        <p>• The advance amount secures your seat and is non-refundable within 3 days of the trek date.</p>
+        <p>• Balance payment is due on the day of the trek at the meeting point.</p>
+        <p>• Tiny Trekkers reserves the right to cancel a trek due to weather or safety concerns, in which case a full refund or rescheduling will be offered.</p>
+        <p>• Participants must be in good physical health. Medical conditions must be disclosed before the trek.</p>
+        <p>• Tiny Trekkers is not liable for injuries arising from participant negligence.</p>
+        <p>• By proceeding, you agree to our full Privacy Policy and User Agreement available on our website.</p>
+      </div>
+
+      <label class="bk-check-row">
+        <input type="checkbox" id="bk-tnc-check">
+        <span class="bk-check-label">I agree to share the information entered on this page with <strong>Tiny Trekkers</strong> (owner of this page) and <strong>Razorpay</strong>, adhering to applicable laws. I have read and accept the Terms &amp; Conditions above.</span>
+      </label>
+
+      <div class="bk-nav">
+        <div></div>
+        <button class="bk-btn-next" onclick="bkGoStep(2)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- PAGE 2 — Customer details -->
+    <div class="bk-page" id="bk-page-2">
+      <div class="bk-amount-display">
+        <div class="bk-amount-label">Advance Payment Amount</div>
+        <div class="bk-amount-value" id="bk-amount-display">₹99</div>
+      </div>
+
+      <div class="bk-field">
+        <label class="bk-label">Email ID *</label>
+        <input type="email" class="bk-input" id="bk-email" placeholder="your@email.com">
+      </div>
+      <div class="bk-field">
+        <label class="bk-label">Phone Number *</label>
+        <div class="bk-phone-row">
+          <div class="bk-phone-prefix">🇮🇳 +91</div>
+          <input type="tel" class="bk-phone-input" id="bk-phone" placeholder="98765 43210" maxlength="10">
+        </div>
+      </div>
+      <div class="bk-field">
+        <label class="bk-label">Full Name of Kid *</label>
+        <input type="text" class="bk-input" id="bk-kid-name" placeholder="Child's full name">
+      </div>
+      <div class="bk-field">
+        <label class="bk-label">Full Name of Parent / Guardian *</label>
+        <input type="text" class="bk-input" id="bk-parent-name" placeholder="Parent's full name">
+      </div>
+      <div class="bk-field">
+        <label class="bk-label">Age of Kid *</label>
+        <input type="number" class="bk-input" id="bk-kid-age" placeholder="Age in years" min="1" max="18">
+      </div>
+      <div class="bk-field">
+        <label class="bk-label">Residential Address *</label>
+        <input type="text" class="bk-input" id="bk-address" placeholder="Flat, Society, Area, City – PIN">
+      </div>
+      <div class="bk-field">
+        <label class="bk-label">Emergency Contact Number *</label>
+        <div class="bk-phone-row">
+          <div class="bk-phone-prefix">🇮🇳 +91</div>
+          <input type="tel" class="bk-phone-input" id="bk-emergency" placeholder="Emergency contact" maxlength="10">
+        </div>
+      </div>
+
+      <div class="bk-disclaimer-box">
+        <strong>Disclaimer</strong><br>
+        I confirm that the child named above is physically fit and capable of participating in the trek. I understand that trekking involves physical activity and inherent outdoor risks. I voluntarily enrol the child with full awareness of these risks and agree not to hold Tiny Trekkers, its guides, or staff liable for any injury or accident unless caused by proven negligence on their part. In case of a medical emergency, I consent to Tiny Trekkers' team taking necessary first-aid and emergency action on the child's behalf. All information provided is accurate and I accept sole responsibility for any consequences arising from incorrect information.
+      </div>
+      <label class="bk-disclaimer-check">
+        <input type="checkbox" id="bk-disclaimer-check">
+        <span class="bk-disclaimer-label">I have read and accept the above Disclaimer. I confirm that all information provided is accurate and complete.</span>
+      </label>
+
+      <div class="bk-nav">
+        <button class="bk-btn-back" onclick="bkGoStep(1)">← Back</button>
+        <button class="bk-btn-next" onclick="bkGoStep(3)">Continue →</button>
+      </div>
+    </div>
+
+    <!-- PAGE 3 — Payment -->
+    <div class="bk-page" id="bk-page-3">
+      <div class="bk-payment-header">
+        <div class="bk-payment-icon">💳</div>
+        <div class="bk-payment-title">Complete Payment</div>
+        <div class="bk-payment-sub">Powered by Razorpay · 100% secure</div>
+      </div>
+
+      <div class="bk-order-summary">
+        <div class="bk-os-row"><span>Trek</span><span id="bk-summary-trek">Trek Name</span></div>
+        <div class="bk-os-row"><span>Date</span><span id="bk-summary-date">Date</span></div>
+        <div class="bk-os-row"><span>Kid's Name</span><span id="bk-summary-kid">—</span></div>
+        <div class="bk-os-row bk-os-total"><span>Advance to Pay</span><span id="bk-summary-amount">₹99</span></div>
+      </div>
+
+      <div style="font-size:0.72rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#7A6347;margin-bottom:0.75rem">Pay via</div>
+      <div class="bk-payment-methods">
+        <button class="bk-pay-btn selected" id="bk-pay-upi" onclick="selectPayMethod('upi')">
+          <span class="bk-pay-icon">📱</span>
+          <span class="bk-pay-label">UPI <small>Google Pay, PhonePe, Paytm, BHIM & more</small></span>
+          <span style="font-size:0.7rem;color:#4E7249;font-weight:700">Instant</span>
+        </button>
+        <button class="bk-pay-btn" id="bk-pay-card" onclick="selectPayMethod('card')">
+          <span class="bk-pay-icon">💳</span>
+          <span class="bk-pay-label">Debit / Credit Card <small>Visa, Mastercard, RuPay</small></span>
+        </button>
+        <button class="bk-pay-btn" id="bk-pay-nb" onclick="selectPayMethod('nb')">
+          <span class="bk-pay-icon">🏦</span>
+          <span class="bk-pay-label">Net Banking <small>All major Indian banks supported</small></span>
+        </button>
+      </div>
+
+      <button class="bk-razorpay-btn" onclick="launchRazorpay()">
+        🔒 Pay <span id="bk-pay-amount-btn">₹99</span> Securely via Razorpay
+      </button>
+      <div class="bk-secure-note">🔒 256-bit SSL encrypted · Your data is safe</div>
+
+      <div class="bk-nav" style="margin-top:1rem">
+        <button class="bk-btn-back" onclick="bkGoStep(2)">← Back</button>
+      </div>
+    </div>
+
+    <!-- SUCCESS screen -->
+    <div class="bk-success" id="bk-success">
+      <div class="bk-success-icon">🎉</div>
+      <div class="bk-success-title">Seat Booked!</div>
+      <div class="bk-success-ref" id="bk-ref-num">Ref #TT-00000</div>
+      <div class="bk-success-desc">Your seat is confirmed for <strong id="bk-success-trek">the trek</strong>.<br>A confirmation has been sent to your email and our team will WhatsApp you the full details shortly.</div>
+      <div style="margin-top:1.25rem;display:flex;flex-direction:column;gap:0.6rem;align-items:center">
+        <a href="https://wa.me/918310441503" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#25D366;color:#fff;padding:0.65rem 1.4rem;border-radius:6px;font-size:0.85rem;font-weight:700;text-decoration:none">💬 Chat with us on WhatsApp</a>
+        <button onclick="closeBookingModal()" style="background:none;border:none;font-size:0.82rem;color:#7A6347;cursor:pointer;text-decoration:underline">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Razorpay checkout SDK -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 
 <script>
 // ── MOBILE MENU ──
@@ -968,6 +1209,191 @@ function submitCallback(){
   window.open(`https://wa.me/918310441503?text=${encodeURIComponent(msg)}`, '_blank')
   document.getElementById('cb-form-state').style.display   = 'none'
   document.getElementById('cb-success-state').style.display = 'block'
+}
+
+// ── BOOKING MODAL STATE ──
+let _bkTrek='', _bkDate='', _bkLoc='', _bkAdvance=99, _bkFull=499, _bkPayMethod='upi'
+
+function openBookingModal(trek, date, loc, advance, full){
+  _bkTrek=trek; _bkDate=date; _bkLoc=loc; _bkAdvance=advance; _bkFull=full; _bkPayMethod='upi'
+  // Reset all pages
+  bkGoStep(1, true)
+  // Fill page 1 info
+  document.getElementById('bk-trek-name').textContent   = trek
+  document.getElementById('bk-trek-date').textContent   = date
+  document.getElementById('bk-trek-loc').textContent    = loc
+  document.getElementById('bk-amount-badge').textContent = '₹'+advance
+  // Fill page 2 amount
+  document.getElementById('bk-amount-display').textContent = '₹'+advance
+  // Open overlay
+  document.getElementById('bk-overlay').classList.add('open')
+  document.body.style.overflow = 'hidden'
+  // Uncheck checkboxes
+  document.getElementById('bk-tnc-check').checked = false
+  document.getElementById('bk-disclaimer-check').checked = false
+  // Reset pay method UI
+  selectPayMethod('upi')
+}
+
+function closeBookingModal(){
+  document.getElementById('bk-overlay').classList.remove('open')
+  document.body.style.overflow = ''
+}
+function bkOverlayClick(e){
+  if(e.target === document.getElementById('bk-overlay')) closeBookingModal()
+}
+
+function bkGoStep(n, init){
+  if(!init){
+    // Validate before advancing
+    if(n===2){
+      if(!document.getElementById('bk-tnc-check').checked){
+        alert('Please read and accept the Terms & Conditions to continue.')
+        return
+      }
+    }
+    if(n===3){
+      const email    = document.getElementById('bk-email').value.trim()
+      const phone    = document.getElementById('bk-phone').value.trim()
+      const kidName  = document.getElementById('bk-kid-name').value.trim()
+      const parName  = document.getElementById('bk-parent-name').value.trim()
+      const kidAge   = document.getElementById('bk-kid-age').value.trim()
+      const addr     = document.getElementById('bk-address').value.trim()
+      const emg      = document.getElementById('bk-emergency').value.trim()
+      const disc     = document.getElementById('bk-disclaimer-check').checked
+      if(!email)  { alert('Please enter your email address.'); return }
+      if(!phone || phone.length < 10) { alert('Please enter a valid 10-digit phone number.'); return }
+      if(!kidName){ alert('Please enter the full name of the kid.'); return }
+      if(!parName){ alert('Please enter the parent/guardian full name.'); return }
+      if(!kidAge) { alert('Please enter the age of the kid.'); return }
+      if(!addr)   { alert('Please enter the residential address.'); return }
+      if(!emg || emg.length < 10){ alert('Please enter a valid emergency contact number.'); return }
+      if(!disc)   { alert('Please read and accept the Disclaimer to continue.'); return }
+      // Fill summary
+      document.getElementById('bk-summary-trek').textContent   = _bkTrek
+      document.getElementById('bk-summary-date').textContent   = _bkDate
+      document.getElementById('bk-summary-kid').textContent    = kidName
+      document.getElementById('bk-summary-amount').textContent = '₹'+_bkAdvance
+      document.getElementById('bk-pay-amount-btn').textContent = '₹'+_bkAdvance
+    }
+  }
+  // Update tabs
+  ;[1,2,3].forEach(i => {
+    const tab = document.getElementById('bk-tab-'+i)
+    tab.classList.remove('active','done')
+    if(i===n) tab.classList.add('active')
+    else if(i<n) tab.classList.add('done')
+  })
+  // Show correct page
+  ;[1,2,3].forEach(i => {
+    document.getElementById('bk-page-'+i).classList.toggle('active', i===n)
+  })
+  document.getElementById('bk-success').style.display = 'none'
+  document.getElementById('bk-modal').scrollTop = 0
+}
+
+function selectPayMethod(method){
+  _bkPayMethod = method
+  ;['upi','card','nb'].forEach(m => {
+    document.getElementById('bk-pay-'+m).classList.toggle('selected', m===method)
+  })
+}
+
+function launchRazorpay(){
+  const email    = document.getElementById('bk-email').value.trim()
+  const phone    = document.getElementById('bk-phone').value.trim()
+  const kidName  = document.getElementById('bk-kid-name').value.trim()
+  const parName  = document.getElementById('bk-parent-name').value.trim()
+
+  // ─────────────────────────────────────────────────────────────
+  // RAZORPAY INTEGRATION
+  // Replace 'YOUR_RAZORPAY_KEY_ID' with your actual key from:
+  // https://dashboard.razorpay.com → Settings → API Keys
+  // Also replace the Razorpay Payment Link URLs in the fallback
+  // with your actual pre-created payment links for ₹99 and ₹149
+  // ─────────────────────────────────────────────────────────────
+  const RAZORPAY_KEY = 'YOUR_RAZORPAY_KEY_ID'
+
+  // If Razorpay SDK loaded, use checkout
+  if(typeof Razorpay !== 'undefined' && RAZORPAY_KEY !== 'YOUR_RAZORPAY_KEY_ID'){
+    const options = {
+      key:         RAZORPAY_KEY,
+      amount:      _bkAdvance * 100,  // in paise
+      currency:    'INR',
+      name:        'Tiny Trekkers',
+      description: 'Seat booking — '+_bkTrek,
+      image:       '',
+      prefill: {
+        name:    parName,
+        email:   email,
+        contact: '+91'+phone
+      },
+      notes: {
+        trek:       _bkTrek,
+        trek_date:  _bkDate,
+        kid_name:   kidName,
+        parent:     parName
+      },
+      theme:      { color: '#C07A28' },
+      method:     _bkPayMethod === 'upi' ? { upi: true } : _bkPayMethod === 'card' ? { card: true } : { netbanking: true },
+      handler: function(response){
+        // Payment successful — show success screen
+        showBookingSuccess(response.razorpay_payment_id)
+        // Send booking details to owner via WhatsApp
+        sendOwnerWhatsApp(response.razorpay_payment_id)
+      },
+      modal: { ondismiss: function(){ console.log('Payment dismissed') } }
+    }
+    const rzp = new Razorpay(options)
+    rzp.open()
+  } else {
+    // ── FALLBACK: Redirect to pre-created Razorpay Payment Link ──
+    // Create these links once from https://dashboard.razorpay.com/app/payment-links
+    // Replace the URLs below with your actual payment link URLs
+    const paymentLinks = {
+      99:  'https://rzp.io/l/YOUR_VETAL_TEKADI_LINK',   // Replace with your ₹99 link
+      149: 'https://rzp.io/l/YOUR_MALHARGAD_LINK'        // Replace with your ₹149 link
+    }
+    const link = paymentLinks[_bkAdvance]
+    if(link && !link.includes('YOUR_')){
+      // Send details to owner first, then redirect
+      sendOwnerWhatsApp('pending')
+      window.open(link, '_blank')
+      showBookingSuccess('pending')
+    } else {
+      // No key set yet — show instructions
+      alert('Payment gateway setup pending.\n\nPlease contact us on WhatsApp to book:\n+91 83104 41503\n\nOr email: tinytrekkers.pune@gmail.com')
+      const msg = buildOwnerMessage('N/A')
+      window.open(`https://wa.me/918310441503?text=${encodeURIComponent(msg)}`, '_blank')
+    }
+  }
+}
+
+function buildOwnerMessage(payId){
+  const kidName  = document.getElementById('bk-kid-name').value.trim()
+  const parName  = document.getElementById('bk-parent-name').value.trim()
+  const email    = document.getElementById('bk-email').value.trim()
+  const phone    = document.getElementById('bk-phone').value.trim()
+  const kidAge   = document.getElementById('bk-kid-age').value.trim()
+  const addr     = document.getElementById('bk-address').value.trim()
+  const emg      = document.getElementById('bk-emergency').value.trim()
+  return `🏔 *New Booking — Tiny Trekkers*\n\n` +
+    `*Trek:* ${_bkTrek}\n*Date:* ${_bkDate}\n*Advance Paid:* ₹${_bkAdvance}\n*Payment ID:* ${payId}\n\n` +
+    `*Kid Name:* ${kidName}\n*Kid Age:* ${kidAge} yrs\n*Parent:* ${parName}\n` +
+    `*Email:* ${email}\n*Phone:* +91${phone}\n*Address:* ${addr}\n*Emergency:* +91${emg}`
+}
+
+function sendOwnerWhatsApp(payId){
+  const msg = buildOwnerMessage(payId)
+  window.open(`https://wa.me/918310441503?text=${encodeURIComponent(msg)}`, '_blank')
+}
+
+function showBookingSuccess(payId){
+  ;[1,2,3].forEach(i => document.getElementById('bk-page-'+i).classList.remove('active'))
+  document.getElementById('bk-progress') // hide tabs visually
+  document.getElementById('bk-success').style.display = 'block'
+  document.getElementById('bk-success-trek').textContent = _bkTrek
+  document.getElementById('bk-ref-num').textContent = 'Ref #TT-' + Math.floor(10000+Math.random()*90000)
 }
 
 // ── ACTIVE NAV ON SCROLL ──
